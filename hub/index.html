@@ -1998,7 +1998,7 @@ const slides = [
   icesi.slideStandard(
     'Tres aplicaciones, tres mundos distintos',
     `<div style="margin-top:-38px; text-align:center;">
-      <img class="col-graphic-img" style="max-height:380px; max-width:1080px;" src="../graphics/G_ecosistema_apps.png" alt="Incognitus, Sensores IMU y Emotion Cameras — tres apps de equipos distintos que hablan por HTTPS a Vimov Cloud cuando hay internet">
+      <img class="col-graphic-img" style="max-height:380px; max-width:1080px;" src="graphics/G_ecosistema_apps.png" alt="Incognitus, Sensores IMU y Emotion Cameras — tres apps de equipos distintos que hablan por HTTPS a Vimov Cloud cuando hay internet">
     </div>`
   ),
 
@@ -2006,7 +2006,7 @@ const slides = [
   icesi.slideStandard(
     'El problema real',
     `<div style="margin-top:-38px; text-align:center;">
-      <img class="col-graphic-img" style="max-height:390px; max-width:1080px;" src="../graphics/G_sin_conexion_problema.png" alt="Brigada de campo con cero cobertura de datos móviles: las tres apps quedan aisladas, cada una guarda un registro local del mismo paciente, sin cruzarse entre ellas">
+      <img class="col-graphic-img" style="max-height:390px; max-width:1080px;" src="graphics/G_sin_conexion_problema.png" alt="Brigada de campo con cero cobertura de datos móviles: las tres apps quedan aisladas, cada una guarda un registro local del mismo paciente, sin cruzarse entre ellas">
       <p style="margin-top:10px; font-size:18px; font-weight:700; color:var(--icesi-blue);">¿Cómo lograr operación offline sin tocar ninguna de las tres apps?</p>
     </div>`
   ),
@@ -2019,7 +2019,7 @@ const slides = [
       row(I.alert, `Esa asunción no aplica acá: las tres apps ya están en producción y no se pueden intervenir`),
       row(I.check, `Conclusión: ningún trabajo cubre integración multi-app local + "zero client modification" a la vez`)
     ])}`,
-    `<img src="../graphics/G1_tabla_comparativa.png" alt="Tabla comparativa de trabajos relacionados · la columna de zero client modification está vacía en todos los demás">`,
+    `<img src="graphics/G1_tabla_comparativa.png" alt="Tabla comparativa de trabajos relacionados · la columna de zero client modification está vacía en todos los demás">`,
     `Comparación cualitativa contra trabajos relacionados`
   ),
 
@@ -2043,7 +2043,7 @@ const slides = [
       row(I.terminal, `<strong>Modo hub:</strong> el DNS local resuelve el dominio a la propia Pi, que intercepta, guarda y proxea`),
       row(I.check, `El "contrato de transparencia": la app ve exactamente el mismo comportamiento HTTP, esté o no el hub en el camino`)
     ])}`,
-    `<img src="../graphics/G2_modos_online_hub.png" alt="Diagrama de dos modos: online directo a la nube vs. hub interceptando y proxeando">`,
+    `<img src="graphics/G2_modos_online_hub.png" alt="Diagrama de dos modos: online directo a la nube vs. hub interceptando y proxeando">`,
     `Dos modos de operación: directo a la nube, o interceptado por el hub`
   ),
 
@@ -2059,7 +2059,7 @@ const slides = [
         ])}
       </div>
       <div style="flex:1;">
-        <img class="col-graphic-img" style="max-height:410px;" src="../graphics/G3_topologia_brigada.png" alt="Topología física: Raspberry Pi con eth0 al router Linksys (WiFi Hub para los 3 dispositivos) y wlan1 de subida a Vimov Cloud">
+        <img class="col-graphic-img" style="max-height:410px;" src="graphics/G3_topologia_brigada.png" alt="Topología física: Raspberry Pi con eth0 al router Linksys (WiFi Hub para los 3 dispositivos) y wlan1 de subida a Vimov Cloud">
       </div>
     </div>`
   ),
@@ -2074,14 +2074,14 @@ const slides = [
       row(I.check, `<strong>Respuesta transparente</strong> · estructuralmente idéntica a Vimov Cloud, con header anti-loop`)
     ])}
     <p style="margin-top:12px; font-size:16px; color:#88898C;"><strong>Mensaje central:</strong> la app nunca sabe que no llegó a la nube.</p>`,
-    `<img src="../graphics/G4_cuatro_capas_intercepcion.png" alt="Pipeline de 4 capas: DNS local, DNAT, terminación TLS y respuesta transparente">`
+    `<img src="graphics/G4_cuatro_capas_intercepcion.png" alt="Pipeline de 4 capas: DNS local, DNAT, terminación TLS y respuesta transparente">`
   ),
 
   // 10 — Arquitectura ingenua: primer acercamiento
   icesi.slideStandard(
     'Arquitectura ingenua · primer acercamiento',
     `<div style="margin-top:-30px; text-align:center;">
-      <img class="col-graphic-img" style="max-height:450px; max-width:1170px;" src="../graphics/G12a_arquitectura_ingenua.png" alt="Arquitectura ingenua: las tres apps clientes hablan directo con una réplica completa del stack de Vimov (PostgreSQL, Redis, MinIO, Celery Worker, Whisper Nano) en la Pi, 80 segundos de latencia bajo 5 requests concurrentes de IMUs. Se culpó primero a la concurrencia; la causa real fue el doble procesamiento con recursos compartidos, agravado por Whisper Nano compitiendo por RAM">
+      <img class="col-graphic-img" style="max-height:450px; max-width:1170px;" src="graphics/G12a_arquitectura_ingenua.png" alt="Arquitectura ingenua: las tres apps clientes hablan directo con una réplica completa del stack de Vimov (PostgreSQL, Redis, MinIO, Celery Worker, Whisper Nano) en la Pi, 80 segundos de latencia bajo 5 requests concurrentes de IMUs. Se culpó primero a la concurrencia; la causa real fue el doble procesamiento con recursos compartidos, agravado por Whisper Nano compitiendo por RAM">
     </div>`
   ),
 
@@ -2089,7 +2089,7 @@ const slides = [
   icesi.slideStandard(
     'Arquitectura final · lo que funcionó',
     `<div style="margin-top:-30px; text-align:center;">
-      <img class="col-graphic-img" style="max-height:450px; max-width:1170px;" src="../graphics/G12b_arquitectura_final.png" alt="Arquitectura final: middleware dedicado con cola SQLite responde de inmediato al cliente y proxea a una réplica mínima de Vimov de solo validación, sincronizando con Vimov Cloud en segundo plano · menos de 3 segundos con la misma concurrencia">
+      <img class="col-graphic-img" style="max-height:450px; max-width:1170px;" src="graphics/G12b_arquitectura_final.png" alt="Arquitectura final: middleware dedicado con cola SQLite responde de inmediato al cliente y proxea a una réplica mínima de Vimov de solo validación, sincronizando con Vimov Cloud en segundo plano · menos de 3 segundos con la misma concurrencia">
     </div>`
   ),
 
@@ -2101,7 +2101,7 @@ const slides = [
       row(I.arrow, `Luego se proxea y se responde al cliente · la sincronización a la nube pasa después, en segundo plano`),
       row(I.terminal, `SQLite para el middleware, no Postgres: concurrencia acotada a 3 apps, dato efímero, un solo archivo para respaldo/limpieza`)
     ])}`,
-    `<img src="../graphics/G6_pipeline_store_forward.png" alt="Pipeline de dos paneles: captura (upsert, persistencia, cola) y sincronización posterior a Vimov">`,
+    `<img src="graphics/G6_pipeline_store_forward.png" alt="Pipeline de dos paneles: captura (upsert, persistencia, cola) y sincronización posterior a Vimov">`,
     `Captura local seguida de sincronización a la nube`
   ),
 
@@ -2124,7 +2124,7 @@ const slides = [
       row(I.lightning, `<strong>456 ms</strong> por registro, promedio de sincronización`),
       row(I.database, `<strong>20/20 registros</strong> recuperados tras un corte de energía simulado`)
     ])}`,
-    `<img src="../graphics/G7_resultados_laboratorio.png" alt="Resultados de laboratorio: 132 de 132 requests sin error, 456 ms de sincronización promedio, 20 de 20 registros recuperados">`,
+    `<img src="graphics/G7_resultados_laboratorio.png" alt="Resultados de laboratorio: 132 de 132 requests sin error, 456 ms de sincronización promedio, 20 de 20 registros recuperados">`,
     `Resultados de las pruebas de laboratorio`
   ),
 
@@ -2136,7 +2136,7 @@ const slides = [
       row(I.users, `Entradas de identidad por paciente: 3 (workflow manual) → 3 (réplica local) → <strong>1</strong> (hub propuesto)`),
       row(I.chart, `Confirma que el middleware dedicado, no la réplica completa, es lo que hace viable el hub`)
     ])}`,
-    `<img src="../graphics/G8_comparacion_baselines.png" alt="Comparación contra baselines: workflow manual en días, réplica local completa en 80s, hub propuesto en menos de 3s">`,
+    `<img src="graphics/G8_comparacion_baselines.png" alt="Comparación contra baselines: workflow manual en días, réplica local completa en 80s, hub propuesto en menos de 3s">`,
     `Comparación de tiempos contra las alternativas`
   ),
 
@@ -2147,15 +2147,15 @@ const slides = [
       row(I.wifi, `Antena integrada de la Pi: límite funcional <strong>11.9 m</strong> (bajo el criterio de 15 m)`),
       row(I.check, `Con AP externo: <strong>20.6 m</strong> · motivó el modo <em>ap-extension</em> como configuración recomendada`)
     ])}`,
-    `<img src="../graphics/G9_cobertura_wifi.png" alt="RSSI vs. distancia: antena Pi limita a 11.9m, AP externo llega a 20.6m, criterio de 15m marcado">`
+    `<img src="graphics/G9_cobertura_wifi.png" alt="RSSI vs. distancia: antena Pi limita a 11.9m, AP externo llega a 20.6m, criterio de 15m marcado">`
   ),
 
   // 17 — Cobertura WiFi: mapa de planta
   icesi.slideStandard(
     'Cobertura WiFi · mapa de planta',
     `<div style="display:flex; gap:32px; align-items:flex-start; justify-content:center; margin-top:-46px;">
-      <img class="col-graphic-img" style="max-height:440px; margin:0;" src="../graphics/G11a_cobertura_planta_pi.png" alt="Plano de una sede de brigada: con la antena Pi integrada, límite funcional 11.9 m, no llega con margen a la bodega ni al fondo del corredor">
-      <img class="col-graphic-img" style="max-height:440px; margin:0;" src="../graphics/G11b_cobertura_planta_ap.png" alt="Mismo plano de la sede: con AP externo, límite funcional 20.6 m, cobertura completa de la sede">
+      <img class="col-graphic-img" style="max-height:440px; margin:0;" src="graphics/G11a_cobertura_planta_pi.png" alt="Plano de una sede de brigada: con la antena Pi integrada, límite funcional 11.9 m, no llega con margen a la bodega ni al fondo del corredor">
+      <img class="col-graphic-img" style="max-height:440px; margin:0;" src="graphics/G11b_cobertura_planta_ap.png" alt="Mismo plano de la sede: con AP externo, límite funcional 20.6 m, cobertura completa de la sede">
     </div>
     <p style="text-align:center; font-size:14px; color:#88898C; margin-top:8px;">Muro (línea sólida) · límite funcional &lt; −80 dBm (línea punteada) · punto de medición real (RSSI)</p>`
   ),
@@ -2165,12 +2165,12 @@ const slides = [
     'Cobertura WiFi · heatmap real de campo',
     `<div style="display:flex; gap:32px; align-items:flex-start; justify-content:center; margin-top:-36px;">
       <div style="text-align:center;">
-        <img class="col-graphic-img" style="max-height:385px;" src="../graphics/G13_heatmap_real_pi.png" alt="Heatmap real de RSSI medido en planta con la antena integrada de la Pi (RPI-4), SSID Hub, puntos de medición etiquetados con distancia y dBm">
+        <img class="col-graphic-img" style="max-height:385px;" src="graphics/G13_heatmap_real_pi.png" alt="Heatmap real de RSSI medido en planta con la antena integrada de la Pi (RPI-4), SSID Hub, puntos de medición etiquetados con distancia y dBm">
         <p style="margin-top:6px; margin-bottom:0; font-size:15px; color:#88898C;">Antena Pi integrada (RPI-4)</p>
         <p style="margin-top:2px; font-size:13px; color:#E9683B; font-weight:700;">Umbral ≥ −80 dBm · hasta 11.9 m</p>
       </div>
       <div style="text-align:center;">
-        <img class="col-graphic-img" style="max-height:385px;" src="../graphics/G14_heatmap_real_ap.png" alt="Heatmap real de RSSI medido en planta con el punto de acceso externo, SSID Hub, mismo plano de medición">
+        <img class="col-graphic-img" style="max-height:385px;" src="graphics/G14_heatmap_real_ap.png" alt="Heatmap real de RSSI medido en planta con el punto de acceso externo, SSID Hub, mismo plano de medición">
         <p style="margin-top:6px; margin-bottom:0; font-size:15px; color:#88898C;">+ AP externo</p>
         <p style="margin-top:2px; font-size:13px; color:#4CB979; font-weight:700;">Umbral ≥ −80 dBm · hasta 20.6 m</p>
       </div>

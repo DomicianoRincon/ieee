@@ -2184,7 +2184,7 @@ const slides = [
       </math>
     </div>
     ${row(I.wave, `Señal de desviación radial: <math><msub><mi>y</mi><mtext>dev</mtext></msub><mo>(</mo><mi>t</mi><mo>)</mo><mo>=</mo><mi>r</mi><mo>(</mo><mi>t</mi><mo>)</mo><mo>&#8722;</mo><mi>b</mi><mrow><mo>(</mo><mi>θ</mi><mo>(</mo><mi>t</mi><mo>)</mo><mo>+</mo><msub><mi>θ</mi><mi>r</mi></msub><mo>)</mo></mrow></math> · la misma serie de residuales, indexada por tiempo en vez de por ángulo`)}`,
-    `<img src="../graphics/G8_regresion_rms.png" alt="Regresión y residuales RMS">`,
+    `<img src="graphics/G8_regresion_rms.png" alt="Regresión y residuales RMS">`,
     `(θ,r) + ajuste por mínimos cuadrados + residuales con banda ±RMS`
   ),
 
@@ -2215,7 +2215,7 @@ const slides = [
         <mrow><mo>|</mo><mi>Y</mi><mo>(</mo><mi>f</mi><mo>)</mo><mo>|</mo></mrow>
       </math>
     </div>`,
-    `<img src="../graphics/G2_pipeline_senal.png" alt="Pipeline de señal">`,
+    `<img src="graphics/G2_pipeline_senal.png" alt="Pipeline de señal">`,
     `Trayectoria del trazo → señal filtrada → espectro`
   ),
 
@@ -2228,14 +2228,14 @@ const slides = [
       row(I.chart, `Muestra real: paciente <code>1105362267</code> (sano, con guía) · su espectro sin filtrar muestra ambos lóbulos claramente separados (pico de dibujo en 0.10 Hz, pico de temblor en 5.79 Hz)`)
     ])}
     <aside class="notes">Aclarar en vivo: es un ejemplo pedagógico de que el método separa bien los dos componentes cuando la espiral está bien definida · no es una reproducción del promedio poblacional del paper (≈2.4–2.5 Hz, ver Discusión, slide 17).</aside>`,
-    `<img src="../graphics/G7_dibujo_vs_temblor.png" alt="Dibujo vs temblor">`
+    `<img src="graphics/G7_dibujo_vs_temblor.png" alt="Dibujo vs temblor">`
   ),
 
   // 10 — Arquitectura
   icesi.slideStandard(
     'Arquitectura del sistema · API + cola de tareas',
     `<div style="margin-top:-50px; text-align:center;">
-      <img class="col-graphic-img" style="max-height:330px; max-width:900px;" src="../graphics/G3_arquitectura_iconos.svg" alt="Incognitus en una tablet envía el trazo a la Vimov API, que guarda en MinIO y encola el análisis en una cola Redis; un worker de Celery procesa y guarda el resultado en MinIO y PostgreSQL; Vimov Web, en un portátil, consulta la misma API">
+      <img class="col-graphic-img" style="max-height:330px; max-width:900px;" src="graphics/G3_arquitectura_iconos.svg" alt="Incognitus en una tablet envía el trazo a la Vimov API, que guarda en MinIO y encola el análisis en una cola Redis; un worker de Celery procesa y guarda el resultado en MinIO y PostgreSQL; Vimov Web, en un portátil, consulta la misma API">
     </div>
     <div style="display:flex; gap:32px; margin-top:16px; max-width:1180px; margin-left:auto; margin-right:auto;">
       <div style="flex:1;">${row(I.api, `Incognitus envía el trazo a la Vimov API, que guarda en MinIO y encola el análisis`)}</div>
@@ -2255,7 +2255,7 @@ const slides = [
     `<div style="width:340px; height:520px; background:var(--icesi-dark); border-radius:30px; padding:16px 14px 26px; box-sizing:border-box; box-shadow:0 14px 36px rgba(0,0,0,0.3); position:relative;">
       <div style="position:absolute; top:7px; left:50%; transform:translateX(-50%); width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,0.35);"></div>
       <div style="width:100%; height:100%; background:#fff; border-radius:8px; overflow:hidden; display:flex; align-items:center; justify-content:center;">
-        <img src="../graphics/G4_app_resultados.png" alt="Resultados en la app Incognitus" style="width:100%; height:100%; object-fit:contain; display:block;">
+        <img src="graphics/G4_app_resultados.png" alt="Resultados en la app Incognitus" style="width:100%; height:100%; object-fit:contain; display:block;">
       </div>
       <div style="position:absolute; bottom:9px; left:50%; transform:translateX(-50%); width:60px; height:4px; border-radius:2px; background:rgba(255,255,255,0.35);"></div>
     </div>`
@@ -2265,7 +2265,7 @@ const slides = [
   icesi.slideStandard(
     'Métricas generadas · 4 categorías',
     `<div style="margin-top:-36px; text-align:center;">
-      <img class="col-graphic-img" style="max-width:1150px; max-height:400px;" src="../graphics/G9_resumen_metricas.png" alt="Perfil de las 4 categorías de métricas, 8 sanos vs. 8 Parkinson, condición sin guía: tiempo total (posible bradicinesia), velocidad media (control motor irregular), RMS radial error (menor precisión del trazo, única diferencia estadísticamente significativa) y frecuencia dominante (no discrimina en esta condición)">
+      <img class="col-graphic-img" style="max-width:1150px; max-height:400px;" src="graphics/G9_resumen_metricas.png" alt="Perfil de las 4 categorías de métricas, 8 sanos vs. 8 Parkinson, condición sin guía: tiempo total (posible bradicinesia), velocidad media (control motor irregular), RMS radial error (menor precisión del trazo, única diferencia estadísticamente significativa) y frecuencia dominante (no discrimina en esta condición)">
       <p style="margin-top:6px; font-size:14px; color:#88898C; font-style:italic;">N = 16 (8 sanos + 8 Parkinson) · sin guía · con guía se compara aparte (slide 14)</p>
     </div>`
   ),
@@ -2289,7 +2289,7 @@ const slides = [
       row(I.eye, `<strong>Hipótesis de diseño:</strong> la condición "con guía" tensiona al sujeto · seguir una plantilla con precisión exige más esfuerzo, y ese esfuerzo afecta de forma desigual a cada paciente Parkinson`),
       row(I.wave, `Consistente con esto: la desviación estándar del RMS en Parkinson es ~77% de su media, contra ~11% en sanos · mucha más dispersión relativa entre pacientes Parkinson con guía`)
     ])}`,
-    `<img src="../graphics/G5a_comparacion_con_guia.png" alt="Comparación con guía">`
+    `<img src="graphics/G5a_comparacion_con_guia.png" alt="Comparación con guía">`
   ),
 
   // 15 — Resultados sin guía
@@ -2300,7 +2300,7 @@ const slides = [
       row(I.hand, `<strong>Hipótesis de diseño:</strong> sin guía el trazo es más libre y rápido, pero la espiral resultante se aleja más de la forma ideal · más deformación geométrica que oscilación de alta frecuencia`),
       row(I.wave, `La frecuencia dominante no discrimina en ninguna condición (p=0.46 / p=0.49) · cierra la comparación de las dos condiciones`)
     ])}`,
-    `<img src="../graphics/G5b_comparacion_sin_guia.png" alt="Comparación sin guía">`
+    `<img src="graphics/G5b_comparacion_sin_guia.png" alt="Comparación sin guía">`
   ),
 
   // 16 — Resultados, dispersión
@@ -2308,7 +2308,7 @@ const slides = [
     'Resultados · dispersión y variabilidad',
     `<div class="cols-container" style="display:flex; gap:28px; align-items:flex-start;">
       <div style="flex:1.3;">
-        <img class="col-graphic-img" src="../graphics/G6_scatter_rms_vs_tiempo.png" alt="Dispersión tiempo vs RMS">
+        <img class="col-graphic-img" src="graphics/G6_scatter_rms_vs_tiempo.png" alt="Dispersión tiempo vs RMS">
       </div>
       <div style="flex:1;">
         ${rows([
@@ -2332,7 +2332,7 @@ const slides = [
         ])}
       </div>
       <div style="flex:1;">
-        <img class="col-graphic-img" src="../graphics/G1_tabla_comparativa.png" alt="Tabla comparativa de frecuencias">
+        <img class="col-graphic-img" src="graphics/G1_tabla_comparativa.png" alt="Tabla comparativa de frecuencias">
         <p style="text-align:center; font-size:14px; color:#88898C; margin-top:6px;">Comparación con trabajos relacionados (Tabla VI)</p>
       </div>
     </div>`
