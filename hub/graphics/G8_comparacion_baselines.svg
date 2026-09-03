@@ -4,6 +4,9 @@
       <rect width="14" height="14" fill="#F2D9D9"/>
       <line x1="0" y1="0" x2="0" y2="14" stroke="#C00000" stroke-width="4"/>
     </pattern>
+    <marker id="arrowGray" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#7F7F7F"/>
+    </marker>
   </defs>
   <rect x="0" y="0" width="1920" height="1080" fill="#FFFFFF"/>
   <text x="960" y="82" text-anchor="middle" font-size="46" font-weight="700" fill="#1F3864">Comparison against baselines (Table III)</text>
@@ -50,22 +53,25 @@
   <text x="1580" y="784" text-anchor="middle" font-size="24" font-weight="700" fill="#7F6000">of magnitude</text>
   <text x="1580" y="820" text-anchor="middle" font-size="19" fill="#7F6000">full replica vs. proposed hub</text>
 
-  <!-- Bottom: patient ID entries -->
-  <line x1="90" y1="680" x2="1300" y2="680" stroke="#BFBFBF" stroke-width="2" stroke-dasharray="10 8"/>
-  <text x="120" y="730" font-size="26" font-weight="700" fill="#262626">Patient ID entries</text>
+  <!-- Bottom: patient identity unification, field-validated -->
+  <line x1="90" y1="680" x2="1830" y2="680" stroke="#BFBFBF" stroke-width="2" stroke-dasharray="10 8"/>
+  <text x="120" y="730" font-size="26" font-weight="700" fill="#262626">Patient identity unification · field validation</text>
 
-  <g font-size="20" fill="#262626">
-    <text x="150" y="800">Manual: </text>
-    <circle cx="290" cy="794" r="14" fill="#4472C4"/><circle cx="330" cy="794" r="14" fill="#4472C4"/><circle cx="370" cy="794" r="14" fill="#4472C4"/>
-    <text x="400" y="800">3</text>
+  <g>
+    <text x="150" y="808" font-size="44" font-weight="800" fill="#1F3864">12 patients</text>
+    <text x="150" y="843" font-size="24" fill="#262626">58 records synced through the hub</text>
+    <circle cx="164" cy="871" r="15" fill="#548235"/>
+    <path d="M157,871 L162,877 L173,864" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="192" y="878" font-size="23" font-weight="700" fill="#274E13">All synced cleanly · 0 identity conflicts</text>
+  </g>
 
-    <text x="150" y="850">Replica: </text>
-    <circle cx="290" cy="844" r="14" fill="#ED7D31"/><circle cx="330" cy="844" r="14" fill="#ED7D31"/><circle cx="370" cy="844" r="14" fill="#ED7D31"/>
-    <text x="400" y="850">3</text>
-
-    <text x="530" y="800">Hub: </text>
-    <circle cx="630" cy="794" r="16" fill="#548235"/>
-    <text x="670" y="800" font-weight="700">1 (shared)</text>
+  <g font-size="22" fill="#262626">
+    <text x="965" y="775" text-anchor="middle" font-size="19" fill="#7F7F7F">Per patient, across the 3 apps</text>
+    <circle cx="895" cy="815" r="13" fill="#4472C4"/><circle cx="930" cy="815" r="13" fill="#4472C4"/><circle cx="965" cy="815" r="13" fill="#4472C4"/>
+    <text x="993" y="822">3 IDs</text>
+    <line x1="1060" y1="815" x2="1107" y2="815" stroke="#7F7F7F" stroke-width="2.5" marker-end="url(#arrowGray)"/>
+    <circle cx="1150" cy="815" r="15" fill="#548235"/>
+    <text x="1175" y="822" font-weight="700" fill="#274E13">1 shared ID</text>
   </g>
 
   <rect x="90" y="960" width="1740" height="70" rx="12" fill="#EDEDED" stroke="#595959" stroke-width="2"/>

@@ -1980,7 +1980,7 @@ const slides = [
   icesi.titleSlideB(
     '<span style="font-size:34px; line-height:41px; display:block;">An Application Hub for Offline Clinical Data Collection in Neurological Field Brigades</span>',
     'Offline integration for clinical field brigades · <span style="color:var(--icesi-green); font-weight:700;">IEEE COLCOM 2026</span>',
-    'D. Rincón Niño · E. Gaviria Zambrano · J. D. Colonia Aldana · J. M. Díaz Moreno · M. Á. González Arango · P. Madriñán · A. Navarro · Grupo i2t, Universidad Icesi · Fundación Valle del Lili',
+    '<strong>Domiciano Rincón Niño</strong> · Esteban Gaviria Zambrano · Juan David Colonia · Juan Manuel Díaz · Miguel Ángel González · Patricia Madriñán · Andrés Navarro',
     coverHubGraphic()
   ),
 
@@ -2105,15 +2105,30 @@ const slides = [
     `Local capture followed by sync to the cloud`
   ),
 
-  // 13 — Seguridad, privacidad y marco regulatorio
+  // 13 — DNS + TLS: la estrategia de transparencia
   icesi.slideStandard(
-    'Security, privacy, and regulatory framework',
-    `${rows([
-      row(I.shield, `<strong>Trust model:</strong> supervised brigade network · the adversary is an opportunistic third party or a lost/stolen device, not a sophisticated network attacker`),
-      row(I.check, `Real end-to-end TLS (interception doesn't weaken it), SHA-256 on files, certificate embedded in the Pi image · never in a public trust store`),
-      row(I.database, `Legal framework: Colombian Law 1581 of 2012 + Resolution 8430 of 1993 · data minimization and bounded retention`),
-      row(I.alert, `Acknowledged residual risks: unencrypted disk, admin panel without per-user authentication · naming these signals rigor, not weakness`)
-    ])}`
+    'DNS + TLS · why the interception is transparent',
+    `<div style="display:flex; gap:28px; margin-top:-6px;">
+      <div style="flex:1; background:#EEF1FF; border:1.5px solid #A9B4F2; border-radius:14px; padding:22px 24px;">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+          ${I.wifi}<span style="font-size:19px; font-weight:700; color:var(--icesi-blue);">Local DNS</span>
+        </div>
+        ${rows([
+          row(I.target, `The 3 apps are hardcoded to <strong>Vimov Cloud's real domain</strong> · one hostname, three independently developed clients`),
+          row(I.check, `The Pi's local DNS resolves that domain <strong>to itself</strong> · every request from Incognitus, IMU Sensors, and Emotion Cameras is captured, with zero client-side changes`)
+        ])}
+      </div>
+      <div style="flex:1; background:#E8F6E3; border:1.5px solid #9FD68D; border-radius:14px; padding:22px 24px;">
+        <div style="display:flex; align-items:center; gap:10px; margin-bottom:12px;">
+          ${I.shield}<span style="font-size:19px; font-weight:700; color:var(--icesi-green);">TLS termination</span>
+        </div>
+        ${rows([
+          row(I.database, `Vimov Cloud is <strong>HTTPS-only</strong>, so the apps expect a valid TLS session for that exact domain`),
+          row(I.gear, `nginx on the Pi terminates TLS with a certificate for the real domain, <strong>embedded in the Pi image</strong> · never published to a public trust store`)
+        ])}
+      </div>
+    </div>
+    <p style="text-align:center; font-size:16px; color:#88898C; margin-top:20px;"><strong>Key takeaway:</strong> one DNS override + one embedded certificate route the full request set from all 3 measurement devices through the hub — transparently, with no client-side code changes.</p>`
   ),
 
   // 14 — Resultados: laboratorio
@@ -2136,7 +2151,7 @@ const slides = [
       row(I.users, `Patient identity entries: 3 (manual workflow) → 3 (local replica) → <strong>1</strong> (proposed hub)`),
       row(I.chart, `Confirms that the dedicated middleware, not the full replica, is what makes the hub viable`)
     ])}`,
-    `<img src="graphics/G8_comparacion_baselines.png" alt="Comparison against baselines: manual workflow in days, full local replica at 80s, proposed hub under 3s">`,
+    `<img src="graphics/G8_comparacion_baselines.png" alt="Comparison against baselines: manual workflow in days, full local replica at 80s, proposed hub under 3s. Below, field validation: 12 patients, 58 records synced cleanly through the hub with 0 identity conflicts, unifying 3 app-specific IDs into 1 shared ID per patient">`,
     `Time comparison against the alternatives`
   ),
 
@@ -2209,14 +2224,14 @@ const slides = [
     </div>`
   ),
 
-  // 19b — El hub en campo: fotografías
+  // 19b — El hub como dispositivo: fotografías
   icesi.slideStandard(
-    'The hub in the field',
+    'The hub device',
     `<div style="display:flex; gap:28px; align-items:center; justify-content:center; margin-top:-30px;">
       <img style="max-height:460px; max-width:46%; border-radius:10px; box-shadow:0 4px 18px rgba(30,34,60,0.18);" src="graphics/hub1.jpeg" alt="Photograph of the application hub deployed at a field brigade: Raspberry Pi, router, and cabling set up on-site">
       <img style="max-height:460px; max-width:46%; border-radius:10px; box-shadow:0 4px 18px rgba(30,34,60,0.18);" src="graphics/hub2.jpeg" alt="Photograph of the application hub hardware in the field, portrait orientation">
     </div>
-    <p style="text-align:center; font-size:14px; color:#88898C; margin-top:14px;">Fundación Valle del Lili field brigade · the actual under-$100 hardware in operation</p>`
+    <p style="text-align:center; font-size:14px; color:#88898C; margin-top:14px;">The hardware went through an enclosure design prototype to make it portable enough for a field brigade</p>`
   ),
 
   // 20 — Límites honestos y trabajo futuro
