@@ -18,6 +18,17 @@ Neurological Field Brigades"*.
   `Divulgacion/ieee/CLAUDE.md`).
 - **`presentation.pdf`** — export a PDF de la versión en español (la que
   generó el prototype original).
+- **`presentation_en.pdf`** — export a PDF de `index.html` (inglés), generado
+  el 2026-09-03. El modo `?print-pdf` nativo de reveal.js 5.x **no funciona**
+  headless en este deck (su `PrintContext.activate()` es async vía
+  `requestAnimationFrame` y no reflowa a tiempo antes de que
+  `Page.printToPDF` capture, dando 1 sola página) — no perder tiempo
+  reintentándolo. Lo que sí funciona: un script Node con `puppeteer-core`
+  (apuntado al Chrome del sistema, sin descargar Chromium aparte) que navega
+  el deck en modo normal, recorre cada slide con `Reveal.slide(i, 0)`,
+  captura cada una como PDF de 1 página a tamaño nativo (`1280x720`, mismo
+  que `Reveal.initialize`), y las concatena con `pdf-lib`. Para regenerarlo
+  tras un cambio de contenido, repetir ese mismo proceso.
 
 ## Fuente de toda la información técnica: `IEEE ProyectoHub/`
 

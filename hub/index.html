@@ -1952,6 +1952,11 @@ function row(icon, html) {
 }
 function rows(items) { return items.join(''); }
 
+// Small category pill prepended to a slide title, e.g. resultTag('Concurrency', 'var(--icesi-blue)') + 'Results · ...'
+function resultTag(label, color) {
+  return `<span style="display:block; font-size:12px; font-weight:800; letter-spacing:0.06em; text-transform:uppercase; color:#FFFFFF; background:${color}; padding:4px 12px; border-radius:20px; width:fit-content; margin-bottom:10px;">${label}</span>`;
+}
+
 function coverHubGraphic() {
   return `
     <div class="cover-visual">
@@ -2131,21 +2136,34 @@ const slides = [
     <p style="text-align:center; font-size:16px; color:#88898C; margin-top:20px;"><strong>Key takeaway:</strong> one DNS override + one embedded certificate route the full request set from all 3 measurement devices through the hub — transparently, with no client-side code changes.</p>`
   ),
 
-  // 14 — Resultados: laboratorio
-  icesi.slideGraphicRight(
-    'Results · lab',
-    `${rows([
-      row(I.check, `<strong>132/132 requests</strong> with no errors`),
-      row(I.lightning, `<strong>456 ms</strong> per record, average sync time`),
-      row(I.database, `<strong>20/20 records</strong> recovered after a simulated power outage`)
-    ])}`,
-    `<img src="graphics/G7_resultados_laboratorio.png" alt="Lab results: 132 of 132 requests with no errors, 456 ms average sync time, 20 of 20 records recovered">`,
-    `Lab test results`
+  // 14 — Resultados: mapa de las 3 categorías
+  icesi.slideStandard(
+    'Results, in three parts',
+    `<div style="display:flex; flex-direction:column; justify-content:center; min-height:430px;">
+      <div style="display:flex; gap:24px;">
+        <div style="flex:1; background:#EEF1FF; border:1.5px solid #A9B4F2; border-radius:14px; padding:28px 24px;">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">${I.lightning}<span style="font-size:20px; font-weight:700; color:var(--icesi-blue);">Concurrency</span></div>
+          <div style="font-size:32px; font-weight:800; color:var(--icesi-blue); margin-bottom:10px;">80 s → &lt;3 s</div>
+          <p style="font-size:16px; line-height:23px; color:var(--icesi-dark); margin:0;">Response time when the 3 apps hit the hub at once · naive vs. final architecture, same hardware</p>
+        </div>
+        <div style="flex:1; background:#FFF3DC; border:1.5px solid #F0C572; border-radius:14px; padding:28px 24px;">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">${I.cpu}<span style="font-size:20px; font-weight:700; color:#A96C05;">Load</span></div>
+          <div style="font-size:32px; font-weight:800; color:#A96C05; margin-bottom:10px;">132 / 132</div>
+          <p style="font-size:16px; line-height:23px; color:var(--icesi-dark); margin:0;">Requests with no errors, across sustained throughput, bulk sync, and a stress test on the Pi's RAM and CPU</p>
+        </div>
+        <div style="flex:1; background:#E8F6E3; border:1.5px solid #9FD68D; border-radius:14px; padding:28px 24px;">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">${I.wifi}<span style="font-size:20px; font-weight:700; color:var(--icesi-green);">Coverage</span></div>
+          <div style="font-size:32px; font-weight:800; color:var(--icesi-green); margin-bottom:10px;">11.9 m → 20.6 m</div>
+          <p style="font-size:16px; line-height:23px; color:var(--icesi-dark); margin:0;">WiFi range in the field · the Pi's built-in antenna vs. an external access point</p>
+        </div>
+      </div>
+      <p style="text-align:center; font-size:16px; color:#88898C; margin-top:28px;">Followed by combined field validation, at two sites</p>
+    </div>`
   ),
 
-  // 15 — Resultados: comparación contra baselines
+  // 15 — Resultados: comparación contra baselines (Concurrencia)
   icesi.slideGraphicRight(
-    'Results · comparison against baselines',
+    resultTag('Concurrency', 'var(--icesi-blue)') + 'Results · comparison against baselines',
     `${rows([
       row(I.lightning, `<strong>80 s → under 3 s</strong> under comparable concurrency, on the same hardware`),
       row(I.users, `Patient identity entries: 3 (manual workflow) → 3 (local replica) → <strong>1</strong> (proposed hub)`),
@@ -2155,9 +2173,21 @@ const slides = [
     `Time comparison against the alternatives`
   ),
 
-  // 16 — Resultados: cobertura WiFi
+  // 16 — Resultados: laboratorio (Carga)
   icesi.slideGraphicRight(
-    'Results · WiFi coverage',
+    resultTag('Load', '#A96C05') + 'Results · load on the Pi',
+    `${rows([
+      row(I.check, `<strong>132/132 requests</strong> with no errors, across concurrency, bulk sync, and a 4-apps-×-33-rounds stress test`),
+      row(I.lightning, `<strong>456 ms</strong> per record, average sync time`),
+      row(I.database, `<strong>20/20 records</strong> recovered after a simulated power outage · 0 data loss under sustained load`)
+    ])}`,
+    `<img src="graphics/G7_resultados_laboratorio.png" alt="Lab results: 132 of 132 requests with no errors, 456 ms average sync time, 20 of 20 records recovered">`,
+    `Lab test results`
+  ),
+
+  // 17 — Resultados: cobertura WiFi (Cobertura)
+  icesi.slideGraphicRight(
+    resultTag('Coverage', 'var(--icesi-green)') + 'Results · WiFi coverage',
     `${rows([
       row(I.wifi, `Pi's built-in antenna: functional limit of <strong>11.9 m</strong> (below the 15 m target)`),
       row(I.check, `With an external AP: <strong>20.6 m</strong> · this is what motivated <em>ap-extension</em> mode as the recommended setup`)
@@ -2165,36 +2195,36 @@ const slides = [
     `<img src="graphics/G9_cobertura_wifi.png" alt="RSSI vs. distance: Pi antenna limited to 11.9m, external AP reaches 20.6m, 15m target marked">`
   ),
 
-  // 17 — Cobertura WiFi: mapa de planta
+  // 18 — Cobertura WiFi: mapa de planta (Cobertura)
   icesi.slideStandard(
-    'WiFi coverage · floor plan',
-    `<div style="display:flex; gap:32px; align-items:flex-start; justify-content:center; margin-top:-46px;">
-      <img class="col-graphic-img" style="max-height:440px; margin:0;" src="graphics/G11a_cobertura_planta_pi.png" alt="Floor plan of a brigade site: with the Pi's built-in antenna, functional limit of 11.9 m, falls short of the storage room and the far end of the corridor">
-      <img class="col-graphic-img" style="max-height:440px; margin:0;" src="graphics/G11b_cobertura_planta_ap.png" alt="Same site floor plan: with an external AP, functional limit of 20.6 m, full coverage of the site">
+    resultTag('Coverage', 'var(--icesi-green)') + 'WiFi coverage · floor plan',
+    `<div style="display:flex; gap:32px; align-items:flex-start; justify-content:center; margin-top:-30px;">
+      <img class="col-graphic-img" style="max-height:420px; margin:0;" src="graphics/G11a_cobertura_planta_pi.png" alt="Floor plan of a brigade site: with the Pi's built-in antenna, functional limit of 11.9 m, falls short of the storage room and the far end of the corridor">
+      <img class="col-graphic-img" style="max-height:420px; margin:0;" src="graphics/G11b_cobertura_planta_ap.png" alt="Same site floor plan: with an external AP, functional limit of 20.6 m, full coverage of the site">
     </div>
     <p style="text-align:center; font-size:14px; color:#88898C; margin-top:8px;">Wall (solid line) · functional limit &lt; −80 dBm (dashed line) · actual measurement point (RSSI)</p>`
   ),
 
-  // 18 — Cobertura WiFi: heatmap real de campo
+  // 19 — Cobertura WiFi: heatmap real de campo (Cobertura)
   icesi.slideStandard(
-    'WiFi coverage · real field heatmap',
-    `<div style="display:flex; gap:32px; align-items:flex-start; justify-content:center; margin-top:-36px;">
+    resultTag('Coverage', 'var(--icesi-green)') + 'WiFi coverage · real field heatmap',
+    `<div style="display:flex; gap:32px; align-items:flex-start; justify-content:center; margin-top:-20px;">
       <div style="text-align:center;">
-        <img class="col-graphic-img" style="max-height:385px;" src="graphics/G13_heatmap_real_pi.png" alt="Real RSSI heatmap measured on-site with the Pi's built-in antenna (RPI-4), SSID Hub, measurement points labeled with distance and dBm">
+        <img class="col-graphic-img" style="max-height:365px;" src="graphics/G13_heatmap_real_pi.png" alt="Real RSSI heatmap measured on-site with the Pi's built-in antenna (RPI-4), SSID Hub, measurement points labeled with distance and dBm">
         <p style="margin-top:6px; margin-bottom:0; font-size:15px; color:#88898C;">Pi built-in antenna (RPI-4)</p>
         <p style="margin-top:2px; font-size:13px; color:#E9683B; font-weight:700;">Threshold ≥ −80 dBm · up to 11.9 m</p>
       </div>
       <div style="text-align:center;">
-        <img class="col-graphic-img" style="max-height:385px;" src="graphics/G14_heatmap_real_ap.png" alt="Real RSSI heatmap measured on-site with the external access point, SSID Hub, same measurement floor plan">
+        <img class="col-graphic-img" style="max-height:365px;" src="graphics/G14_heatmap_real_ap.png" alt="Real RSSI heatmap measured on-site with the external access point, SSID Hub, same measurement floor plan">
         <p style="margin-top:6px; margin-bottom:0; font-size:15px; color:#88898C;">+ external AP</p>
         <p style="margin-top:2px; font-size:13px; color:#4CB979; font-weight:700;">Threshold ≥ −80 dBm · up to 20.6 m</p>
       </div>
     </div>`
   ),
 
-  // 19 — Validación: dos sitios
+  // 20 — Validación: dos sitios (síntesis)
   icesi.slideGraphicRight(
-    'Validation · two sites',
+    resultTag('Field validation', '#79809A') + 'Validation · two sites',
     `${rows([
       row(I.terminal, `<strong>Research lab:</strong> controlled load tests · 132/132 requests with no errors, full recovery after a simulated power outage`),
       row(I.pin, `<strong>Fundación Valle del Lili</strong>, real field brigade: 12 patients, 58 records that went through the hub · all <strong>3 of 3 apps</strong> tested in the field (Incognitus, IMU sensors, Emotion Cameras)`),
