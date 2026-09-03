@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="1920" height="1080" fill="#FFFFFF"/>
+  <text x="960" y="86" text-anchor="middle" font-size="46" font-weight="700" fill="#1F3864">Lab results (Table II)</text>
+  <text x="960" y="128" text-anchor="middle" font-size="24" fill="#595959">Conditions representative of a brigade: isolated local network, offline-first</text>
+
+  <!-- Top banner -->
+  <rect x="160" y="160" width="1600" height="130" rx="16" fill="#E2F0E3" stroke="#548235" stroke-width="2.5"/>
+  <text x="960" y="215" text-anchor="middle" font-size="40" font-weight="700" fill="#274E13">132 / 132 requests with no error</text>
+  <text x="960" y="258" text-anchor="middle" font-size="26" fill="#2F5D2A">456 ms/record average sync time · 0 data loss</text>
+
+  <!-- 5 cards -->
+  <!-- card x positions: start 160, width 336, gap 30 -->
+  <!-- Card 1 -->
+  <g>
+    <rect x="160" y="340" width="336" height="600" rx="14" fill="#F7F9FC" stroke="#BFBFBF" stroke-width="2"/>
+    <text x="328" y="390" text-anchor="middle" font-size="21" font-weight="700" fill="#262626">Concurrency</text>
+    <text x="328" y="418" text-anchor="middle" font-size="16" fill="#595959">4 simultaneous requests</text>
+    <text x="328" y="500" text-anchor="middle" font-size="52" font-weight="700" fill="#548235">4/4</text>
+    <text x="328" y="536" text-anchor="middle" font-size="18" fill="#595959">HTTP 200</text>
+    <rect x="200" y="570" width="256" height="26" rx="13" fill="#DCEBDC"/>
+    <rect x="200" y="570" width="256" height="26" rx="13" fill="#548235"/>
+    <text x="328" y="630" text-anchor="middle" font-size="16" fill="#595959">Threshold: all HTTP 200</text>
+    <circle cx="328" cy="700" r="26" fill="#548235"/>
+    <path d="M316 700 l9 9 l17 -18" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="328" y="760" text-anchor="middle" font-size="16" fill="#274E13" font-weight="700">Passes</text>
+    <text x="180" y="900" font-size="15" fill="#7F7F7F">
+      <tspan x="180" dy="0">Incognitus: 834 ms</tspan>
+      <tspan x="180" dy="24">Emotion: 2.82–2.87 s</tspan>
+    </text>
+  </g>
+
+  <!-- Card 2 -->
+  <g>
+    <rect x="516" y="340" width="336" height="600" rx="14" fill="#F7F9FC" stroke="#BFBFBF" stroke-width="2"/>
+    <text x="684" y="390" text-anchor="middle" font-size="21" font-weight="700" fill="#262626">Bulk sync</text>
+    <text x="684" y="418" text-anchor="middle" font-size="16" fill="#595959">10 records, no outage</text>
+    <text x="684" y="490" text-anchor="middle" font-size="46" font-weight="700" fill="#548235">4 s</text>
+    <text x="684" y="522" text-anchor="middle" font-size="18" fill="#595959">(456 ms/record)</text>
+    <!-- margin bar: 4s of 120s threshold -->
+    <rect x="556" y="560" width="256" height="26" rx="13" fill="#DCEBDC"/>
+    <rect x="556" y="560" width="9" height="26" rx="4" fill="#548235"/>
+    <line x1="812" y1="550" x2="812" y2="596" stroke="#833C00" stroke-width="2" stroke-dasharray="3 3"/>
+    <text x="684" y="616" text-anchor="middle" font-size="15" fill="#595959">Threshold: ≤120 s (uses ~3%)</text>
+    <text x="684" y="670" text-anchor="middle" font-size="28" font-weight="700" fill="#7F6000">30× margin</text>
+    <circle cx="684" cy="700" r="26" fill="#548235"/>
+    <path d="M672 700 l9 9 l17 -18" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="684" y="760" text-anchor="middle" font-size="16" fill="#274E13" font-weight="700">Passes</text>
+  </g>
+
+  <!-- Card 3 -->
+  <g>
+    <rect x="872" y="340" width="336" height="600" rx="14" fill="#F7F9FC" stroke="#BFBFBF" stroke-width="2"/>
+    <text x="1040" y="390" text-anchor="middle" font-size="21" font-weight="700" fill="#262626">Sync resilience</text>
+    <text x="1040" y="418" text-anchor="middle" font-size="16" fill="#595959">20 records during outage</text>
+    <text x="1040" y="500" text-anchor="middle" font-size="52" font-weight="700" fill="#548235">20/20</text>
+    <text x="1040" y="536" text-anchor="middle" font-size="18" fill="#595959">synced</text>
+    <rect x="912" y="570" width="256" height="26" rx="13" fill="#DCEBDC"/>
+    <rect x="912" y="570" width="256" height="26" rx="13" fill="#548235"/>
+    <text x="1040" y="630" text-anchor="middle" font-size="16" fill="#595959">Threshold: 0 data loss</text>
+    <text x="1040" y="668" text-anchor="middle" font-size="16" fill="#7F7F7F">Average 1,502 ms · max 3,567 ms</text>
+    <circle cx="1040" cy="700" r="26" fill="#548235"/>
+    <path d="M1028 700 l9 9 l17 -18" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="1040" y="760" text-anchor="middle" font-size="16" fill="#274E13" font-weight="700">Passes</text>
+  </g>
+
+  <!-- Card 4 -->
+  <g>
+    <rect x="1228" y="340" width="336" height="600" rx="14" fill="#F7F9FC" stroke="#BFBFBF" stroke-width="2"/>
+    <text x="1396" y="390" text-anchor="middle" font-size="21" font-weight="700" fill="#262626">Sustained load</text>
+    <text x="1396" y="418" text-anchor="middle" font-size="16" fill="#595959">40 sequential captures</text>
+    <text x="1396" y="500" text-anchor="middle" font-size="40" font-weight="700" fill="#548235">All</text>
+    <text x="1396" y="536" text-anchor="middle" font-size="24" font-weight="700" fill="#548235">&lt; 30 s/req</text>
+    <text x="1396" y="616" text-anchor="middle" font-size="16" fill="#595959">Threshold: ≤30 s/req</text>
+    <circle cx="1396" cy="700" r="26" fill="#548235"/>
+    <path d="M1384 700 l9 9 l17 -18" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="1396" y="760" text-anchor="middle" font-size="16" fill="#274E13" font-weight="700">Passes</text>
+  </g>
+
+  <!-- Card 5 -->
+  <g>
+    <rect x="1584" y="340" width="336" height="600" rx="14" fill="#FFF6D9" stroke="#BF9000" stroke-width="3"/>
+    <text x="1752" y="390" text-anchor="middle" font-size="21" font-weight="700" fill="#7F6000">Stress test</text>
+    <text x="1752" y="418" text-anchor="middle" font-size="16" fill="#7F6000">4 apps × 33 rounds</text>
+    <text x="1752" y="500" text-anchor="middle" font-size="52" font-weight="700" fill="#BF9000">132/132</text>
+    <text x="1752" y="536" text-anchor="middle" font-size="18" fill="#7F6000">requests OK</text>
+    <rect x="1624" y="570" width="256" height="26" rx="13" fill="#FCEDBE"/>
+    <rect x="1624" y="570" width="256" height="26" rx="13" fill="#BF9000"/>
+    <text x="1752" y="630" text-anchor="middle" font-size="16" fill="#7F6000">Threshold: 0 HTTP errors</text>
+    <circle cx="1752" cy="700" r="26" fill="#BF9000"/>
+    <path d="M1740 700 l9 9 l17 -18" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="1752" y="760" text-anchor="middle" font-size="16" fill="#7F6000" font-weight="700">Passes</text>
+  </g>
+</svg>

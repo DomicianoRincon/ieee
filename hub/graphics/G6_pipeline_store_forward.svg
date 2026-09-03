@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#595959"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1920" height="1080" fill="#FFFFFF"/>
+  <text x="960" y="86" text-anchor="middle" font-size="46" font-weight="700" fill="#1F3864">Store-first, forward-second</text>
+  <text x="960" y="128" text-anchor="middle" font-size="24" fill="#595959">The client gets a response before any sync to the cloud exists</text>
+
+  <!-- ROW A: Captura -->
+  <text x="130" y="205" font-size="30" font-weight="700" fill="#262626">(a) Capture</text>
+
+  <rect x="110" y="230" width="230" height="90" rx="10" fill="#E3ECFB" stroke="#4472C4" stroke-width="2"/>
+  <text x="225" y="283" text-anchor="middle" font-size="24" fill="#1F3864">Client app</text>
+
+  <line x1="340" y1="255" x2="470" y2="255" stroke="#595959" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="405" y="240" text-anchor="middle" font-size="17" fill="#595959">request</text>
+  <line x1="470" y1="295" x2="340" y2="295" stroke="#595959" stroke-width="2.5" stroke-dasharray="6 5" marker-end="url(#arrow)"/>
+  <text x="405" y="316" text-anchor="middle" font-size="17" fill="#595959">response</text>
+
+  <rect x="470" y="230" width="270" height="90" rx="10" fill="#E2F0E3" stroke="#548235" stroke-width="2.5"/>
+  <text x="605" y="283" text-anchor="middle" font-size="23" font-weight="700" fill="#274E13">Hub middleware</text>
+
+  <line x1="605" y1="320" x2="605" y2="380" stroke="#595959" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="620" y="358" font-size="18" fill="#595959">store</text>
+  <line x1="740" y1="270" x2="1010" y2="270" stroke="#595959" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="875" y="252" text-anchor="middle" font-size="18" fill="#595959">proxy</text>
+
+  <rect x="450" y="390" width="310" height="90" rx="10" fill="#FFF6D9" stroke="#BF9000" stroke-width="2.5"/>
+  <text x="605" y="432" text-anchor="middle" font-size="22" font-weight="700" fill="#7F6000">Local queue</text>
+  <text x="605" y="460" text-anchor="middle" font-size="19" fill="#7F6000">(pending)</text>
+
+  <rect x="1010" y="230" width="310" height="90" rx="10" fill="#E2F0E3" stroke="#548235" stroke-width="2.5"/>
+  <text x="1165" y="272" text-anchor="middle" font-size="22" font-weight="700" fill="#274E13">Vimov replica</text>
+  <text x="1165" y="300" text-anchor="middle" font-size="19" fill="#274E13">(validation)</text>
+
+  <text x="1420" y="270" font-size="19" fill="#595959" width="380">
+    <tspan x="1420" dy="0">1. Patient upsert (COALESCE)</tspan>
+    <tspan x="1420" dy="30">2. File persistence</tspan>
+    <tspan x="1420" dy="30">3. Entry in “pending” queue</tspan>
+    <tspan x="1420" dy="30" font-weight="700" fill="#274E13">Only then is it proxied and</tspan>
+    <tspan x="1420" dy="26" font-weight="700" fill="#274E13">the client gets a response.</tspan>
+  </text>
+
+  <!-- divider -->
+  <line x1="90" y1="560" x2="1830" y2="560" stroke="#BFBFBF" stroke-width="2" stroke-dasharray="10 8"/>
+
+  <!-- ROW B: Sync -->
+  <text x="130" y="620" font-size="30" font-weight="700" fill="#262626">(b) Sync — when there's internet</text>
+
+  <rect x="450" y="660" width="310" height="90" rx="10" fill="#FFF6D9" stroke="#BF9000" stroke-width="2.5"/>
+  <text x="605" y="700" text-anchor="middle" font-size="22" font-weight="700" fill="#7F6000">Local queue</text>
+  <text x="605" y="728" text-anchor="middle" font-size="19" fill="#7F6000">(pending)</text>
+
+  <line x1="760" y1="705" x2="1000" y2="705" stroke="#595959" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="880" y="687" text-anchor="middle" font-size="18" fill="#595959">replay</text>
+
+  <rect x="1000" y="650" width="340" height="110" rx="10" fill="#E2F0E3" stroke="#548235" stroke-width="2.5"/>
+  <text x="1170" y="695" text-anchor="middle" font-size="22" font-weight="700" fill="#274E13">Sync worker</text>
+  <text x="1170" y="723" text-anchor="middle" font-size="19" fill="#274E13">+ integrity check</text>
+
+  <line x1="1340" y1="705" x2="1480" y2="705" stroke="#595959" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="1410" y="687" text-anchor="middle" font-size="18" fill="#595959">forward</text>
+
+  <rect x="1480" y="660" width="300" height="90" rx="10" fill="#FDE9D9" stroke="#ED7D31" stroke-width="2.5"/>
+  <text x="1630" y="713" text-anchor="middle" font-size="23" font-weight="700" fill="#833C00">Vimov Cloud</text>
+
+  <path d="M1630 750 C1630 815, 1630 845, 1400 845 L 760 845" fill="none" stroke="#595959" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <text x="1170" y="868" text-anchor="middle" font-size="18" fill="#595959">confirm</text>
+
+  <rect x="450" y="800" width="310" height="90" rx="10" fill="#FFF6D9" stroke="#BF9000" stroke-width="2.5"/>
+  <text x="605" y="840" text-anchor="middle" font-size="22" font-weight="700" fill="#7F6000">Local queue</text>
+  <text x="605" y="868" text-anchor="middle" font-size="19" fill="#7F6000">(synced)</text>
+
+  <text x="960" y="925" font-size="19" fill="#595959" text-anchor="middle">SHA-256 re-verified before resending — integrity failure → excluded and flagged for review</text>
+
+  <rect x="260" y="960" width="1400" height="70" rx="12" fill="#EDEDED" stroke="#595959" stroke-width="2"/>
+  <text x="960" y="1005" text-anchor="middle" font-size="25" font-weight="700" fill="#262626">SQLite: concurrency bounded to 3 apps, ephemeral data, a single file</text>
+</svg>

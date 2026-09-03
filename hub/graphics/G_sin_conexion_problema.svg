@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 580" width="100%"
+     role="img" aria-labelledby="ttl dsc"
+     font-family="ui-sans-serif, -apple-system, 'Segoe UI', Inter, Roboto, Helvetica, Arial, sans-serif">
+  <title id="ttl">The real problem · offline, each app isolated</title>
+  <desc id="dsc">In a field brigade, with zero mobile data coverage, the three apps can't reach Vimov Cloud: each keeps its own local record, and the same patient ends up with three isolated records that never get reconciled.</desc>
+
+  <defs>
+    <style>
+      :root, svg {
+        --bg:#FFFFFF; --surface:#FFFFFF;
+        --ink:#161A26; --ink-2:#454C61; --ink-3:#79809A; --line:#D9DEE8;
+        --slate-s:#EFF1F5;  --slate-b:#C4CBD8;  --slate-t:#7A8396;
+        --green-s:#E8F6E3;  --green-b:#9FD68D;  --green-t:#3A8235;
+        --violet-s:#F4EBFF; --violet-b:#C9A6EE; --violet-t:#7439B8;
+        --amber-s:#FFF3DC;  --amber-b:#F0C572;  --amber-t:#A96C05;
+        --rose-s:#FFEBEF;   --rose-b:#F3A3B2;   --rose-t:#C2354F;
+      }
+      .card  { stroke-width:1.5; }
+
+      .n-slate {fill:var(--slate-s);  stroke:var(--slate-b);}  .t-slate {fill:var(--slate-t);}
+      .n-green {fill:var(--green-s);  stroke:var(--green-b);}  .t-green {fill:var(--green-t);}
+      .n-violet{fill:var(--violet-s); stroke:var(--violet-b);} .t-violet{fill:var(--violet-t);}
+      .n-amber {fill:var(--amber-s);  stroke:var(--amber-b);}  .t-amber {fill:var(--amber-t);}
+      .n-rose  {fill:var(--rose-s);   stroke:var(--rose-b);}   .t-rose  {fill:var(--rose-t);}
+
+      .nt   {font-size:15px; font-weight:700;}
+      .nb   {fill:var(--ink-3); font-size:12px;}
+      .lbl  {fill:var(--ink-3); font-size:12px; font-weight:500;}
+      .foot {fill:var(--ink-2); font-size:13px;}
+
+      .stub {fill:none; stroke:var(--rose-t); stroke-width:2; stroke-dasharray:5 5; opacity:0.75;}
+      .drop {fill:none; stroke:var(--ink-3); stroke-width:2;}
+    </style>
+  </defs>
+
+  <rect width="1200" height="580" fill="#FFFFFF"/>
+
+  <!-- ═══ Encabezado: el escenario es de cero cobertura, no intermitente ═══ -->
+  <g transform="translate(586,24)">
+    <path d="M-10,2 A14,14 0 0 1 10,2" fill="none" stroke="var(--rose-t)" stroke-width="2.2" stroke-linecap="round" opacity="0.85"/>
+    <path d="M-5,7 A7,7 0 0 1 5,7" fill="none" stroke="var(--rose-t)" stroke-width="2.2" stroke-linecap="round" opacity="0.85"/>
+    <circle cy="11" r="1.6" fill="var(--rose-t)"/>
+    <line x1="-16" y1="-9" x2="16" y2="17" stroke="var(--rose-t)" stroke-width="2.4" stroke-linecap="round"/>
+    <text class="nt t-rose" x="28" y="9" data-fit="420">Field brigade · zero mobile data coverage</text>
+  </g>
+
+  <!-- ═══ Vimov Cloud — inalcanzable ═══ -->
+  <g transform="translate(600,104)" opacity="0.55">
+    <circle r="50" class="n-slate card"/>
+    <path d="M-25,12 Q-30,12 -30,4 Q-30,-5 -21,-5 Q-20,-16 -7,-16 Q3,-20 12,-12 Q24,-13 25,-3 Q33,-3 33,6 Q33,12 23,12 Z"
+          fill="none" stroke="var(--slate-t)" stroke-width="2.4" stroke-linejoin="round"/>
+    <text class="nt t-slate" x="0" y="72" text-anchor="middle" font-size="16" data-fit="160">Vimov Cloud</text>
+    <text class="nb" x="0" y="90" text-anchor="middle" data-fit="150">offline</text>
+  </g>
+
+  <!-- intentos de conexión rotos -->
+  <path class="stub" d="M280,274 V206"/>
+  <path class="stub" d="M600,274 V206"/>
+  <path class="stub" d="M920,274 V206"/>
+  <g class="t-rose">
+    <path d="M273,199 L287,213 M287,199 L273,213" stroke="var(--rose-t)" stroke-width="2.6" stroke-linecap="round"/>
+    <path d="M593,199 L607,213 M607,199 L593,213" stroke="var(--rose-t)" stroke-width="2.6" stroke-linecap="round"/>
+    <path d="M913,199 L927,213 M927,199 L913,213" stroke="var(--rose-t)" stroke-width="2.6" stroke-linecap="round"/>
+  </g>
+
+  <!-- ═══ Incognitus ═══ -->
+  <g transform="translate(280,320)">
+    <circle r="46" class="n-green card"/>
+    <rect x="-14" y="-22" width="28" height="44" rx="5" fill="none" stroke="var(--green-t)" stroke-width="2.6"/>
+    <circle cx="0" cy="16" r="2" fill="var(--green-t)"/>
+    <text class="nt t-green" x="0" y="64" text-anchor="middle" data-fit="150">Incognitus</text>
+    <text class="nb" x="0" y="82" text-anchor="middle" data-fit="150">Android · tablet</text>
+  </g>
+
+  <!-- ═══ IMUs ═══ -->
+  <g transform="translate(600,320)">
+    <circle r="46" class="n-violet card"/>
+    <rect x="-16" y="-16" width="32" height="32" rx="8" fill="none" stroke="var(--violet-t)" stroke-width="2.6"/>
+    <path d="M-9,2 L-4,2 L-1,-7 L3,9 L6,2 L9,2" fill="none" stroke="var(--violet-t)" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+    <text class="nt t-violet" x="0" y="64" text-anchor="middle" data-fit="150">IMU Sensors</text>
+    <text class="nb" x="0" y="82" text-anchor="middle" data-fit="150">Android · Bluetooth</text>
+  </g>
+
+  <!-- ═══ Emotion Cameras ═══ -->
+  <g transform="translate(920,320)">
+    <circle r="46" class="n-amber card"/>
+    <rect x="-17" y="-18" width="34" height="21" rx="3" fill="none" stroke="var(--amber-t)" stroke-width="2.6"/>
+    <path d="M-23,9 L23,9 L18,17 L-18,17 Z" fill="var(--amber-t)"/>
+    <text class="nt t-amber" x="0" y="64" text-anchor="middle" data-fit="150">Emotion Cameras</text>
+    <text class="nb" x="0" y="82" text-anchor="middle" data-fit="150">Windows · depth</text>
+  </g>
+
+  <!-- conexión a registro local -->
+  <path class="drop" d="M280,366 V410"/>
+  <path class="drop" d="M600,366 V410"/>
+  <path class="drop" d="M920,366 V410"/>
+
+  <!-- ═══ Tres registros locales aislados del mismo paciente, consolidados a horas distintas ═══ -->
+  <g transform="translate(280,440)">
+    <path class="n-rose card" d="M-24,-8 A24,8 0 0 1 24,-8 V16 A24,8 0 0 1 -24,16 Z"/>
+    <path d="M-24,-8 A24,8 0 0 0 24,-8" fill="none" stroke="var(--rose-b)" stroke-width="1.5"/>
+    <text class="t-rose" x="0" y="42" text-anchor="middle" font-size="11.5" font-weight="600" data-fit="130">local record</text>
+    <g transform="translate(0,63)">
+      <circle cx="-30" cy="-4" r="7" fill="none" stroke="var(--rose-t)" stroke-width="1.6"/>
+      <path d="M-30,-4 V-8 M-30,-4 H-27" stroke="var(--rose-t)" stroke-width="1.4" stroke-linecap="round"/>
+      <text class="t-rose" x="-18" y="0" text-anchor="start" font-size="12" font-weight="700" data-fit="90">same day</text>
+    </g>
+  </g>
+  <g transform="translate(600,440)">
+    <path class="n-rose card" d="M-24,-8 A24,8 0 0 1 24,-8 V16 A24,8 0 0 1 -24,16 Z"/>
+    <path d="M-24,-8 A24,8 0 0 0 24,-8" fill="none" stroke="var(--rose-b)" stroke-width="1.5"/>
+    <text class="t-rose" x="0" y="42" text-anchor="middle" font-size="11.5" font-weight="600" data-fit="130">local record</text>
+    <g transform="translate(0,63)">
+      <circle cx="-32" cy="-4" r="7" fill="none" stroke="var(--rose-t)" stroke-width="1.6"/>
+      <path d="M-32,-4 V-8 M-32,-4 H-29" stroke="var(--rose-t)" stroke-width="1.4" stroke-linecap="round"/>
+      <text class="t-rose" x="-20" y="0" text-anchor="start" font-size="12" font-weight="700" data-fit="90">+4 days</text>
+    </g>
+  </g>
+  <g transform="translate(920,440)">
+    <path class="n-rose card" d="M-24,-8 A24,8 0 0 1 24,-8 V16 A24,8 0 0 1 -24,16 Z"/>
+    <path d="M-24,-8 A24,8 0 0 0 24,-8" fill="none" stroke="var(--rose-b)" stroke-width="1.5"/>
+    <text class="t-rose" x="0" y="42" text-anchor="middle" font-size="11.5" font-weight="600" data-fit="130">local record</text>
+    <g transform="translate(0,63)">
+      <circle cx="-36" cy="-4" r="7" fill="none" stroke="var(--rose-t)" stroke-width="1.6"/>
+      <path d="M-36,-4 V-8 M-36,-4 H-33" stroke="var(--rose-t)" stroke-width="1.4" stroke-linecap="round"/>
+      <text class="t-rose" x="-24" y="0" text-anchor="start" font-size="12" font-weight="700" data-fit="100">+2 weeks</text>
+    </g>
+  </g>
+
+  <!-- vínculo faltante entre los 3 registros -->
+  <path d="M316,440 H564" fill="none" stroke="var(--rose-b)" stroke-width="1.75" stroke-dasharray="4 5"/>
+  <path d="M636,440 H884" fill="none" stroke="var(--rose-b)" stroke-width="1.75" stroke-dasharray="4 5"/>
+
+  <text class="foot" x="600" y="524" text-anchor="middle" font-weight="600" data-fit="1000">Consolidated by hand, at different times</text>
+  <text class="foot" x="600" y="546" text-anchor="middle" data-fit="1000">the same visit never gets recorded as a single clinical event.</text>
+</svg>

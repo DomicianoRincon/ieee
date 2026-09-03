@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="100%"
+     role="img" aria-labelledby="ttl dsc"
+     font-family="ui-sans-serif, -apple-system, 'Segoe UI', Inter, Roboto, Helvetica, Arial, sans-serif">
+  <title id="ttl">Final architecture · dedicated middleware plus API-only replica</title>
+  <desc id="dsc">The three client apps talk to a dedicated middleware, dockerized on the Raspberry Pi, that serves them from a SQLite queue and responds immediately. It proxies to a second container that replicates only the Vimov API interface — validating format and consistency of the data — without running Celery, MinIO, PostgreSQL, or Whisper Nano on the Pi. The full stack (PostgreSQL, Redis, Celery, MinIO, Whisper Nano) now runs only in Vimov Cloud, reached through a background sync. Result: under 3 seconds of latency at the same concurrency that used to take 80 seconds.</desc>
+
+  <defs>
+    <style>
+      :root, svg {
+        --bg:#FFFFFF; --surface:#FFFFFF;
+        --ink:#161A26; --ink-2:#454C61; --ink-3:#79809A; --line:#D9DEE8;
+        --indigo-s:#EEF1FF; --indigo-b:#A9B4F2; --indigo-t:#4453C9;
+        --green-s:#E8F6E3;  --green-b:#9FD68D;  --green-t:#3A8235;
+        --violet-s:#F4EBFF; --violet-b:#C9A6EE; --violet-t:#7439B8;
+        --slate-t:#556074;  --frame-s:#F4F5F9;  --frame-b:#B7BDCE;
+      }
+      .card { stroke-width:1.5; }
+      .hero { stroke-width:2.5; }
+      .n-indigo{fill:var(--indigo-s); stroke:var(--indigo-b);}
+      .n-green {fill:var(--green-s);  stroke:var(--green-b);}
+      .n-violet{fill:var(--violet-s); stroke:var(--violet-b);}
+      .nt  { font-size:22px; font-weight:700; }
+      .nb  { fill:var(--ink-2); font-size:15px; }
+      .lbl { fill:var(--ink-3); font-size:14px; font-weight:500; }
+      .lbl2{ fill:var(--ink-3); font-size:11.5px; font-weight:500; }
+      .h   { font-size:17px; font-weight:700; }
+      .chip{ fill:#FFFFFF; font-size:16px; font-weight:700; }
+      .link{ fill:none; stroke:var(--slate-t); stroke-width:2; marker-end:url(#arrow); }
+      .link-async{ stroke-dasharray:7 6; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8"
+            markerUnits="strokeWidth" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 L2.4,5 Z" fill="context-stroke"/>
+    </marker>
+    <symbol id="containerIcon" viewBox="0 0 20 20">
+      <rect x="1.2" y="4.5" width="17.6" height="13.5" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <line x1="1.2" y1="9.5" x2="18.8" y2="9.5" stroke="currentColor" stroke-width="1.4"/>
+      <line x1="6.6" y1="4.5" x2="6.6" y2="9.5" stroke="currentColor" stroke-width="1.4"/>
+      <line x1="13.4" y1="4.5" x2="13.4" y2="9.5" stroke="currentColor" stroke-width="1.4"/>
+    </symbol>
+  </defs>
+
+  <rect width="1200" height="700" fill="#FFFFFF"/>
+
+  <text class="h" fill="var(--green-t)" x="48" y="44" data-fit="700">Final architecture · what worked</text>
+  <text class="lbl" x="48" y="66" data-fit="900">Dedicated middleware plus an API-only replica, both dockerized on the Pi</text>
+
+  <!-- clientes -->
+  <g transform="translate(260,128)">
+    <circle r="28" class="n-indigo card"/>
+    <rect x="-10" y="-16" width="20" height="32" rx="4" fill="none" stroke="var(--indigo-t)" stroke-width="2"/>
+    <circle cy="11" r="1.6" fill="var(--indigo-t)"/>
+    <text class="nb" x="0" y="48" text-anchor="middle" data-fit="140">Incognitus</text>
+  </g>
+  <g transform="translate(600,128)">
+    <circle r="28" class="n-indigo card"/>
+    <rect x="-11" y="-11" width="22" height="22" rx="6" fill="none" stroke="var(--indigo-t)" stroke-width="2"/>
+    <path d="M-6,1 L-3,1 L-1,-5 L2.5,6 L4.5,1 L6,1" fill="none" stroke="var(--indigo-t)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <text class="nb" x="0" y="48" text-anchor="middle" data-fit="160">IMU Sensors</text>
+  </g>
+  <g transform="translate(940,128)">
+    <circle r="28" class="n-indigo card"/>
+    <rect x="-12" y="-12.5" width="24" height="15" rx="2.5" fill="none" stroke="var(--indigo-t)" stroke-width="2"/>
+    <path d="M-16,6 L16,6 L12.5,11.5 L-12.5,11.5 Z" fill="var(--indigo-t)"/>
+    <text class="nb" x="0" y="48" text-anchor="middle" data-fit="180">Emotion Cameras</text>
+  </g>
+
+  <path class="link" d="M260,166 V208"/>
+  <path class="link" d="M600,166 V208"/>
+  <path class="link" d="M940,166 V208"/>
+
+  <!-- Pi: marco físico -->
+  <rect x="100" y="208" width="880" height="290" rx="18" fill="var(--frame-s)" stroke="var(--frame-b)" stroke-width="2"/>
+  <text class="h" fill="var(--ink)" x="130" y="238" data-fit="560">RASPBERRY PI 4</text>
+  <text class="lbl" x="130" y="257" data-fit="560">Docker Compose · only 2 containers now</text>
+
+  <g transform="translate(782,214)">
+    <rect width="168" height="28" rx="14" fill="var(--ink)"/>
+    <use href="#containerIcon" x="12" y="6" width="16" height="16" color="#FFFFFF"/>
+    <text x="36" y="19" fill="#FFFFFF" font-size="12.5" font-weight="700" data-fit="120">DOCKER COMPOSE</text>
+  </g>
+
+  <!-- middleware -->
+  <rect x="130" y="270" width="820" height="112" rx="14" class="card hero n-green"/>
+  <use href="#containerIcon" x="912" y="284" width="18" height="18" color="var(--green-t)"/>
+  <text class="h" fill="var(--green-t)" x="152" y="300" data-fit="700">Dedicated middleware</text>
+  <g transform="translate(866,290)">
+    <rect x="-15" y="-12" width="30" height="10" rx="2.5" fill="none" stroke="var(--green-t)" stroke-width="1.8"/>
+    <rect x="-15" y="2" width="30" height="10" rx="2.5" fill="none" stroke="var(--green-t)" stroke-width="1.8"/>
+  </g>
+  <text class="nb" x="152" y="328" data-fit="770">SQLite queue · patient upsert (COALESCE) → pending → syncing</text>
+  <text class="nb" x="152" y="350" data-fit="770">Responds to the client immediately, before touching Vimov</text>
+  <text class="lbl" x="152" y="370" data-fit="770">Owns the integration, the patient cache, and the sync queue</text>
+
+  <path class="link" d="M540,382 V398"/>
+
+  <!-- API-only replica -->
+  <rect x="130" y="398" width="820" height="80" rx="14" class="card n-indigo"/>
+  <use href="#containerIcon" x="912" y="410" width="18" height="18" color="var(--indigo-t)"/>
+  <text class="h" fill="var(--indigo-t)" x="152" y="426" data-fit="700">Vimov API · validation only</text>
+  <text class="nb" x="152" y="450" data-fit="770">Validates the format and consistency of incoming data</text>
+  <text class="lbl" x="152" y="468" data-fit="770">No Celery worker, MinIO, PostgreSQL, or Whisper Nano running here</text>
+
+  <!-- sync a la nube -->
+  <path class="link link-async" stroke="var(--violet-t)" d="M950,438 H1056"/>
+  <text class="lbl" x="1046" y="426" text-anchor="end" font-size="12.5" data-fit="105">background sync</text>
+
+  <g transform="translate(1090,438)">
+    <circle r="34" class="n-violet card"/>
+    <path d="M-17,9 Q-21,9 -21,2.5 Q-21,-4 -14,-4 Q-13,-11.5 -5.5,-11.5 Q2,-14 8,-8 Q17,-9 17,-1.5 Q22,-1.5 22,4.5 Q22,9 15.5,9 Z"
+          fill="none" stroke="var(--violet-t)" stroke-width="2" stroke-linejoin="round"/>
+    <text class="lbl" x="0" y="56" text-anchor="middle" fill="var(--violet-t)" data-fit="150">Vimov Cloud</text>
+    <text class="lbl2" x="0" y="74" text-anchor="middle" data-fit="150">full stack lives here:</text>
+    <text class="lbl2" x="0" y="88" text-anchor="middle" data-fit="150">Postgres · Celery</text>
+    <text class="lbl2" x="0" y="101" text-anchor="middle" data-fit="150">MinIO · Whisper</text>
+  </g>
+
+  <g transform="translate(600,542)">
+    <rect x="-160" y="-22" width="320" height="44" rx="22" fill="var(--green-t)"/>
+    <text class="chip" text-anchor="middle" dy="0.35em" data-fit="290">&lt; 3 s · same concurrency</text>
+  </g>
+
+  <g transform="translate(100,590)">
+    <rect width="1000" height="50" rx="10" fill="var(--green-s)" stroke="var(--green-b)" stroke-width="1.5"/>
+    <text class="h" x="20" y="32" fill="var(--green-t)" data-fit="960">A dedicated middleware, not a full replica, is what makes the hub viable</text>
+  </g>
+</svg>

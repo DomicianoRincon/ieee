@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#595959"/>
+    </marker>
+    <marker id="arrowOrange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#ED7D31"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1920" height="1080" fill="#FFFFFF"/>
+  <text x="960" y="90" text-anchor="middle" font-size="46" font-weight="700" fill="#1F3864">Two modes of operation — the transparency contract</text>
+  <text x="960" y="134" text-anchor="middle" font-size="24" fill="#595959">Same HTTP response seen by the client, whether or not the hub is in the path</text>
+
+  <!-- divider -->
+  <line x1="960" y1="180" x2="960" y2="1000" stroke="#BFBFBF" stroke-width="2" stroke-dasharray="10 8"/>
+
+  <!-- PANEL A: Online -->
+  <text x="480" y="220" text-anchor="middle" font-size="32" font-weight="700" fill="#262626">(a) Online Mode</text>
+
+  <g font-size="24" fill="#1F3864">
+    <rect x="140" y="260" width="220" height="90" rx="10" fill="#E3ECFB" stroke="#4472C4" stroke-width="2"/>
+    <text x="250" y="313" text-anchor="middle">Incognitus</text>
+    <rect x="370" y="260" width="220" height="90" rx="10" fill="#E3ECFB" stroke="#4472C4" stroke-width="2"/>
+    <text x="480" y="313" text-anchor="middle">IMUs</text>
+    <rect x="600" y="260" width="220" height="90" rx="10" fill="#E3ECFB" stroke="#4472C4" stroke-width="2"/>
+    <text x="710" y="313" text-anchor="middle">Emotion</text>
+  </g>
+
+  <line x1="250" y1="350" x2="480" y2="440" stroke="#595959" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="480" y1="350" x2="480" y2="440" stroke="#595959" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="710" y1="350" x2="480" y2="440" stroke="#595959" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="330" y="450" width="300" height="90" rx="10" fill="#EDEDED" stroke="#595959" stroke-width="2"/>
+  <text x="480" y="503" text-anchor="middle" font-size="26" fill="#262626">Internet</text>
+
+  <line x1="480" y1="540" x2="480" y2="640" stroke="#595959" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="290" y="650" width="380" height="100" rx="10" fill="#FDE9D9" stroke="#ED7D31" stroke-width="2"/>
+  <text x="480" y="708" text-anchor="middle" font-size="28" font-weight="700" fill="#833C00">Vimov Cloud</text>
+
+  <text x="480" y="820" text-anchor="middle" font-size="24" fill="#595959" width="700">The hub doesn't exist</text>
+  <text x="480" y="852" text-anchor="middle" font-size="24" fill="#595959">on this path</text>
+
+  <!-- PANEL B: Hub -->
+  <text x="1440" y="220" text-anchor="middle" font-size="32" font-weight="700" fill="#262626">(b) Hub Mode</text>
+
+  <g font-size="24" fill="#1F3864">
+    <rect x="1100" y="260" width="220" height="90" rx="10" fill="#E3ECFB" stroke="#4472C4" stroke-width="2"/>
+    <text x="1210" y="313" text-anchor="middle">Incognitus</text>
+    <rect x="1330" y="260" width="220" height="90" rx="10" fill="#E3ECFB" stroke="#4472C4" stroke-width="2"/>
+    <text x="1440" y="313" text-anchor="middle">IMUs</text>
+    <rect x="1560" y="260" width="220" height="90" rx="10" fill="#E3ECFB" stroke="#4472C4" stroke-width="2"/>
+    <text x="1670" y="313" text-anchor="middle">Emotion</text>
+  </g>
+
+  <line x1="1210" y1="350" x2="1440" y2="440" stroke="#595959" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="1440" y1="350" x2="1440" y2="440" stroke="#595959" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="1670" y1="350" x2="1440" y2="440" stroke="#595959" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="1210" y="450" width="460" height="130" rx="10" fill="#E2F0E3" stroke="#548235" stroke-width="2.5"/>
+  <text x="1440" y="500" text-anchor="middle" font-size="27" font-weight="700" fill="#274E13">Hub (Raspberry Pi 4)</text>
+  <text x="1440" y="536" text-anchor="middle" font-size="23" fill="#274E13">store + proxy + sync</text>
+
+  <line x1="1440" y1="580" x2="1440" y2="640" stroke="#ED7D31" stroke-width="2.5" stroke-dasharray="8 6" marker-end="url(#arrowOrange)"/>
+  <text x="1490" y="618" font-size="20" fill="#833C00" font-style="italic">async</text>
+
+  <rect x="1250" y="650" width="380" height="100" rx="10" fill="#FDE9D9" stroke="#ED7D31" stroke-width="2"/>
+  <text x="1440" y="708" text-anchor="middle" font-size="28" font-weight="700" fill="#833C00">Vimov Cloud</text>
+
+  <text x="1440" y="820" text-anchor="middle" font-size="24" fill="#595959">Intercepts, stores, and proxies —</text>
+  <text x="1440" y="852" text-anchor="middle" font-size="24" fill="#595959">apps require no changes</text>
+
+  <rect x="260" y="960" width="1400" height="70" rx="12" fill="#FFF6D9" stroke="#BF9000" stroke-width="2"/>
+  <text x="960" y="1005" text-anchor="middle" font-size="26" font-weight="700" fill="#7F6000">The client app never knows whether it reached the cloud directly or went through the hub</text>
+</svg>

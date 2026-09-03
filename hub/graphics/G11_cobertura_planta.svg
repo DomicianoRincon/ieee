@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 870" width="100%"
+     role="img" aria-labelledby="ttl dsc"
+     font-family="ui-sans-serif, -apple-system, 'Segoe UI', Inter, Roboto, Helvetica, Arial, sans-serif">
+  <title id="ttl">Cobertura WiFi en planta · antena Pi integrada vs. antena Pi + AP externo</title>
+  <desc id="dsc">Mismo plano de una sede de brigada (recepción, dos consultorios y bodega, unidos por un corredor abierto) con el hub ubicado en recepción. A la izquierda, la antena integrada de la Raspberry Pi alcanza su límite funcional a 11.9 m y no llega con margen a la bodega ni al fondo del corredor. A la derecha, sumando un punto de acceso externo el límite funcional se extiende a 20.6 m y cubre toda la sede.</desc>
+
+  <defs>
+    <style>
+      :root, svg {
+        --bg:#FFFFFF; --surface:#FFFFFF;
+        --ink:#161A26; --ink-2:#454C61; --ink-3:#79809A; --line:#D9DEE8;
+        --indigo-s:#EEF1FF; --indigo-b:#A9B4F2; --indigo-t:#4453C9;
+        --green-s:#E8F6E3;  --green-b:#9FD68D;  --green-t:#3A8235;
+        --rose-s:#FFEBEF;   --rose-b:#F3A3B2;   --rose-t:#C2354F;
+        --slate-s:#EFF1F5;  --slate-b:#C4CBD8;  --slate-t:#556074;
+      }
+      .wall { fill:none; stroke:var(--slate-t); stroke-width:3; stroke-linecap:square; }
+      .room { fill:var(--slate-s); opacity:0.45; }
+      .ring-near { fill:none; stroke-dasharray:3 5; opacity:0.55; stroke-width:1.5; }
+      .ring-lim  { fill:none; stroke-width:2; stroke-dasharray:9 6; }
+      .nt   { font-size:15px; font-weight:700; }
+      .sub  { font-size:13px; font-weight:700; }
+      .nb   { fill:var(--ink-2); font-size:11px; }
+      .lbl  { fill:var(--ink-3); font-size:10.5px; font-weight:500; }
+      .room-lbl { fill:var(--ink-3); font-size:10px; font-weight:600; }
+      .pt-lbl  { fill:var(--ink); font-size:11px; font-weight:700; text-anchor:middle; }
+      .pt-lbl2 { fill:var(--ink-3); font-size:9px; text-anchor:middle; }
+      .foot { fill:var(--ink-3); font-size:11.5px; }
+      .note { fill:var(--ink-3); font-size:11px; font-style:italic; }
+    </style>
+    <clipPath id="clip-panel"><rect x="0" y="0" width="576" height="798"/></clipPath>
+  </defs>
+
+  <rect width="1200" height="870" fill="#FFFFFF"/>
+  <line x1="600" y1="24" x2="600" y2="798" stroke="var(--line)" stroke-width="1.25"/>
+
+  <!-- ═══════════════════ PANEL A · antena Pi integrada ═══════════════════ -->
+  <g id="panel-a" clip-path="url(#clip-panel)">
+    <text class="nt" fill="var(--indigo-t)" x="48" y="40" data-fit="440">Antena Pi integrada</text>
+    <text class="sub" fill="var(--rose-t)" x="48" y="62" data-fit="500">Límite funcional 11.9 m · bajo el criterio de 15 m</text>
+
+    <rect x="100" y="280" width="400" height="180" rx="4" fill="#FFFFFF"/>
+    <rect x="100" y="280" width="400" height="140" class="room"/>
+    <path class="wall" d="M200,280 V420 M300,280 V420 M400,280 V420"/>
+    <path class="wall" d="M100,420 H130 M170,420 H230 M270,420 H330 M370,420 H430 M470,420 H500"/>
+    <rect x="100" y="280" width="400" height="180" rx="4" class="wall"/>
+
+    <text class="room-lbl" x="150" y="304" text-anchor="middle" data-fit="92">Recepción</text>
+    <text class="room-lbl" x="250" y="304" text-anchor="middle" data-fit="95">Consult. 1</text>
+    <text class="room-lbl" x="350" y="304" text-anchor="middle" data-fit="95">Consult. 2</text>
+    <text class="room-lbl" x="450" y="304" text-anchor="middle" data-fit="92">Bodega</text>
+    <text class="lbl" x="300" y="452" text-anchor="middle" data-fit="180">corredor</text>
+
+    <circle cx="160" cy="440" r="55" class="ring-near" stroke="var(--indigo-t)"/>
+    <circle cx="160" cy="440" r="215" class="ring-lim" stroke="var(--indigo-t)"/>
+
+    <g transform="translate(160,440)">
+      <circle r="14" fill="var(--indigo-s)" stroke="var(--indigo-t)" stroke-width="2"/>
+      <path d="M-6,2.5 A9,9 0 0 1 6,2.5 M-3.5,5.5 A5,5 0 0 1 3.5,5.5" fill="none" stroke="var(--indigo-t)" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cy="6.5" r="1.3" fill="var(--indigo-t)"/>
+      <text class="nb" x="0" y="30" text-anchor="middle" font-weight="700" fill="var(--indigo-t)" data-fit="80">Hub</text>
+    </g>
+
+    <g>
+      <circle cx="250" cy="320" r="5" fill="var(--ink)" stroke="#FFFFFF" stroke-width="1.5"/>
+      <text class="pt-lbl" x="250" y="342" data-fit="96">−65 dBm</text>
+      <text class="pt-lbl2" x="250" y="355" data-fit="140">11 m · 1 pared</text>
+
+      <circle cx="350" cy="320" r="5" fill="var(--ink)" stroke="#FFFFFF" stroke-width="1.5"/>
+      <text class="pt-lbl" x="350" y="342" data-fit="96">−48 dBm</text>
+      <text class="pt-lbl2" x="350" y="355" data-fit="140">13 m · 1 pared</text>
+
+      <circle cx="450" cy="320" r="5" fill="var(--ink)" stroke="#FFFFFF" stroke-width="1.5"/>
+      <text class="pt-lbl" x="450" y="342" data-fit="96">−73 dBm</text>
+      <text class="pt-lbl2" x="450" y="355" data-fit="140">21 m · 2 paredes</text>
+
+      <circle cx="470" cy="440" r="5" fill="var(--ink)" stroke="#FFFFFF" stroke-width="1.5"/>
+      <text class="pt-lbl" x="530" y="424" data-fit="96">−51 dBm</text>
+      <text class="pt-lbl2" x="530" y="437" data-fit="140">17 m · abierto</text>
+    </g>
+
+    <g transform="translate(384,182)">
+      <rect width="184" height="56" rx="8" fill="var(--rose-s)" stroke="var(--rose-b)" stroke-width="1.25" stroke-dasharray="5 4"/>
+      <text class="nb" x="10" y="22" data-fit="164">No llega con margen a</text>
+      <text class="nb" x="10" y="40" data-fit="164">la bodega ni al corredor</text>
+    </g>
+    <path d="M420,238 C420,255 440,260 450,275" fill="none" stroke="var(--rose-b)" stroke-width="1.25" stroke-dasharray="4 4"/>
+  </g>
+
+  <!-- ═══════════════════ PANEL B · + AP externo ═══════════════════ -->
+  <g id="panel-b" transform="translate(624,0)" clip-path="url(#clip-panel)">
+    <text class="nt" fill="var(--green-t)" x="48" y="40" data-fit="480">+ AP externo (modo ap-extension)</text>
+    <text class="sub" fill="var(--green-t)" x="48" y="62" data-fit="500">Límite funcional 20.6 m · supera el criterio de 15 m</text>
+
+    <rect x="100" y="280" width="400" height="180" rx="4" fill="#FFFFFF"/>
+    <rect x="100" y="280" width="400" height="140" class="room"/>
+    <path class="wall" d="M200,280 V420 M300,280 V420 M400,280 V420"/>
+    <path class="wall" d="M100,420 H130 M170,420 H230 M270,420 H330 M370,420 H430 M470,420 H500"/>
+    <rect x="100" y="280" width="400" height="180" rx="4" class="wall"/>
+
+    <text class="room-lbl" x="150" y="304" text-anchor="middle" data-fit="92">Recepción</text>
+    <text class="room-lbl" x="250" y="304" text-anchor="middle" data-fit="95">Consult. 1</text>
+    <text class="room-lbl" x="350" y="304" text-anchor="middle" data-fit="95">Consult. 2</text>
+    <text class="room-lbl" x="450" y="304" text-anchor="middle" data-fit="92">Bodega</text>
+    <text class="lbl" x="300" y="452" text-anchor="middle" data-fit="180">corredor</text>
+
+    <circle cx="160" cy="440" r="55" class="ring-near" stroke="var(--green-t)"/>
+    <circle cx="160" cy="440" r="325" class="ring-lim" stroke="var(--green-t)"/>
+
+    <g transform="translate(160,440)">
+      <circle r="14" fill="var(--green-s)" stroke="var(--green-t)" stroke-width="2"/>
+      <path d="M-6,2.5 A9,9 0 0 1 6,2.5 M-3.5,5.5 A5,5 0 0 1 3.5,5.5" fill="none" stroke="var(--green-t)" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cy="6.5" r="1.3" fill="var(--green-t)"/>
+      <text class="nb" x="0" y="30" text-anchor="middle" font-weight="700" fill="var(--green-t)" data-fit="100">Hub + AP</text>
+    </g>
+
+    <g>
+      <circle cx="250" cy="320" r="5" fill="var(--ink)" stroke="#FFFFFF" stroke-width="1.5"/>
+      <text class="pt-lbl" x="250" y="342" data-fit="96">−62 dBm</text>
+      <text class="pt-lbl2" x="250" y="355" data-fit="140">11 m · 1 pared</text>
+
+      <circle cx="350" cy="320" r="5" fill="var(--ink)" stroke="#FFFFFF" stroke-width="1.5"/>
+      <text class="pt-lbl" x="350" y="342" data-fit="96">−56 dBm</text>
+      <text class="pt-lbl2" x="350" y="355" data-fit="140">13 m · 1 pared</text>
+
+      <circle cx="450" cy="320" r="5" fill="var(--ink)" stroke="#FFFFFF" stroke-width="1.5"/>
+      <text class="pt-lbl" x="450" y="342" data-fit="96">−74 dBm</text>
+      <text class="pt-lbl2" x="450" y="355" data-fit="140">21 m · 2 paredes</text>
+
+      <circle cx="470" cy="440" r="5" fill="var(--ink)" stroke="#FFFFFF" stroke-width="1.5"/>
+      <text class="pt-lbl" x="530" y="424" data-fit="96">−53 dBm</text>
+      <text class="pt-lbl2" x="530" y="437" data-fit="140">17 m · abierto</text>
+    </g>
+
+    <g transform="translate(384,182)">
+      <rect width="184" height="38" rx="8" fill="var(--green-s)" stroke="var(--green-b)" stroke-width="1.25"/>
+      <text class="nb" x="10" y="24" data-fit="164" font-weight="700" fill="var(--green-t)">Cobertura completa</text>
+    </g>
+  </g>
+
+  <!-- leyenda compartida -->
+  <g transform="translate(48,812)">
+    <line x1="0" y1="6" x2="28" y2="6" stroke="var(--slate-t)" stroke-width="3"/>
+    <text class="foot" x="36" y="6" dy="0.35em" data-fit="60">Muro</text>
+    <path d="M120,6 H150" fill="none" stroke="var(--ink-3)" stroke-width="2" stroke-dasharray="9 6"/>
+    <text class="foot" x="158" y="6" dy="0.35em" data-fit="230">Límite funcional (&lt; −80 dBm)</text>
+    <circle cx="420" cy="6" r="5" fill="var(--ink)" stroke="#FFFFFF" stroke-width="1.5"/>
+    <text class="foot" x="434" y="6" dy="0.35em" data-fit="270">Punto de medición real (RSSI)</text>
+  </g>
+  <text class="note" x="48" y="836" data-fit="1100">La curva es un promedio agregado · las lecturas puntuales no son monótonas (paredes y reflexiones dominan sobre la distancia)</text>
+</svg>

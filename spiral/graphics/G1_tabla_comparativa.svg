@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2580 900" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="2580" height="900" fill="#FFFFFF"/>
+  <text x="40" y="70" font-size="44" font-weight="700" fill="#1F3864">Comparison with related work (Table VI)</text>
+
+  <!-- columns: 40-420 (Work) | 420-900 (Platform) | 900-1680 (Metrics) | 1680-2540 (Clinical integration) -->
+  <!-- header -->
+  <rect x="40" y="150" width="380" height="100" fill="#E3ECFB" stroke="#4472C4" stroke-width="2"/>
+  <rect x="420" y="150" width="480" height="100" fill="#E3ECFB" stroke="#4472C4" stroke-width="2"/>
+  <rect x="900" y="150" width="780" height="100" fill="#E3ECFB" stroke="#4472C4" stroke-width="2"/>
+  <rect x="1680" y="150" width="860" height="100" fill="#E3ECFB" stroke="#4472C4" stroke-width="2"/>
+  <g font-size="28" font-weight="700" fill="#1F3864">
+    <text x="66" y="210">Work</text>
+    <text x="446" y="210">Platform</text>
+    <text x="926" y="210">Metrics and processing</text>
+    <text x="1706" y="210">Clinical integration and analysis type</text>
+  </g>
+
+  <!-- Row 1 : [5] -->
+  <g>
+    <rect x="40" y="250" width="380" height="130" fill="#FFFFFF" stroke="#BFBFBF"/>
+    <rect x="420" y="250" width="480" height="130" fill="#FFFFFF" stroke="#BFBFBF"/>
+    <rect x="900" y="250" width="780" height="130" fill="#FFFFFF" stroke="#BFBFBF"/>
+    <rect x="1680" y="250" width="860" height="130" fill="#FFFFFF" stroke="#BFBFBF"/>
+    <text x="66" y="322" font-size="27" fill="#262626">[5]</text>
+    <text x="446" y="322" font-size="27" fill="#262626">Scanner + computer vision</text>
+    <text x="926" y="322" font-size="27" fill="#262626">Geometric parameters; offline.</text>
+    <text x="1706" y="322" font-size="27" fill="#262626">Not reported; computer vision.</text>
+  </g>
+
+  <!-- Row 2 : [6] -->
+  <g>
+    <rect x="40" y="380" width="380" height="130" fill="#FAFAFA" stroke="#BFBFBF"/>
+    <rect x="420" y="380" width="480" height="130" fill="#FAFAFA" stroke="#BFBFBF"/>
+    <rect x="900" y="380" width="780" height="130" fill="#FAFAFA" stroke="#BFBFBF"/>
+    <rect x="1680" y="380" width="860" height="130" fill="#FAFAFA" stroke="#BFBFBF"/>
+    <text x="66" y="452" font-size="27" fill="#262626">[6]</text>
+    <text x="446" y="452" font-size="27" fill="#262626">Graphics tablet with active pen</text>
+    <text x="926" y="452" font-size="27" fill="#262626">Deviation, speed; external.</text>
+    <text x="1706" y="452" font-size="27" fill="#262626">Not reported; statistical.</text>
+  </g>
+
+  <!-- Row 3 : [8] -->
+  <g>
+    <rect x="40" y="510" width="380" height="130" fill="#FFFFFF" stroke="#BFBFBF"/>
+    <rect x="420" y="510" width="480" height="130" fill="#FFFFFF" stroke="#BFBFBF"/>
+    <rect x="900" y="510" width="780" height="130" fill="#FFFFFF" stroke="#BFBFBF"/>
+    <rect x="1680" y="510" width="860" height="130" fill="#FFFFFF" stroke="#BFBFBF"/>
+    <text x="66" y="582" font-size="27" fill="#262626">[8]</text>
+    <text x="446" y="582" font-size="27" fill="#262626">Multisensor</text>
+    <text x="926" y="582" font-size="27" fill="#262626">Multivariate; requires synchronization.</text>
+    <text x="1706" y="582" font-size="27" fill="#262626">Research, high cost.</text>
+  </g>
+
+  <!-- Row 4 : This work (highlighted) -->
+  <g>
+    <rect x="40" y="640" width="380" height="150" fill="#E2F0E3" stroke="#548235" stroke-width="2.5"/>
+    <rect x="420" y="640" width="480" height="150" fill="#E2F0E3" stroke="#548235" stroke-width="2.5"/>
+    <rect x="900" y="640" width="780" height="150" fill="#E2F0E3" stroke="#548235" stroke-width="2.5"/>
+    <rect x="1680" y="640" width="860" height="150" fill="#E2F0E3" stroke="#548235" stroke-width="2.5"/>
+    <text x="66" y="700" font-size="27" font-weight="700" fill="#274E13">This work</text>
+    <text x="66" y="734" font-size="27" font-weight="700" fill="#274E13">(Vimov)</text>
+    <text x="446" y="717" font-size="27" font-weight="700" fill="#274E13">Pen + Android tablet</text>
+    <text x="926" y="700" font-size="27" font-weight="700" fill="#274E13">Temporal, speed, amplitude,</text>
+    <text x="926" y="734" font-size="27" font-weight="700" fill="#274E13">frequency; local, real-time.</text>
+    <text x="1706" y="717" font-size="27" font-weight="700" fill="#274E13">Native to Vimov; FFT + statistical.</text>
+  </g>
+</svg>

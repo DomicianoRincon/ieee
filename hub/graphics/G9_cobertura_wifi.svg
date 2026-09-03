@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="1920" height="1080" fill="#FFFFFF"/>
+  <text x="960" y="82" text-anchor="middle" font-size="46" font-weight="700" fill="#1F3864">WiFi Coverage (Table IV)</text>
+  <text x="960" y="124" text-anchor="middle" font-size="24" fill="#595959">RSSI vs. distance — Pi 4 built-in antenna vs. external access point</text>
+
+  <!-- Plot area: x 260-1596 (0-21m), y 220 (−20dBm) - 650 (−95dBm) -->
+  <g stroke="#E6E6E6" stroke-width="1.5">
+    <line x1="260" y1="220" x2="260" y2="700"/>
+    <line x1="260" y1="700" x2="1660" y2="700"/>
+  </g>
+  <!-- horizontal gridlines every 10 dBm from -20 to -90 -->
+  <g stroke="#F0F0F0" stroke-width="1.5" font-size="17" fill="#8C8C8C">
+    <line x1="260" y1="220" x2="1660" y2="220"/><text x="240" y="226" text-anchor="end">−20</text>
+    <line x1="260" y1="277" x2="1660" y2="277"/><text x="240" y="283" text-anchor="end">−30</text>
+    <line x1="260" y1="334" x2="1660" y2="334"/><text x="240" y="340" text-anchor="end">−40</text>
+    <line x1="260" y1="392" x2="1660" y2="392"/><text x="240" y="398" text-anchor="end">−50</text>
+    <line x1="260" y1="449" x2="1660" y2="449"/><text x="240" y="455" text-anchor="end">−60</text>
+    <line x1="260" y1="506" x2="1660" y2="506"/><text x="240" y="512" text-anchor="end">−70</text>
+    <line x1="260" y1="564" x2="1660" y2="564"/><text x="240" y="570" text-anchor="end">−80</text>
+    <line x1="260" y1="621" x2="1660" y2="621"/><text x="240" y="627" text-anchor="end">−90</text>
+  </g>
+  <text x="150" y="460" font-size="20" fill="#595959" transform="rotate(-90 150 460)" text-anchor="middle">RSSI (dBm)</text>
+
+  <!-- x axis ticks -->
+  <g font-size="18" fill="#595959" text-anchor="middle">
+    <text x="260" y="730">0 m</text>
+    <text x="565" y="730">5 m</text>
+    <text x="878" y="730">10 m</text>
+    <text x="1196" y="730">15 m</text>
+    <text x="1510" y="730">20 m</text>
+  </g>
+  <text x="960" y="770" font-size="20" fill="#595959" text-anchor="middle">Distance to hub</text>
+
+  <!-- threshold line -80dBm -->
+  <line x1="260" y1="564" x2="1660" y2="564" stroke="#C00000" stroke-width="2.5" stroke-dasharray="10 6"/>
+  <text x="1610" y="556" text-anchor="end" font-size="18" fill="#C00000" font-weight="700">Functional threshold −80 dBm</text>
+
+  <!-- criterion line 15m -->
+  <line x1="1196" y1="220" x2="1196" y2="700" stroke="#4472C4" stroke-width="2.5" stroke-dasharray="10 6"/>
+  <text x="1206" y="240" font-size="18" fill="#4472C4" font-weight="700">Criterion: 15 m</text>
+
+  <!-- Pi4 antenna line -->
+  <polyline points="260,266 960,478 1087,381 1341,398 1596,524" fill="none" stroke="#4472C4" stroke-width="4"/>
+  <g fill="#4472C4">
+    <circle cx="260" cy="266" r="7"/><circle cx="960" cy="478" r="7"/><circle cx="1087" cy="381" r="7"/><circle cx="1341" cy="398" r="7"/><circle cx="1596" cy="524" r="7"/>
+  </g>
+
+  <!-- Ext AP line -->
+  <polyline points="260,289 960,461 1087,426 1341,409 1596,530" fill="none" stroke="#ED7D31" stroke-width="4"/>
+  <g fill="#ED7D31">
+    <circle cx="260" cy="289" r="7"/><circle cx="960" cy="461" r="7"/><circle cx="1087" cy="426" r="7"/><circle cx="1341" cy="409" r="7"/><circle cx="1596" cy="530" r="7"/>
+  </g>
+
+  <!-- Functional limit markers -->
+  <circle cx="1017" cy="575" r="12" fill="#FFFFFF" stroke="#4472C4" stroke-width="4"/>
+  <text x="1017" y="602" text-anchor="middle" font-size="17" fill="#274472" font-weight="700">11.9 m</text>
+  <circle cx="1570" cy="604" r="12" fill="#FFFFFF" stroke="#ED7D31" stroke-width="4"/>
+  <text x="1570" y="640" text-anchor="middle" font-size="17" fill="#833C00" font-weight="700">20.6 m</text>
+
+  <!-- Legend -->
+  <g font-size="20">
+    <line x1="1300" y1="850" x2="1350" y2="850" stroke="#4472C4" stroke-width="5"/>
+    <circle cx="1325" cy="850" r="7" fill="#4472C4"/>
+    <text x="1365" y="857" fill="#1F3864">Built-in Pi 4 antenna — limit 11.9 m</text>
+
+    <line x1="1300" y1="895" x2="1350" y2="895" stroke="#ED7D31" stroke-width="5"/>
+    <circle cx="1325" cy="895" r="7" fill="#ED7D31"/>
+    <text x="1365" y="902" fill="#833C00">External AP — limit 20.6 m</text>
+  </g>
+
+  <rect x="90" y="960" width="1200" height="70" rx="12" fill="#FFF6D9" stroke="#BF9000" stroke-width="2"/>
+  <text x="130" y="1005" font-size="24" font-weight="700" fill="#7F6000">External AP motivated the ap-extension mode as the recommended configuration</text>
+</svg>

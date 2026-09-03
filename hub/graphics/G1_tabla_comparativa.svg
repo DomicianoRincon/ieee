@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="1920" height="1080" fill="#FFFFFF"/>
+  <text x="960" y="120" text-anchor="middle" font-size="46" font-weight="700" fill="#1F3864">Comparison with related work (Table I)</text>
+  <text x="960" y="168" text-anchor="middle" font-size="26" fill="#595959">No prior work covers local multi-app integration without modifying the client</text>
+
+  <!-- Table geometry -->
+  <!-- x start 210, col widths: 620 (req) + 5*198 = 1610, ends at 1820 -->
+  <g font-size="24">
+    <!-- Header row -->
+    <rect x="210" y="240" width="620" height="100" fill="#E3ECFB" stroke="#4472C4" stroke-width="2"/>
+    <rect x="830" y="240" width="198" height="100" fill="#E3ECFB" stroke="#4472C4" stroke-width="2"/>
+    <rect x="1028" y="240" width="198" height="100" fill="#E3ECFB" stroke="#4472C4" stroke-width="2"/>
+    <rect x="1226" y="240" width="198" height="100" fill="#E3ECFB" stroke="#4472C4" stroke-width="2"/>
+    <rect x="1424" y="240" width="198" height="100" fill="#E3ECFB" stroke="#4472C4" stroke-width="2"/>
+    <rect x="1622" y="240" width="198" height="100" fill="#E2F0E3" stroke="#548235" stroke-width="3"/>
+
+    <text x="230" y="298" font-weight="700" fill="#1F3864" font-size="26">Requirement</text>
+    <text x="929" y="298" text-anchor="middle" fill="#1F3864" font-weight="700">[2]</text>
+    <text x="1127" y="298" text-anchor="middle" fill="#1F3864" font-weight="700">[3]</text>
+    <text x="1325" y="298" text-anchor="middle" fill="#1F3864" font-weight="700">[4]</text>
+    <text x="1523" y="298" text-anchor="middle" fill="#1F3864" font-weight="700">[5]</text>
+    <text x="1721" y="298" text-anchor="middle" fill="#274E13" font-weight="700" font-size="24">This work</text>
+  </g>
+
+  <!-- rows data -->
+  <!-- rowY starts 340, each height 108, 6 rows -->
+  <g font-size="24">
+    <!-- helper drawn manually per row -->
+  </g>
+
+  <!-- Row 1: Integración local multi-app -->
+  <g>
+    <rect x="210" y="340" width="620" height="108" fill="#FFFFFF" stroke="#BFBFBF"/>
+    <rect x="830" y="340" width="198" height="108" fill="#FFFFFF" stroke="#BFBFBF"/>
+    <rect x="1028" y="340" width="198" height="108" fill="#FFFFFF" stroke="#BFBFBF"/>
+    <rect x="1226" y="340" width="198" height="108" fill="#FFFFFF" stroke="#BFBFBF"/>
+    <rect x="1424" y="340" width="198" height="108" fill="#FFFFFF" stroke="#BFBFBF"/>
+    <rect x="1622" y="340" width="198" height="108" fill="#F2F9F2" stroke="#548235" stroke-width="2"/>
+    <text x="230" y="404" font-size="24" fill="#262626">Local multi-app integration</text>
+    <text x="929" y="410" text-anchor="middle" font-size="30" fill="#C00000">–</text>
+    <text x="1127" y="410" text-anchor="middle" font-size="30" fill="#C00000">–</text>
+    <text x="1325" y="410" text-anchor="middle" font-size="30" fill="#C00000">–</text>
+    <text x="1523" y="410" text-anchor="middle" font-size="30" fill="#C00000">–</text>
+    <text x="1721" y="410" text-anchor="middle" font-size="30" fill="#548235" font-weight="700">✓</text>
+  </g>
+
+  <!-- Row 2: Persistencia local -->
+  <g>
+    <rect x="210" y="448" width="620" height="108" fill="#FAFAFA" stroke="#BFBFBF"/>
+    <rect x="830" y="448" width="198" height="108" fill="#FAFAFA" stroke="#BFBFBF"/>
+    <rect x="1028" y="448" width="198" height="108" fill="#FAFAFA" stroke="#BFBFBF"/>
+    <rect x="1226" y="448" width="198" height="108" fill="#FAFAFA" stroke="#BFBFBF"/>
+    <rect x="1424" y="448" width="198" height="108" fill="#FAFAFA" stroke="#BFBFBF"/>
+    <rect x="1622" y="448" width="198" height="108" fill="#F2F9F2" stroke="#548235" stroke-width="2"/>
+    <text x="230" y="512" font-size="24" fill="#262626">Local persistence</text>
+    <text x="929" y="518" text-anchor="middle" font-size="28" fill="#548235">✓</text>
+    <text x="1127" y="518" text-anchor="middle" font-size="28" fill="#548235">✓</text>
+    <text x="1325" y="518" text-anchor="middle" font-size="28" fill="#548235">✓</text>
+    <text x="1523" y="518" text-anchor="middle" font-size="28" fill="#548235">✓</text>
+    <text x="1721" y="518" text-anchor="middle" font-size="30" fill="#548235" font-weight="700">✓</text>
+  </g>
+
+  <!-- Row 3: Sync remoto automático -->
+  <g>
+    <rect x="210" y="556" width="620" height="108" fill="#FFFFFF" stroke="#BFBFBF"/>
+    <rect x="830" y="556" width="198" height="108" fill="#FFFFFF" stroke="#BFBFBF"/>
+    <rect x="1028" y="556" width="198" height="108" fill="#FFFFFF" stroke="#BFBFBF"/>
+    <rect x="1226" y="556" width="198" height="108" fill="#FFFFFF" stroke="#BFBFBF"/>
+    <rect x="1424" y="556" width="198" height="108" fill="#FFFFFF" stroke="#BFBFBF"/>
+    <rect x="1622" y="556" width="198" height="108" fill="#F2F9F2" stroke="#548235" stroke-width="2"/>
+    <text x="230" y="620" font-size="24" fill="#262626">Automatic remote sync</text>
+    <text x="929" y="626" text-anchor="middle" font-size="28" fill="#548235">✓</text>
+    <text x="1127" y="626" text-anchor="middle" font-size="28" fill="#548235">✓</text>
+    <text x="1325" y="626" text-anchor="middle" font-size="28" fill="#548235">✓</text>
+    <text x="1523" y="626" text-anchor="middle" font-size="28" fill="#548235">✓</text>
+    <text x="1721" y="626" text-anchor="middle" font-size="30" fill="#548235" font-weight="700">✓</text>
+  </g>
+
+  <!-- Row 4: Dispositivos heterogéneos -->
+  <g>
+    <rect x="210" y="664" width="620" height="108" fill="#FAFAFA" stroke="#BFBFBF"/>
+    <rect x="830" y="664" width="198" height="108" fill="#FAFAFA" stroke="#BFBFBF"/>
+    <rect x="1028" y="664" width="198" height="108" fill="#FAFAFA" stroke="#BFBFBF"/>
+    <rect x="1226" y="664" width="198" height="108" fill="#FAFAFA" stroke="#BFBFBF"/>
+    <rect x="1424" y="664" width="198" height="108" fill="#FAFAFA" stroke="#BFBFBF"/>
+    <rect x="1622" y="664" width="198" height="108" fill="#F2F9F2" stroke="#548235" stroke-width="2"/>
+    <text x="230" y="728" font-size="24" fill="#262626">Heterogeneous devices</text>
+    <text x="929" y="734" text-anchor="middle" font-size="30" fill="#C00000">–</text>
+    <text x="1127" y="734" text-anchor="middle" font-size="26" fill="#BF9000">∼</text>
+    <text x="1325" y="734" text-anchor="middle" font-size="30" fill="#C00000">–</text>
+    <text x="1523" y="734" text-anchor="middle" font-size="26" fill="#BF9000">∼</text>
+    <text x="1721" y="734" text-anchor="middle" font-size="30" fill="#548235" font-weight="700">✓</text>
+  </g>
+
+  <!-- Row 5: Portabilidad para brigada móvil -->
+  <g>
+    <rect x="210" y="772" width="620" height="108" fill="#FFFFFF" stroke="#BFBFBF"/>
+    <rect x="830" y="772" width="198" height="108" fill="#FFFFFF" stroke="#BFBFBF"/>
+    <rect x="1028" y="772" width="198" height="108" fill="#FFFFFF" stroke="#BFBFBF"/>
+    <rect x="1226" y="772" width="198" height="108" fill="#FFFFFF" stroke="#BFBFBF"/>
+    <rect x="1424" y="772" width="198" height="108" fill="#FFFFFF" stroke="#BFBFBF"/>
+    <rect x="1622" y="772" width="198" height="108" fill="#F2F9F2" stroke="#548235" stroke-width="2"/>
+    <text x="230" y="836" font-size="24" fill="#262626">Mobile brigade portability</text>
+    <text x="929" y="842" text-anchor="middle" font-size="28" fill="#548235">✓</text>
+    <text x="1127" y="842" text-anchor="middle" font-size="30" fill="#C00000">–</text>
+    <text x="1325" y="842" text-anchor="middle" font-size="26" fill="#BF9000">∼</text>
+    <text x="1523" y="842" text-anchor="middle" font-size="30" fill="#C00000">–</text>
+    <text x="1721" y="842" text-anchor="middle" font-size="30" fill="#548235" font-weight="700">✓</text>
+  </g>
+
+  <!-- Row 6: Cero modificación de cliente (highlighted) -->
+  <g>
+    <rect x="210" y="880" width="620" height="108" fill="#FFF6D9" stroke="#BF9000" stroke-width="3"/>
+    <rect x="830" y="880" width="198" height="108" fill="#FFF6D9" stroke="#BF9000" stroke-width="3"/>
+    <rect x="1028" y="880" width="198" height="108" fill="#FFF6D9" stroke="#BF9000" stroke-width="3"/>
+    <rect x="1226" y="880" width="198" height="108" fill="#FFF6D9" stroke="#BF9000" stroke-width="3"/>
+    <rect x="1424" y="880" width="198" height="108" fill="#FFF6D9" stroke="#BF9000" stroke-width="3"/>
+    <rect x="1622" y="880" width="198" height="108" fill="#DCF2DC" stroke="#548235" stroke-width="4"/>
+    <text x="230" y="944" font-size="26" font-weight="700" fill="#7F6000">Zero client modification</text>
+    <text x="929" y="950" text-anchor="middle" font-size="30" fill="#C00000" font-weight="700">–</text>
+    <text x="1127" y="950" text-anchor="middle" font-size="30" fill="#C00000" font-weight="700">–</text>
+    <text x="1325" y="950" text-anchor="middle" font-size="30" fill="#C00000" font-weight="700">–</text>
+    <text x="1523" y="950" text-anchor="middle" font-size="30" fill="#C00000" font-weight="700">–</text>
+    <text x="1721" y="950" text-anchor="middle" font-size="34" fill="#274E13" font-weight="700">✓</text>
+  </g>
+
+  <text x="210" y="1030" font-size="22" fill="#595959">✓ Yes &#160;&#160;&#160; ∼ Partial &#160;&#160;&#160; – No</text>
+  <text x="1820" y="1030" text-anchor="end" font-size="22" font-style="italic" fill="#7F6000">Only row where every other approach is “–”</text>
+</svg>

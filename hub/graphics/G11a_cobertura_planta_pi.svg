@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 555" width="100%"
+     role="img" aria-labelledby="ttl dsc"
+     font-family="ui-sans-serif, -apple-system, 'Segoe UI', Inter, Roboto, Helvetica, Arial, sans-serif">
+  <title id="ttl">WiFi floor coverage · built-in Pi antenna</title>
+  <desc id="dsc">Floor plan of a brigade site (reception, two exam rooms, and storage, connected by an open corridor) with the hub located in reception. The Raspberry Pi's built-in antenna reaches its functional limit at 11.9 m and doesn't reach the storage room or the far end of the corridor with margin.</desc>
+
+  <defs>
+    <style>
+      :root, svg {
+        --bg:#FFFFFF; --surface:#FFFFFF;
+        --ink:#161A26; --ink-2:#454C61; --ink-3:#79809A; --line:#D9DEE8;
+        --indigo-s:#EEF1FF; --indigo-b:#A9B4F2; --indigo-t:#4453C9;
+        --rose-s:#FFEBEF;   --rose-b:#F3A3B2;   --rose-t:#C2354F;
+        --slate-s:#EFF1F5;  --slate-b:#C4CBD8;  --slate-t:#556074;
+      }
+      .wall { fill:none; stroke:var(--slate-t); stroke-width:3.5; stroke-linecap:square; }
+      .room { fill:var(--slate-s); opacity:0.45; }
+      .ring-lim  { fill:none; stroke-width:3; stroke-dasharray:10 7; stroke-linecap:round; }
+      .nt   { font-size:22px; font-weight:700; }
+      .sub  { font-size:16.5px; font-weight:700; }
+      .nb   { fill:var(--ink-2); font-size:15px; }
+      .lbl  { fill:var(--ink-3); font-size:14px; font-weight:500; }
+      .room-lbl { fill:var(--ink-3); font-size:15.5px; font-weight:600; }
+      .pt-lbl  { fill:var(--ink); font-size:16px; font-weight:700; text-anchor:middle; }
+      .pt-lbl2 { fill:var(--ink-3); font-size:13.5px; text-anchor:middle; }
+    </style>
+  </defs>
+
+  <rect width="620" height="555" fill="#FFFFFF"/>
+
+  <text class="nt" fill="var(--indigo-t)" x="40" y="48" data-fit="540">Built-in Pi antenna</text>
+  <text class="sub" fill="var(--rose-t)" x="40" y="76" data-fit="540">Functional limit 11.9 m · below the 15 m criterion</text>
+
+  <rect x="90" y="280" width="420" height="180" rx="4" fill="#FFFFFF"/>
+  <rect x="90" y="280" width="420" height="140" class="room"/>
+  <path class="wall" d="M195,280 V420 M300,280 V420 M405,280 V420"/>
+  <path class="wall" d="M90,420 H124 M166,420 H229 M271,420 H334 M376,420 H439 M481,420 H510"/>
+  <rect x="90" y="280" width="420" height="180" rx="4" class="wall"/>
+
+  <text class="room-lbl" x="142" y="308" text-anchor="middle" data-fit="100">Reception</text>
+  <text class="room-lbl" x="247" y="308" text-anchor="middle" data-fit="102">Exam 1</text>
+  <text class="room-lbl" x="352" y="308" text-anchor="middle" data-fit="102">Exam 2</text>
+  <text class="room-lbl" x="457" y="308" text-anchor="middle" data-fit="100">Storage</text>
+  <text class="lbl" x="300" y="453" text-anchor="middle" data-fit="180">corridor</text>
+
+  <path class="ring-lim" stroke="var(--indigo-t)" d="M33.8,250.9 A223,223 0 0 1 368.4,493.9"/>
+
+  <g transform="translate(152,440)">
+    <circle r="17" fill="var(--indigo-s)" stroke="var(--indigo-t)" stroke-width="2.4"/>
+    <path d="M-7.5,3.2 A10.7,10.7 0 0 1 7.5,3.2 M-4.3,7 A6,6 0 0 1 4.3,7" fill="none" stroke="var(--indigo-t)" stroke-width="1.8" stroke-linecap="round"/>
+    <circle cy="8" r="1.6" fill="var(--indigo-t)"/>
+    <text class="nb" x="0" y="37" text-anchor="middle" font-weight="700" style="fill:var(--indigo-t)" data-fit="90">Hub</text>
+  </g>
+
+  <g>
+    <circle cx="247" cy="320" r="6" fill="var(--ink)" stroke="#FFFFFF" stroke-width="1.5"/>
+    <text class="pt-lbl" x="247" y="347" data-fit="115">−65 dBm</text>
+    <text class="pt-lbl2" x="247" y="363" data-fit="150">11 m · 1 wall</text>
+
+    <circle cx="352" cy="320" r="6" fill="var(--ink)" stroke="#FFFFFF" stroke-width="1.5"/>
+    <text class="pt-lbl" x="352" y="347" data-fit="115">−48 dBm</text>
+    <text class="pt-lbl2" x="352" y="363" data-fit="150">13 m · 1 wall</text>
+
+    <circle cx="457" cy="320" r="6" fill="var(--ink)" stroke="#FFFFFF" stroke-width="1.5"/>
+    <text class="pt-lbl" x="457" y="347" data-fit="115">−73 dBm</text>
+    <text class="pt-lbl2" x="457" y="363" data-fit="165">21 m · 2 walls</text>
+
+    <circle cx="480" cy="440" r="6" fill="var(--ink)" stroke="#FFFFFF" stroke-width="1.5"/>
+    <text class="pt-lbl" x="552" y="424" data-fit="115">−51 dBm</text>
+    <text class="pt-lbl2" x="552" y="440" data-fit="150">17 m · open</text>
+  </g>
+
+  <g transform="translate(368,170)">
+    <rect width="234" height="72" rx="9" fill="var(--rose-s)" stroke="var(--rose-b)" stroke-width="1.5" stroke-dasharray="5 4"/>
+    <text class="nb" x="13" y="29" data-fit="208">Doesn't reach the storage</text>
+    <text class="nb" x="13" y="51" data-fit="208">room or the far corridor</text>
+  </g>
+  <path d="M408,242 C408,262 430,268 442,286" fill="none" stroke="var(--rose-b)" stroke-width="1.5" stroke-dasharray="4 4"/>
+</svg>

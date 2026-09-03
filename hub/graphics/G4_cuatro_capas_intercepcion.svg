@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#595959"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1920" height="1080" fill="#FFFFFF"/>
+  <text x="960" y="90" text-anchor="middle" font-size="46" font-weight="700" fill="#1F3864">Transparent network interception — 4 layers</text>
+  <text x="960" y="132" text-anchor="middle" font-size="24" fill="#595959">The app believes it's talking directly to Vimov Cloud</text>
+
+  <!-- 4 boxes horizontal, x centers ~ 300,760,1220,1680, width 380 each with gaps -->
+  <!-- Box 1: DNS -->
+  <g>
+    <rect x="110" y="260" width="380" height="480" rx="16" fill="#E3ECFB" stroke="#4472C4" stroke-width="3"/>
+    <circle cx="300" cy="340" r="42" fill="#FFFFFF" stroke="#4472C4" stroke-width="3"/>
+    <circle cx="290" cy="330" r="18" fill="none" stroke="#4472C4" stroke-width="4"/>
+    <line x1="303" y1="343" x2="322" y2="362" stroke="#4472C4" stroke-width="5" stroke-linecap="round"/>
+    <text x="300" y="422" text-anchor="middle" font-size="24" font-weight="700" fill="#1F3864">Layer 1</text>
+    <text x="300" y="456" text-anchor="middle" font-size="26" font-weight="700" fill="#1F3864">DNS</text>
+    <text x="300" y="486" text-anchor="middle" font-size="20" fill="#1F3864">Name resolution</text>
+    <text x="140" y="540" font-size="19" fill="#274472">
+      <tspan x="140" dy="0">The hub's DNS resolves</tspan>
+      <tspan x="140" dy="26">the platform's domain</tspan>
+      <tspan x="140" dy="26">to itself. It only</tspan>
+      <tspan x="140" dy="26">updates if the</tspan>
+      <tspan x="140" dy="26">uplink changes.</tspan>
+    </text>
+  </g>
+
+  <!-- Box 2: DNAT -->
+  <g>
+    <rect x="530" y="260" width="380" height="480" rx="16" fill="#FDE9D9" stroke="#ED7D31" stroke-width="3"/>
+    <g stroke="#ED7D31" stroke-width="4" fill="none">
+      <path d="M675 320 L765 360" marker-end="url(#arrow)"/>
+      <path d="M765 320 L675 360" marker-end="url(#arrow)"/>
+    </g>
+    <text x="720" y="422" text-anchor="middle" font-size="24" font-weight="700" fill="#833C00">Layer 2</text>
+    <text x="720" y="456" text-anchor="middle" font-size="26" font-weight="700" fill="#833C00">DNAT</text>
+    <text x="720" y="486" text-anchor="middle" font-size="20" fill="#833C00">Traffic redirection</text>
+    <text x="560" y="540" font-size="19" fill="#833C00">
+      <tspan x="560" dy="0">A packet filter</tspan>
+      <tspan x="560" dy="26">redirects the hub's</tspan>
+      <tspan x="560" dy="26">outbound traffic to</tspan>
+      <tspan x="560" dy="26">the platform's port —</tspan>
+      <tspan x="560" dy="26">excludes the hub's own sync.</tspan>
+    </text>
+  </g>
+
+  <!-- Box 3: TLS -->
+  <g>
+    <rect x="950" y="260" width="380" height="480" rx="16" fill="#E2F0E3" stroke="#548235" stroke-width="3"/>
+    <rect x="1108" y="320" width="64" height="48" rx="6" fill="none" stroke="#548235" stroke-width="4"/>
+    <path d="M1120 320 v-16 a20 20 0 0 1 40 0 v16" fill="none" stroke="#548235" stroke-width="4"/>
+    <text x="1140" y="422" text-anchor="middle" font-size="24" font-weight="700" fill="#274E13">Layer 3</text>
+    <text x="1140" y="456" text-anchor="middle" font-size="24" font-weight="700" fill="#274E13">TLS Termination</text>
+    <text x="1140" y="486" text-anchor="middle" font-size="20" fill="#274E13">Reverse proxy</text>
+    <text x="980" y="540" font-size="19" fill="#2F5D2A">
+      <tspan x="980" dy="0">A reverse proxy ends</tspan>
+      <tspan x="980" dy="26">the HTTPS session with</tspan>
+      <tspan x="980" dy="26">a certificate for the</tspan>
+      <tspan x="980" dy="26">real domain and routes</tspan>
+      <tspan x="980" dy="26">to the middleware by path.</tspan>
+    </text>
+  </g>
+
+  <!-- Box 4: Response -->
+  <g>
+    <rect x="1370" y="260" width="440" height="480" rx="16" fill="#FFF6D9" stroke="#BF9000" stroke-width="3"/>
+    <rect x="1548" y="322" width="88" height="60" rx="4" fill="none" stroke="#BF9000" stroke-width="4"/>
+    <path d="M1548 322 L1592 360 L1636 322" fill="none" stroke="#BF9000" stroke-width="4"/>
+    <text x="1590" y="422" text-anchor="middle" font-size="24" font-weight="700" fill="#7F6000">Layer 4</text>
+    <text x="1590" y="456" text-anchor="middle" font-size="23" font-weight="700" fill="#7F6000">Transparent response</text>
+    <text x="1590" y="486" text-anchor="middle" font-size="20" fill="#7F6000">Middleware</text>
+    <text x="1400" y="540" font-size="19" fill="#7F6000">
+      <tspan x="1400" dy="0">The middleware responds</tspan>
+      <tspan x="1400" dy="26">in the same shape as</tspan>
+      <tspan x="1400" dy="26">Vimov Cloud. A custom</tspan>
+      <tspan x="1400" dy="26">header marks the</tspan>
+      <tspan x="1400" dy="26">response to avoid sync loops.</tspan>
+    </text>
+  </g>
+
+  <!-- Arrows between boxes -->
+  <line x1="490" y1="500" x2="530" y2="500" stroke="#595959" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="910" y1="500" x2="950" y2="500" stroke="#595959" stroke-width="4" marker-end="url(#arrow)"/>
+  <line x1="1330" y1="500" x2="1370" y2="500" stroke="#595959" stroke-width="4" marker-end="url(#arrow)"/>
+
+  <rect x="260" y="960" width="1400" height="70" rx="12" fill="#EDEDED" stroke="#595959" stroke-width="2"/>
+  <text x="960" y="1005" text-anchor="middle" font-size="26" font-weight="700" fill="#262626">The app never knows it didn't reach the cloud</text>
+</svg>

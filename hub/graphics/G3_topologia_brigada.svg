@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 760" width="100%"
+     role="img" aria-labelledby="ttl dsc"
+     font-family="ui-sans-serif, -apple-system, 'Segoe UI', Inter, Roboto, Helvetica, Arial, sans-serif">
+  <title id="ttl">Physical brigade topology</title>
+  <desc id="dsc">A Raspberry Pi with two interfaces: eth0 wired to the Linksys router, which provides WiFi to the three clinical devices (Incognitus tablet, IMU sensors, Emotion Cameras laptop); wlan1 uplinks to the internet to sync with Vimov Cloud when connectivity is available. The Pi and the router together are the physical hub.</desc>
+
+  <defs>
+    <style>
+      :root, svg {
+        --bg:#FFFFFF; --surface:#FFFFFF;
+        --ink:#161A26; --ink-2:#454C61; --ink-3:#79809A; --line:#D9DEE8;
+        --indigo-s:#EEF1FF; --indigo-b:#A9B4F2; --indigo-t:#4453C9;
+        --violet-s:#F4EBFF; --violet-b:#C9A6EE; --violet-t:#7439B8;
+        --slate-s:#EFF1F5;  --slate-b:#C4CBD8;  --slate-t:#556074;
+      }
+      .card  { stroke-width:1.5; }
+      .hero  { stroke-width:2.5; filter:url(#lift); }
+      .cont  { fill:none; stroke:var(--slate-t); stroke-width:1.5; stroke-dasharray:6 5; }
+
+      .n-indigo{fill:var(--indigo-s); stroke:var(--indigo-b);} .t-indigo{fill:var(--indigo-t);}
+      .n-violet{fill:var(--violet-s); stroke:var(--violet-b);} .t-violet{fill:var(--violet-t);}
+      .n-slate {fill:var(--slate-s);  stroke:var(--slate-b);}  .t-slate {fill:var(--slate-t);}
+
+      .nt   {font-size:16.5px; font-weight:700;}
+      .nb   {fill:var(--ink-3); font-size:13.5px;}
+      .lbl  {fill:var(--ink-3); font-size:13.5px; font-weight:500;}
+      .foot {fill:var(--ink-3); font-size:13.5px;}
+      .h    {font-size:14px; font-weight:700; letter-spacing:.06em;}
+
+      .link      {fill:none; stroke:var(--slate-t); stroke-width:2; marker-end:url(#arrow);}
+      .link-async{stroke-dasharray:6 5;}
+    </style>
+
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7.5" markerHeight="7.5"
+            markerUnits="strokeWidth" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 L2.4,5 Z" fill="context-stroke"/>
+    </marker>
+    <filter id="lift" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="3" stdDeviation="7" flood-color="#0B1020" flood-opacity="0.16"/>
+    </filter>
+  </defs>
+
+  <rect width="760" height="760" fill="#FFFFFF"/>
+
+  <!-- ═══ Vimov Cloud ═══ -->
+  <g transform="translate(380,58)">
+    <circle r="40" class="n-violet card"/>
+    <path d="M-21,10 Q-25,10 -25,3 Q-25,-4 -18,-4 Q-17,-13 -6,-13 Q3,-16 10,-10 Q20,-11 21,-2 Q27,-2 27,5 Q27,10 20,10 Z"
+          fill="none" stroke="var(--violet-t)" stroke-width="2.3" stroke-linejoin="round"/>
+    <text class="nt t-violet" x="0" y="58" text-anchor="middle" data-fit="150">Vimov Cloud</text>
+    <text class="nb" x="0" y="74" text-anchor="middle" data-fit="150">if there's internet</text>
+  </g>
+
+  <!-- wlan1: Pi -> Cloud (condicional, sale del hub) -->
+  <path class="link link-async" stroke="var(--violet-t)" d="M380,204 V116"/>
+  <text class="lbl" x="480" y="158" text-anchor="start" data-fit="270">wlan1 · internet (if any)</text>
+
+  <!-- ═══ El hub físico: Pi + Router ═══ -->
+  <rect x="250" y="184" width="260" height="353" rx="20" class="cont"/>
+  <text class="h t-slate" x="262" y="174" data-fit="120">THE HUB</text>
+
+  <!-- ═══ Raspberry Pi — protagonista ═══ -->
+  <g transform="translate(380,260)">
+    <circle r="56" class="hero n-indigo"/>
+    <rect x="-19" y="-15" width="38" height="30" rx="4" fill="none" stroke="var(--indigo-t)" stroke-width="2.4"/>
+    <rect x="-8" y="-6" width="16" height="12" rx="2" fill="var(--indigo-t)" opacity="0.85"/>
+    <line x1="-19" y1="-5" x2="-26" y2="-5" stroke="var(--indigo-t)" stroke-width="2"/>
+    <line x1="-19" y1="5" x2="-26" y2="5" stroke="var(--indigo-t)" stroke-width="2"/>
+    <line x1="19" y1="-5" x2="26" y2="-5" stroke="var(--indigo-t)" stroke-width="2"/>
+    <line x1="19" y1="5" x2="26" y2="5" stroke="var(--indigo-t)" stroke-width="2"/>
+    <text class="nt t-indigo" x="0" y="78" text-anchor="middle" font-size="17.5" data-fit="160">Raspberry Pi 4</text>
+    <text class="nb" x="0" y="96" text-anchor="middle" data-fit="150">eth0 + wlan1</text>
+  </g>
+
+  <!-- eth0: Pi -> Router (cable, siempre activo, dentro del hub) -->
+  <path class="link" stroke="var(--slate-t)" d="M380,316 V406"/>
+  <text class="lbl" x="525" y="365" text-anchor="start" data-fit="225">eth0 · wired</text>
+
+  <!-- ═══ Router Linksys — WiFi "Hub" ═══ -->
+  <g transform="translate(380,446)">
+    <circle r="40" class="n-slate card"/>
+    <circle cx="0" cy="13" r="2.3" fill="var(--slate-t)"/>
+    <path d="M-10,4 A14,14 0 0 1 10,4" fill="none" stroke="var(--slate-t)" stroke-width="2.3" stroke-linecap="round"/>
+    <path d="M-18,-6 A25,25 0 0 1 18,-6" fill="none" stroke="var(--slate-t)" stroke-width="2.3" stroke-linecap="round"/>
+    <text class="nt t-slate" x="0" y="58" text-anchor="middle" data-fit="150">Linksys Router</text>
+    <text class="nb" x="0" y="75" text-anchor="middle" data-fit="150">WiFi "Hub"</text>
+  </g>
+
+  <!-- Router -> 3 dispositivos (WiFi, sale del hub) -->
+  <path class="link" stroke="var(--indigo-t)" d="M380,486 V555 H130 V571"/>
+  <path class="link" stroke="var(--indigo-t)" d="M380,486 V571"/>
+  <path class="link" stroke="var(--indigo-t)" d="M380,486 V555 H630 V571"/>
+  <rect x="480" y="547" width="42" height="16" fill="#FFFFFF"/>
+  <text class="lbl" x="480" y="559" text-anchor="start" data-fit="42">WiFi</text>
+
+  <!-- ═══ Tablet — Incognitus ═══ -->
+  <g transform="translate(130,609)">
+    <circle r="38" class="n-indigo card"/>
+    <rect x="-13" y="-21" width="26" height="42" rx="5" fill="none" stroke="var(--indigo-t)" stroke-width="2.3"/>
+    <circle cx="0" cy="15" r="2" fill="var(--indigo-t)"/>
+    <text class="nt t-indigo" x="0" y="56" text-anchor="middle" data-fit="140">Tablet</text>
+    <text class="nb" x="0" y="72" text-anchor="middle" data-fit="140">Incognitus</text>
+  </g>
+
+  <!-- ═══ Sensores IMU ═══ -->
+  <g transform="translate(380,609)">
+    <circle r="38" class="n-indigo card"/>
+    <rect x="-15" y="-15" width="30" height="30" rx="8" fill="none" stroke="var(--indigo-t)" stroke-width="2.3"/>
+    <path d="M-8,2 L-4,2 L-1,-6 L3,8 L5,2 L8,2" fill="none" stroke="var(--indigo-t)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
+    <text class="nt t-indigo" x="0" y="56" text-anchor="middle" data-fit="140">IMU Sensors</text>
+    <text class="nb" x="0" y="72" text-anchor="middle" data-fit="140">Bluetooth</text>
+  </g>
+
+  <!-- ═══ Laptop — Emotion Cameras ═══ -->
+  <g transform="translate(630,609)">
+    <circle r="38" class="n-indigo card"/>
+    <rect x="-16" y="-17" width="32" height="20" rx="3" fill="none" stroke="var(--indigo-t)" stroke-width="2.3"/>
+    <path d="M-22,8 L22,8 L17,16 L-17,16 Z" fill="var(--indigo-t)"/>
+    <text class="nt t-indigo" x="0" y="56" text-anchor="middle" data-fit="140">Laptop</text>
+    <text class="nb" x="0" y="72" text-anchor="middle" data-fit="140">Emotion Cameras</text>
+  </g>
+
+  <!-- ═══ Leyenda ═══ -->
+  <g transform="translate(40,706)">
+    <rect x="0" y="0" width="11" height="11" rx="3" class="card n-indigo"/>
+    <text class="foot" x="18" y="5.5" dy="0.35em" data-fit="130">Pi / devices</text>
+    <rect x="182" y="0" width="11" height="11" rx="3" class="card n-slate"/>
+    <text class="foot" x="200" y="5.5" dy="0.35em" data-fit="80">Local network</text>
+    <rect x="320" y="0" width="11" height="11" rx="3" class="card n-violet"/>
+    <text class="foot" x="338" y="5.5" dy="0.35em" data-fit="90">External/cloud</text>
+  </g>
+  <g transform="translate(40,730)">
+    <path d="M0,5.5 H36" fill="none" stroke="var(--violet-t)" stroke-width="1.75" stroke-dasharray="6 5" marker-end="url(#arrow)"/>
+    <text class="foot" x="44" y="5.5" dy="0.35em" data-fit="300">Only if there's internet</text>
+  </g>
+</svg>

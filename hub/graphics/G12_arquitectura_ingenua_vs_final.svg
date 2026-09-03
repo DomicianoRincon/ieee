@@ -1,0 +1,175 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="100%"
+     role="img" aria-labelledby="ttl dsc"
+     font-family="ui-sans-serif, -apple-system, 'Segoe UI', Inter, Roboto, Helvetica, Arial, sans-serif">
+  <title id="ttl">Arquitectura ingenua vs. arquitectura final</title>
+  <desc id="dsc">A la izquierda, el primer acercamiento: las tres apps clientes hablan directo con una réplica completa del stack de Vimov corriendo en la Raspberry Pi (Postgres, Redis, MinIO, Celery Worker y Whisper Nano para speech-to-text), resultando en 80 segundos de latencia bajo 5 requests concurrentes de IMUs. Se culpó primero a la concurrencia, pero la causa real era el doble procesamiento con recursos compartidos, incluido Whisper Nano. A la derecha, la arquitectura final: las apps hablan con un middleware dedicado que atiende con una cola y luego proxea a una réplica mínima de solo validación, sincronizando con Vimov Cloud en segundo plano, bajando la latencia a menos de 3 segundos con la misma concurrencia.</desc>
+
+  <defs>
+    <style>
+      :root, svg {
+        --bg:#FFFFFF; --surface:#FFFFFF;
+        --ink:#161A26; --ink-2:#454C61; --ink-3:#79809A; --line:#D9DEE8;
+        --indigo-s:#EEF1FF; --indigo-b:#A9B4F2; --indigo-t:#4453C9;
+        --green-s:#E8F6E3;  --green-b:#9FD68D;  --green-t:#3A8235;
+        --amber-s:#FFF3DC;  --amber-b:#F0C572;  --amber-t:#A96C05;
+        --rose-s:#FFEBEF;   --rose-b:#F3A3B2;   --rose-t:#C2354F;
+        --violet-s:#F4EBFF; --violet-b:#C9A6EE; --violet-t:#7439B8;
+        --slate-s:#EFF1F5;  --slate-b:#C4CBD8;  --slate-t:#556074;
+      }
+      .card { stroke-width:1.5; }
+      .hero { stroke-width:2.5; }
+      .n-indigo{fill:var(--indigo-s); stroke:var(--indigo-b);} .t-indigo{fill:var(--indigo-t);}
+      .n-green {fill:var(--green-s);  stroke:var(--green-b);}  .t-green {fill:var(--green-t);}
+      .n-amber {fill:var(--amber-s);  stroke:var(--amber-b);}  .t-amber {fill:var(--amber-t);}
+      .n-violet{fill:var(--violet-s); stroke:var(--violet-b);} .t-violet{fill:var(--violet-t);}
+      .n-rose  {fill:var(--rose-s);   stroke:var(--rose-b);}   .t-rose  {fill:var(--rose-t);}
+      .nt  { font-size:13px; font-weight:700; }
+      .nb  { fill:var(--ink-2); font-size:11px; }
+      .lbl { fill:var(--ink-3); font-size:10.5px; font-weight:500; }
+      .h   { font-size:14px; font-weight:700; }
+      .hdr { font-size:11px; font-weight:700; letter-spacing:.05em; }
+      .chip{ fill:#FFFFFF; font-size:12.5px; font-weight:700; }
+      .foot{ fill:var(--ink-3); font-size:11px; }
+      .link{ fill:none; stroke:var(--slate-t); stroke-width:1.75; marker-end:url(#arrow); }
+      .link-async{ stroke-dasharray:6 5; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7"
+            markerUnits="strokeWidth" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 L2.4,5 Z" fill="context-stroke"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="680" fill="#FFFFFF"/>
+  <line x1="600" y1="24" x2="600" y2="656" stroke="var(--line)" stroke-width="1.25"/>
+
+  <!-- ═══════════════════ PANEL A · arquitectura ingenua ═══════════════════ -->
+  <g id="panel-a">
+    <text class="h" fill="var(--ink)" x="48" y="40" data-fit="500">Arquitectura ingenua · primer acercamiento</text>
+    <text class="lbl" x="48" y="58" data-fit="500">las apps contenerizadas, corridas tal cual, sobre la Pi</text>
+
+    <!-- clientes -->
+    <g transform="translate(110,104)">
+      <circle r="22" class="n-indigo card"/>
+      <rect x="-8" y="-13" width="16" height="26" rx="3" fill="none" stroke="var(--indigo-t)" stroke-width="1.6"/>
+      <circle cy="9" r="1.3" fill="var(--indigo-t)"/>
+      <text class="nb" x="0" y="38" text-anchor="middle" data-fit="90">Incognitus</text>
+    </g>
+    <g transform="translate(255,104)">
+      <circle r="22" class="n-indigo card"/>
+      <rect x="-9" y="-9" width="18" height="18" rx="5" fill="none" stroke="var(--indigo-t)" stroke-width="1.6"/>
+      <path d="M-5,1 L-2.5,1 L-1,-4 L2,5 L3.5,1 L5,1" fill="none" stroke="var(--indigo-t)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+      <text class="nb" x="0" y="38" text-anchor="middle" data-fit="100">Sensores IMU</text>
+    </g>
+    <g transform="translate(400,104)">
+      <circle r="22" class="n-indigo card"/>
+      <rect x="-9.5" y="-10" width="19" height="12" rx="2" fill="none" stroke="var(--indigo-t)" stroke-width="1.6"/>
+      <path d="M-13,5 L13,5 L10,9.5 L-10,9.5 Z" fill="var(--indigo-t)"/>
+      <text class="nb" x="0" y="38" text-anchor="middle" data-fit="120">Emotion Cameras</text>
+    </g>
+
+    <path class="link" d="M110,132 V196"/>
+    <path class="link" d="M255,132 V196"/>
+    <path class="link" d="M400,132 V196"/>
+
+    <!-- Pi: réplica completa -->
+    <rect x="68" y="196" width="440" height="284" rx="14" class="card hero n-indigo"/>
+    <text class="h t-indigo" x="88" y="222" data-fit="400">RASPBERRY PI 4 · réplica completa</text>
+
+    <g>
+      <rect x="88" y="238" width="400" height="34" rx="8" fill="#FFFFFF" stroke="var(--indigo-b)" stroke-width="1.25"/>
+      <text class="nb" x="104" y="259" data-fit="370">PostgreSQL</text>
+      <rect x="88" y="278" width="400" height="34" rx="8" fill="#FFFFFF" stroke="var(--indigo-b)" stroke-width="1.25"/>
+      <text class="nb" x="104" y="299" data-fit="370">Redis</text>
+      <rect x="88" y="318" width="400" height="34" rx="8" fill="#FFFFFF" stroke="var(--indigo-b)" stroke-width="1.25"/>
+      <text class="nb" x="104" y="339" data-fit="370">MinIO</text>
+      <rect x="88" y="358" width="400" height="34" rx="8" fill="#FFFFFF" stroke="var(--indigo-b)" stroke-width="1.25"/>
+      <text class="nb" x="104" y="379" data-fit="370">Celery Worker</text>
+      <rect x="88" y="398" width="400" height="34" rx="8" fill="var(--amber-s)" stroke="var(--amber-b)" stroke-width="1.5"/>
+      <text class="nb" x="104" y="419" font-weight="700" fill="var(--amber-t)" data-fit="260">Whisper Nano (speech-to-text)</text>
+      <text class="lbl" x="370" y="419" text-anchor="end" fill="var(--amber-t)" data-fit="100">1 prueba cognitiva</text>
+    </g>
+    <text class="lbl" x="88" y="456" data-fit="400">5 servicios compitiendo por la misma RAM y CPU</text>
+
+    <g transform="translate(288,514)">
+      <rect x="-130" y="-18" width="260" height="36" rx="18" fill="var(--rose-t)"/>
+      <text class="chip" text-anchor="middle" dy="0.35em" data-fit="240">80 s · 5 requests IMU concurrentes</text>
+    </g>
+
+    <g transform="translate(48,560)">
+      <rect width="528" height="76" rx="8" fill="var(--amber-s)" stroke="var(--amber-b)" stroke-width="1.25" stroke-dasharray="5 4"/>
+      <text class="nb" x="14" y="26" font-weight="700" fill="var(--amber-t)" data-fit="500">Se culpó primero a la concurrencia</text>
+      <text class="nb" x="14" y="46" data-fit="500">Causa real: doble procesamiento con recursos</text>
+      <text class="nb" x="14" y="64" data-fit="500">compartidos · Whisper Nano también pesaba en RAM</text>
+    </g>
+  </g>
+
+  <!-- ═══════════════════ PANEL B · arquitectura final ═══════════════════ -->
+  <g id="panel-b" transform="translate(624,0)">
+    <text class="h" fill="var(--green-t)" x="48" y="40" data-fit="500">Arquitectura final</text>
+    <text class="lbl" x="48" y="58" data-fit="500">middleware dedicado + réplica mínima de validación</text>
+
+    <g transform="translate(110,104)">
+      <circle r="22" class="n-indigo card"/>
+      <rect x="-8" y="-13" width="16" height="26" rx="3" fill="none" stroke="var(--indigo-t)" stroke-width="1.6"/>
+      <circle cy="9" r="1.3" fill="var(--indigo-t)"/>
+      <text class="nb" x="0" y="38" text-anchor="middle" data-fit="90">Incognitus</text>
+    </g>
+    <g transform="translate(255,104)">
+      <circle r="22" class="n-indigo card"/>
+      <rect x="-9" y="-9" width="18" height="18" rx="5" fill="none" stroke="var(--indigo-t)" stroke-width="1.6"/>
+      <path d="M-5,1 L-2.5,1 L-1,-4 L2,5 L3.5,1 L5,1" fill="none" stroke="var(--indigo-t)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+      <text class="nb" x="0" y="38" text-anchor="middle" data-fit="100">Sensores IMU</text>
+    </g>
+    <g transform="translate(400,104)">
+      <circle r="22" class="n-indigo card"/>
+      <rect x="-9.5" y="-10" width="19" height="12" rx="2" fill="none" stroke="var(--indigo-t)" stroke-width="1.6"/>
+      <path d="M-13,5 L13,5 L10,9.5 L-10,9.5 Z" fill="var(--indigo-t)"/>
+      <text class="nb" x="0" y="38" text-anchor="middle" data-fit="120">Emotion Cameras</text>
+    </g>
+
+    <path class="link" d="M110,132 V196"/>
+    <path class="link" d="M255,132 V196"/>
+    <path class="link" d="M400,132 V196"/>
+
+    <!-- middleware -->
+    <rect x="68" y="196" width="440" height="120" rx="14" class="card hero n-green"/>
+    <text class="h t-green" x="88" y="222" data-fit="300">Middleware dedicado</text>
+    <g transform="translate(444,214)">
+      <rect x="-11" y="-9" width="22" height="8" rx="2" fill="none" stroke="var(--green-t)" stroke-width="1.4"/>
+      <rect x="-11" y="1" width="22" height="8" rx="2" fill="none" stroke="var(--green-t)" stroke-width="1.4"/>
+    </g>
+    <text class="nb" x="88" y="248" data-fit="400">Cola SQLite · upsert paciente → pending →</text>
+    <text class="nb" x="88" y="266" data-fit="400">syncing, antes de tocar Vimov</text>
+    <text class="nb" x="88" y="292" data-fit="400">Responde al cliente de inmediato</text>
+
+    <path class="link" d="M288,316 V366"/>
+
+    <!-- réplica mínima -->
+    <rect x="68" y="366" width="440" height="90" rx="14" class="card n-indigo"/>
+    <text class="h t-indigo" x="88" y="392" data-fit="400">Vimov réplica · solo validación</text>
+    <text class="nb" x="88" y="416" data-fit="400">Motor de validación, sin duplicar el trabajo</text>
+    <text class="nb" x="88" y="434" data-fit="400">del middleware</text>
+
+    <!-- sync a la nube -->
+    <path class="link link-async" stroke="var(--violet-t)" d="M508,240 C554,240 558,180 536,138"/>
+    <text class="lbl" x="544" y="196" data-fit="80">sync</text>
+    <text class="lbl" x="544" y="208" data-fit="80">async</text>
+    <g transform="translate(536,100)">
+      <circle r="22" class="n-violet card"/>
+      <path d="M-11,6 Q-13.5,6 -13.5,1.5 Q-13.5,-2.5 -9,-2.5 Q-8.5,-7.5 -3.5,-7.5 Q1.5,-9 5,-5 Q11,-6 11,-1 Q14.5,-1 14.5,2.5 Q14.5,6 10,6 Z"
+            fill="none" stroke="var(--violet-t)" stroke-width="1.5" stroke-linejoin="round"/>
+      <text class="nb" x="0" y="38" text-anchor="middle" fill="var(--violet-t)" data-fit="90">Vimov Cloud</text>
+    </g>
+
+    <g transform="translate(288,514)">
+      <rect x="-130" y="-18" width="260" height="36" rx="18" fill="var(--green-t)"/>
+      <text class="chip" text-anchor="middle" dy="0.35em" data-fit="240">&lt; 3 s · misma concurrencia</text>
+    </g>
+
+    <g transform="translate(48,560)">
+      <rect width="528" height="56" rx="8" fill="var(--green-s)" stroke="var(--green-b)" stroke-width="1.25"/>
+      <text class="nb" x="14" y="24" font-weight="700" fill="var(--green-t)" data-fit="500">Un middleware dedicado, no una réplica completa,</text>
+      <text class="nb" x="14" y="42" font-weight="700" fill="var(--green-t)" data-fit="500">es lo que hace viable el hub</text>
+    </g>
+  </g>
+</svg>

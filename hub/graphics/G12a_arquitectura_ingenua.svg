@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="100%"
+     role="img" aria-labelledby="ttl dsc"
+     font-family="ui-sans-serif, -apple-system, 'Segoe UI', Inter, Roboto, Helvetica, Arial, sans-serif">
+  <title id="ttl">Naive architecture · first approach</title>
+  <desc id="dsc">The three client apps (Incognitus, IMU sensors, Emotion Cameras) send JSON to a Vimov Backend running in Docker on the Raspberry Pi. The backend writes directly to a dockerized PostgreSQL and enqueues a task on Celery (via a Redis broker), also dockerized. The Celery worker stores files in a dockerized MinIO and, once done, updates PostgreSQL itself. Five containers competing for the same RAM and CPU on one Pi — worsened by Whisper Nano, used for speech-to-text in one of Incognitus's cognitive tests. Result: 80 seconds of latency under 5 concurrent IMU requests. Concurrency was blamed first, but the real cause was duplicate processing over shared resources on the same device.</desc>
+
+  <defs>
+    <style>
+      :root, svg {
+        --bg:#FFFFFF; --surface:#FFFFFF;
+        --ink:#161A26; --ink-2:#454C61; --ink-3:#79809A; --line:#D9DEE8;
+        --indigo-s:#EEF1FF; --indigo-b:#A9B4F2; --indigo-t:#4453C9;
+        --amber-s:#FFF3DC;  --amber-b:#F0C572;  --amber-t:#A96C05;
+        --rose-s:#FFEBEF;   --rose-b:#F3A3B2;   --rose-t:#C2354F;
+        --slate-t:#556074;  --frame-s:#F4F5F9;  --frame-b:#B7BDCE;
+      }
+      .card { stroke-width:1.5; }
+      .hero { stroke-width:2.5; }
+      .n-indigo{fill:var(--indigo-s); stroke:var(--indigo-b);}
+      .nt  { font-size:22px; font-weight:700; }
+      .nb  { fill:var(--ink-2); font-size:15px; }
+      .lbl { fill:var(--ink-3); font-size:14px; font-weight:500; }
+      .h   { font-size:17px; font-weight:700; }
+      .chip{ fill:#FFFFFF; font-size:16px; font-weight:700; }
+      .svc { font-size:15px; font-weight:600; }
+      .link{ fill:none; stroke:var(--slate-t); stroke-width:2; marker-end:url(#arrow); }
+      .link-async{ stroke-dasharray:7 6; }
+      .container-tag { fill:none; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8"
+            markerUnits="strokeWidth" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 L2.4,5 Z" fill="context-stroke"/>
+    </marker>
+    <symbol id="containerIcon" viewBox="0 0 20 20">
+      <rect x="1.2" y="4.5" width="17.6" height="13.5" rx="2.2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <line x1="1.2" y1="9.5" x2="18.8" y2="9.5" stroke="currentColor" stroke-width="1.4"/>
+      <line x1="6.6" y1="4.5" x2="6.6" y2="9.5" stroke="currentColor" stroke-width="1.4"/>
+      <line x1="13.4" y1="4.5" x2="13.4" y2="9.5" stroke="currentColor" stroke-width="1.4"/>
+    </symbol>
+  </defs>
+
+  <rect width="1200" height="700" fill="#FFFFFF"/>
+
+  <text class="h" fill="var(--ink)" x="48" y="44" data-fit="700">Naive architecture · first approach</text>
+  <text class="lbl" x="48" y="66" data-fit="900">Running the containerized Vimov stack as-is on the Raspberry Pi</text>
+
+  <!-- clientes -->
+  <g transform="translate(260,128)">
+    <circle r="28" class="n-indigo card"/>
+    <rect x="-10" y="-16" width="20" height="32" rx="4" fill="none" stroke="var(--indigo-t)" stroke-width="2"/>
+    <circle cy="11" r="1.6" fill="var(--indigo-t)"/>
+    <text class="nb" x="0" y="48" text-anchor="middle" data-fit="140">Incognitus</text>
+  </g>
+  <g transform="translate(600,128)">
+    <circle r="28" class="n-indigo card"/>
+    <rect x="-11" y="-11" width="22" height="22" rx="6" fill="none" stroke="var(--indigo-t)" stroke-width="2"/>
+    <path d="M-6,1 L-3,1 L-1,-5 L2.5,6 L4.5,1 L6,1" fill="none" stroke="var(--indigo-t)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    <text class="nb" x="0" y="48" text-anchor="middle" data-fit="160">IMU Sensors</text>
+  </g>
+  <g transform="translate(940,128)">
+    <circle r="28" class="n-indigo card"/>
+    <rect x="-12" y="-12.5" width="24" height="15" rx="2.5" fill="none" stroke="var(--indigo-t)" stroke-width="2"/>
+    <path d="M-16,6 L16,6 L12.5,11.5 L-12.5,11.5 Z" fill="var(--indigo-t)"/>
+    <text class="nb" x="0" y="48" text-anchor="middle" data-fit="180">Emotion Cameras</text>
+  </g>
+
+  <path class="link" d="M260,166 L450,206"/>
+  <path class="link" d="M600,166 L600,206"/>
+  <path class="link" d="M940,166 L750,206"/>
+
+  <!-- Pi: marco físico -->
+  <rect x="100" y="208" width="1000" height="290" rx="18" fill="var(--frame-s)" stroke="var(--frame-b)" stroke-width="2"/>
+  <text class="h" fill="var(--ink)" x="130" y="238" data-fit="620">RASPBERRY PI 4</text>
+  <text class="lbl" x="130" y="257" data-fit="620">Docker Compose · every service in its own container</text>
+
+  <g transform="translate(902,214)">
+    <rect width="168" height="28" rx="14" fill="var(--ink)"/>
+    <use href="#containerIcon" x="12" y="6" width="16" height="16" color="#FFFFFF"/>
+    <text x="36" y="19" fill="#FFFFFF" font-size="12.5" font-weight="700" data-fit="120">DOCKER COMPOSE</text>
+  </g>
+
+  <!-- backend: recibe JSON -->
+  <g>
+    <rect x="380" y="270" width="440" height="56" rx="10" fill="#FFFFFF" class="n-indigo hero"/>
+    <use href="#containerIcon" x="794" y="278" width="16" height="16" color="var(--indigo-t)"/>
+    <text class="svc" x="404" y="294" fill="var(--ink)" data-fit="400">Vimov Backend (Python)</text>
+    <text class="lbl" x="404" y="314" data-fit="400">Receives JSON payloads from the 3 apps</text>
+  </g>
+
+  <path class="link" d="M470,326 L300,346"/>
+  <path class="link" d="M600,326 L600,346"/>
+  <text class="lbl" x="486" y="340" data-fit="120">read / write</text>
+  <text class="lbl" x="610" y="340" data-fit="180">enqueue task</text>
+  <text class="lbl" x="610" y="356" data-fit="180">(Redis broker)</text>
+
+  <!-- servicios -->
+  <g>
+    <rect x="130" y="346" width="280" height="48" rx="9" fill="#FFFFFF" stroke="var(--indigo-b)" stroke-width="1.25"/>
+    <use href="#containerIcon" x="380" y="354" width="16" height="16" color="var(--indigo-t)"/>
+    <text class="svc" x="150" y="376" fill="var(--ink)" data-fit="260">PostgreSQL</text>
+
+    <rect x="460" y="346" width="280" height="48" rx="9" fill="#FFFFFF" stroke="var(--indigo-b)" stroke-width="1.25"/>
+    <use href="#containerIcon" x="710" y="354" width="16" height="16" color="var(--indigo-t)"/>
+    <text class="svc" x="480" y="376" fill="var(--ink)" data-fit="260">Celery Worker</text>
+
+    <rect x="790" y="346" width="280" height="48" rx="9" fill="#FFFFFF" stroke="var(--indigo-b)" stroke-width="1.25"/>
+    <use href="#containerIcon" x="1040" y="354" width="16" height="16" color="var(--indigo-t)"/>
+    <text class="svc" x="810" y="376" fill="var(--ink)" data-fit="260">MinIO</text>
+  </g>
+
+  <path class="link" d="M740,368 L790,368"/>
+  <text class="lbl" x="742" y="360" data-fit="90">store files</text>
+
+  <path class="link link-async" d="M480,394 C480,424 330,424 330,394"/>
+  <text class="lbl" x="345" y="440" data-fit="230">update on completion</text>
+
+  <text class="lbl" x="130" y="470" data-fit="940">5 containers on one Docker network, competing for the same RAM and CPU</text>
+
+  <g transform="translate(600,542)">
+    <rect x="-170" y="-22" width="340" height="44" rx="22" fill="var(--rose-t)"/>
+    <text class="chip" text-anchor="middle" dy="0.35em" data-fit="310">80 s · 5 concurrent IMU requests</text>
+  </g>
+
+  <g transform="translate(100,590)">
+    <rect width="1000" height="98" rx="10" fill="var(--amber-s)" stroke="var(--amber-b)" stroke-width="1.5" stroke-dasharray="6 5"/>
+    <text class="h" x="20" y="34" fill="var(--amber-t)" data-fit="960">What we thought first: concurrency was blamed</text>
+    <text class="nb" x="20" y="60" data-fit="960">Real cause: duplicate processing over shared resources on the same Pi ·</text>
+    <text class="nb" x="20" y="82" data-fit="960">Whisper Nano (speech-to-text for one cognitive test) also weighed on RAM, not just the request volume</text>
+  </g>
+</svg>

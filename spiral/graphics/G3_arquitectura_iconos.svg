@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 480" width="100%"
      role="img" aria-labelledby="ttl dsc"
      font-family="ui-sans-serif, -apple-system, 'Segoe UI', Inter, Roboto, Helvetica, Arial, sans-serif">
-  <title id="ttl">Arquitectura del sistema Vimov</title>
-  <desc id="dsc">Incognitus en una tablet envía el trazo a la Vimov API, que guarda la muestra en MinIO y encola el análisis en Redis; un worker de Celery toma la tarea, guarda el resultado en MinIO y las métricas en PostgreSQL. Vimov Web, en un portátil, consulta la misma API.</desc>
+  <title id="ttl">Vimov system architecture</title>
+  <desc id="dsc">Incognitus on a tablet sends the trace to the Vimov API, which saves the sample to MinIO and queues the analysis on Redis; a Celery worker picks up the task, saves the result to MinIO and the metrics to PostgreSQL. Vimov Web, on a laptop, queries the same API.</desc>
 
   <defs>
     <style>
@@ -74,12 +74,12 @@
     <circle r="15" fill="var(--surface)" stroke="var(--slate-t)" stroke-width="1.5"/>
     <circle cx="0" cy="-4" r="4" fill="none" stroke="var(--slate-t)" stroke-width="1.6"/>
     <path d="M-6,7 A6,6 0 0 1 6,7" fill="none" stroke="var(--slate-t)" stroke-width="1.6" stroke-linecap="round"/>
-    <text class="tiny" x="0" y="27" text-anchor="middle" data-fit="70">Médico</text>
+    <text class="tiny" x="0" y="27" text-anchor="middle" data-fit="70">Doctor</text>
   </g>
   <!-- auto-loop: también procesa localmente -->
   <path d="M180,116 C204,98 200,72 176,66" fill="none" stroke="var(--indigo-b)"
         stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#dot)"/>
-  <text class="lbl" x="196" y="86" data-fit="120">también local</text>
+  <text class="lbl" x="196" y="86" data-fit="120">also local</text>
 
   <!-- ═══ Vimov Web (laptop) ═══ -->
   <g transform="translate(150,340)">
@@ -87,7 +87,7 @@
     <rect x="-18" y="-19" width="36" height="23" rx="3" fill="none" stroke="var(--indigo-t)" stroke-width="2.4"/>
     <path d="M-24,9 L24,9 L19,17 L-19,17 Z" fill="var(--indigo-t)"/>
     <text class="nt t-indigo" x="0" y="60" text-anchor="middle" data-fit="150">Vimov Web</text>
-    <text class="nb" x="0" y="77" text-anchor="middle" data-fit="150">React · portátil</text>
+    <text class="nb" x="0" y="77" text-anchor="middle" data-fit="150">React · laptop</text>
   </g>
 
   <!-- ═══ Vimov API (Flask) — protagonista ═══ -->
@@ -100,7 +100,7 @@
     <rect x="-20" y="12" width="40" height="14" rx="3.4" fill="none" stroke="var(--indigo-t)" stroke-width="2.3"/>
     <circle cx="-12" cy="19" r="1.8" fill="var(--indigo-t)"/>
     <text class="nt t-indigo" x="0" y="76" text-anchor="middle" font-size="16" data-fit="170">Vimov API</text>
-    <text class="nb" x="0" y="94" text-anchor="middle" data-fit="150">Flask · hub central</text>
+    <text class="nb" x="0" y="94" text-anchor="middle" data-fit="150">Flask · central hub</text>
   </g>
 
   <!-- ═══ Cola de tareas (Redis) — dibujada como cola ═══ -->
@@ -112,7 +112,7 @@
     <line x1="3" y1="-1" x2="17" y2="-1" stroke="var(--amber-t)" stroke-width="2" stroke-linecap="round"/>
     <line x1="3" y1="6" x2="17" y2="6" stroke="var(--amber-t)" stroke-width="2" stroke-linecap="round"/>
     <line x1="3" y1="13" x2="13" y2="13" stroke="var(--amber-t)" stroke-width="2" stroke-linecap="round"/>
-    <text class="nt t-amber" x="0" y="56" text-anchor="middle" data-fit="150">Cola de tareas</text>
+    <text class="nt t-amber" x="0" y="56" text-anchor="middle" data-fit="150">Task queue</text>
     <text class="nb" x="0" y="73" text-anchor="middle" data-fit="130">Redis</text>
   </g>
 
@@ -132,7 +132,7 @@
       <circle r="5.5" fill="var(--surface)" stroke-width="1.6"/>
     </g>
     <text class="nt t-amber" x="0" y="60" text-anchor="middle" data-fit="150">Celery Worker</text>
-    <text class="nb" x="0" y="77" text-anchor="middle" data-fit="150">FFT · filtrado</text>
+    <text class="nb" x="0" y="77" text-anchor="middle" data-fit="150">FFT · filtering</text>
   </g>
 
   <!-- ═══ MinIO (bucket) ═══ -->
@@ -142,7 +142,7 @@
     <path d="M-14,-14 Q0,-7 14,-14" fill="none" stroke="var(--teal-t)" stroke-width="2.4"/>
     <path d="M-7,-1 Q0,5 7,-1" fill="none" stroke="var(--teal-t)" stroke-width="1.5" opacity="0.6"/>
     <text class="nt t-teal" x="0" y="60" text-anchor="middle" data-fit="150">MinIO</text>
-    <text class="nb" x="0" y="77" text-anchor="middle" data-fit="150">objetos (S3)</text>
+    <text class="nb" x="0" y="77" text-anchor="middle" data-fit="150">objects (S3)</text>
   </g>
 
   <!-- ═══ PostgreSQL (cilindro) ═══ -->
@@ -151,7 +151,7 @@
     <path fill="none" stroke="var(--teal-t)" stroke-width="2.4" d="M-16,-14 A16,5.8 0 0 1 16,-14 V14 A16,5.8 0 0 1 -16,14 Z"/>
     <path fill="none" stroke="var(--teal-t)" stroke-width="1.9" d="M-16,-14 A16,5.8 0 0 0 16,-14"/>
     <text class="nt t-teal" x="0" y="60" text-anchor="middle" data-fit="150">PostgreSQL</text>
-    <text class="nb" x="0" y="77" text-anchor="middle" data-fit="150">métricas</text>
+    <text class="nb" x="0" y="77" text-anchor="middle" data-fit="150">metrics</text>
   </g>
 
   <!-- ═══ Flechas ═══ -->
@@ -159,18 +159,18 @@
   <!-- 1: Incognitus -> Vimov API -->
   <path class="link flow-capture" stroke="var(--indigo-t)" style="animation-delay:0s" d="M192,140 H310 V220 H414"/>
   <rect x="196" y="176" width="82" height="16" fill="var(--bg)"/>
-  <text class="lbl" x="237" y="188" text-anchor="middle" data-fit="78">trazo (X,Y,t)</text>
+  <text class="lbl" x="237" y="188" text-anchor="middle" data-fit="78">trace (X,Y,t)</text>
   <g transform="translate(310,180)"><circle r="11" class="f-indigo"/><text class="chip" text-anchor="middle" dy="0.35em">1</text></g>
 
   <!-- Vimov Web <-> Vimov API (consulta) -->
   <path class="link flow-web" stroke="var(--indigo-t)" marker-start="url(#arrow)" d="M192,340 H270 V260 H414"/>
   <rect x="196" y="292" width="66" height="16" fill="var(--bg)"/>
-  <text class="lbl" x="229" y="304" text-anchor="middle" data-fit="62">consulta</text>
+  <text class="lbl" x="229" y="304" text-anchor="middle" data-fit="62">query</text>
 
   <!-- 2: Vimov API -> Cola -->
   <path class="link flow-capture" stroke="var(--amber-t)" style="animation-delay:0.4s" d="M488,184 V90 H716"/>
   <rect x="560" y="81" width="52" height="16" fill="var(--bg)"/>
-  <text class="lbl" x="586" y="93" text-anchor="middle" data-fit="48">encola</text>
+  <text class="lbl" x="586" y="93" text-anchor="middle" data-fit="48">queues</text>
   <g transform="translate(488,140)"><circle r="11" class="f-amber"/><text class="chip" text-anchor="middle" dy="0.35em">2</text></g>
 
   <!-- Cola -> Worker -->
@@ -179,27 +179,27 @@
   <!-- Vimov API -> MinIO (guarda muestra cruda) -->
   <path class="link flow-capture" stroke="var(--teal-t)" style="animation-delay:0.4s" d="M452,184 V40 H1050 V98"/>
   <rect x="700" y="31" width="128" height="16" fill="var(--bg)"/>
-  <text class="lbl" x="764" y="43" text-anchor="middle" data-fit="122">guarda muestra cruda</text>
+  <text class="lbl" x="764" y="43" text-anchor="middle" data-fit="122">saves raw sample</text>
 
   <!-- 3: Worker -> MinIO / PostgreSQL -->
   <path class="link flow-capture" stroke="var(--teal-t)" style="animation-delay:1.2s" d="M812,340 H900 V140 H1008"/>
   <path class="link flow-capture" stroke="var(--teal-t)" style="animation-delay:1.2s" d="M812,340 H1008"/>
   <g transform="translate(900,340)"><circle r="11" class="f-teal"/><text class="chip" text-anchor="middle" dy="0.35em">3</text></g>
   <rect x="906" y="248" width="52" height="16" fill="var(--bg)"/>
-  <text class="lbl" x="932" y="260" text-anchor="middle" data-fit="48">guarda</text>
+  <text class="lbl" x="932" y="260" text-anchor="middle" data-fit="48">saves</text>
   <rect x="906" y="316" width="60" height="16" fill="var(--bg)"/>
-  <text class="lbl" x="936" y="328" text-anchor="middle" data-fit="56">métricas</text>
+  <text class="lbl" x="936" y="328" text-anchor="middle" data-fit="56">metrics</text>
 
   <!-- ═══ Leyenda ═══ -->
   <g transform="translate(48,448)">
     <rect x="0" y="0" width="12" height="12" rx="3" class="card n-indigo"/>
-    <text class="foot" x="19" y="6" dy="0.35em" data-fit="80">Aplicación</text>
+    <text class="foot" x="19" y="6" dy="0.35em" data-fit="80">Application</text>
     <rect x="112" y="0" width="12" height="12" rx="3" class="card n-teal"/>
-    <text class="foot" x="131" y="6" dy="0.35em" data-fit="100">Almacenamiento</text>
+    <text class="foot" x="131" y="6" dy="0.35em" data-fit="100">Storage</text>
     <rect x="256" y="0" width="12" height="12" rx="3" class="card n-amber"/>
-    <text class="foot" x="275" y="6" dy="0.35em" data-fit="80">Cola / async</text>
+    <text class="foot" x="275" y="6" dy="0.35em" data-fit="80">Queue / async</text>
     <path class="flow-capture" d="M384,6 H416" fill="none" stroke="var(--slate-t)" stroke-width="1.75" marker-end="url(#arrow)"/>
-    <text class="foot" x="424" y="6" dy="0.35em" data-fit="120">Flujo de datos</text>
+    <text class="foot" x="424" y="6" dy="0.35em" data-fit="120">Data flow</text>
   </g>
-  <text class="foot" x="1152" y="454" text-anchor="end" data-fit="260">Espiral de Arquímedes · ecosistema Vimov</text>
+  <text class="foot" x="1152" y="454" text-anchor="end" data-fit="260">Archimedes Spiral · Vimov ecosystem</text>
 </svg>

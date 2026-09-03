@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" width="100%"
+     role="img" aria-labelledby="ttl dsc"
+     font-family="ui-sans-serif, -apple-system, 'Segoe UI', Inter, Roboto, Helvetica, Arial, sans-serif">
+  <title id="ttl">Vimov ecosystem · three apps, one origin</title>
+  <desc id="dsc">Incognitus, IMUs, and Emotion Cameras are three heterogeneous applications, maintained by different teams, that talk over HTTPS to Vimov Cloud when there's internet.</desc>
+
+  <defs>
+    <style>
+      :root, svg {
+        --bg:#FFFFFF; --surface:#FFFFFF;
+        --ink:#161A26; --ink-2:#454C61; --ink-3:#79809A; --line:#D9DEE8;
+        --indigo-s:#EEF1FF; --indigo-b:#A9B4F2; --indigo-t:#4453C9;
+        --green-s:#E8F6E3;  --green-b:#9FD68D;  --green-t:#3A8235;
+        --violet-s:#F4EBFF; --violet-b:#C9A6EE; --violet-t:#7439B8;
+        --amber-s:#FFF3DC;  --amber-b:#F0C572;  --amber-t:#A96C05;
+      }
+      .card  { stroke-width:1.5; }
+      .hero  { stroke-width:2.5; filter:url(#lift); }
+
+      .n-indigo{fill:var(--indigo-s); stroke:var(--indigo-b);} .t-indigo{fill:var(--indigo-t);}
+      .n-green {fill:var(--green-s);  stroke:var(--green-b);}  .t-green {fill:var(--green-t);}
+      .n-violet{fill:var(--violet-s); stroke:var(--violet-b);} .t-violet{fill:var(--violet-t);}
+      .n-amber {fill:var(--amber-s);  stroke:var(--amber-b);}  .t-amber {fill:var(--amber-t);}
+
+      .nt   {font-size:15px; font-weight:700;}
+      .nb   {fill:var(--ink-3); font-size:12px;}
+      .lbl  {fill:var(--ink-3); font-size:12px; font-weight:500;}
+      .foot {fill:var(--ink-3); font-size:12px;}
+
+      .link {fill:none; stroke:var(--indigo-t); stroke-width:2; marker-end:url(#arrow);}
+    </style>
+
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7.5" markerHeight="7.5"
+            markerUnits="strokeWidth" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 L2.4,5 Z" fill="context-stroke"/>
+    </marker>
+    <filter id="lift" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="3" stdDeviation="7" flood-color="#0B1020" flood-opacity="0.16"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="520" fill="#FFFFFF"/>
+
+  <!-- ═══ Vimov Cloud — protagonista ═══ -->
+  <g transform="translate(600,104)">
+    <circle r="56" class="hero n-indigo"/>
+    <path d="M-28,14 Q-34,14 -34,4 Q-34,-6 -24,-6 Q-22,-18 -8,-18 Q4,-23 14,-14 Q27,-15 28,-3 Q37,-3 37,7 Q37,14 26,14 Z"
+          fill="none" stroke="var(--indigo-t)" stroke-width="2.6" stroke-linejoin="round"/>
+    <text class="nt t-indigo" x="0" y="80" text-anchor="middle" font-size="17" data-fit="170">Vimov Cloud</text>
+    <text class="nb" x="0" y="99" text-anchor="middle" data-fit="160">common platform</text>
+  </g>
+
+  <!-- ═══ Incognitus ═══ -->
+  <g transform="translate(280,320)">
+    <circle r="46" class="n-green card"/>
+    <rect x="-14" y="-22" width="28" height="44" rx="5" fill="none" stroke="var(--green-t)" stroke-width="2.6"/>
+    <circle cx="0" cy="16" r="2" fill="var(--green-t)"/>
+    <text class="nt t-green" x="0" y="64" text-anchor="middle" data-fit="150">Incognitus</text>
+    <text class="nb" x="0" y="82" text-anchor="middle" data-fit="150">Android · tablet</text>
+    <text class="nb" x="0" y="98" text-anchor="middle" data-fit="150">cognitive assessment</text>
+  </g>
+
+  <!-- ═══ IMUs ═══ -->
+  <g transform="translate(600,320)">
+    <circle r="46" class="n-violet card"/>
+    <rect x="-16" y="-16" width="32" height="32" rx="8" fill="none" stroke="var(--violet-t)" stroke-width="2.6"/>
+    <path d="M-9,2 L-4,2 L-1,-7 L3,9 L6,2 L9,2" fill="none" stroke="var(--violet-t)" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+    <text class="nt t-violet" x="0" y="64" text-anchor="middle" data-fit="150">IMU Sensors</text>
+    <text class="nb" x="0" y="82" text-anchor="middle" data-fit="150">Android · Bluetooth</text>
+    <text class="nb" x="0" y="98" text-anchor="middle" data-fit="150">gait, MDS-UPDRS</text>
+  </g>
+
+  <!-- ═══ Emotion Cameras ═══ -->
+  <g transform="translate(920,320)">
+    <circle r="46" class="n-amber card"/>
+    <rect x="-17" y="-18" width="34" height="21" rx="3" fill="none" stroke="var(--amber-t)" stroke-width="2.6"/>
+    <path d="M-23,9 L23,9 L18,17 L-18,17 Z" fill="var(--amber-t)"/>
+    <text class="nt t-amber" x="0" y="64" text-anchor="middle" data-fit="150">Emotion Cameras</text>
+    <text class="nb" x="0" y="82" text-anchor="middle" data-fit="150">Windows · depth</text>
+    <text class="nb" x="0" y="98" text-anchor="middle" data-fit="150">not on Android</text>
+  </g>
+
+  <!-- ═══ Flechas: HTTPS hacia Vimov Cloud ═══ -->
+  <path class="link" d="M280,274 V220 Q280,160 552,120"/>
+  <path class="link" d="M600,274 V160"/>
+  <path class="link" d="M920,274 V220 Q920,160 648,120"/>
+  <rect x="560" y="222" width="80" height="18" fill="#FFFFFF"/>
+  <text class="lbl" x="600" y="234" text-anchor="middle" data-fit="76">HTTPS</text>
+
+  <text class="foot" x="600" y="490" text-anchor="middle" data-fit="900">Three different teams, three different stacks · all talk to the same platform when there's internet.</text>
+</svg>

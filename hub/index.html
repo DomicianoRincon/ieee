@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>An Application Hub for Offline Clinical Data Collection in Neurological Field Brigades</title>
-  <meta name="description" content="Ponencia IEEE COLCOM 2026 · hub de aplicaciones para captura clínica offline en brigadas de campo neurológicas. Grupo i2t, Universidad Icesi.">
+  <meta name="description" content="IEEE COLCOM 2026 talk · an application hub for offline clinical data collection in neurological field brigades. Grupo i2t, Universidad Icesi.">
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
 
@@ -1464,9 +1464,9 @@ ol.icon-list li {
   <div class="slides" id="icesi-slides"></div>
 </div>
 
-<button id="fullscreen-btn" type="button" title="Pantalla completa (o tecla F)">
+<button id="fullscreen-btn" type="button" title="Full screen (or press F)">
   <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" stroke="#5454E9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  Pantalla completa
+  Full screen
 </button>
 
 <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
@@ -1979,117 +1979,117 @@ const slides = [
   // 1 — Portada
   icesi.titleSlideB(
     '<span style="font-size:34px; line-height:41px; display:block;">An Application Hub for Offline Clinical Data Collection in Neurological Field Brigades</span>',
-    'Integración offline para brigadas clínicas de campo · <span style="color:var(--icesi-green); font-weight:700;">IEEE COLCOM 2026</span>',
+    'Offline integration for clinical field brigades · <span style="color:var(--icesi-green); font-weight:700;">IEEE COLCOM 2026</span>',
     'D. Rincón Niño · E. Gaviria Zambrano · J. D. Colonia Aldana · J. M. Díaz Moreno · M. Á. González Arango · P. Madriñán · A. Navarro · Grupo i2t, Universidad Icesi · Fundación Valle del Lili',
     coverHubGraphic()
   ),
 
   // 2 — El contexto: brigadas de campo LargePD
   icesi.slideStandard(
-    'El contexto · brigadas de campo LargePD',
+    'The context · LargePD field brigades',
     `${rows([
-      row(I.users, `El grupo i2t (Universidad Icesi) y Neurología de la Fundación Valle del Lili adelantan <strong>LargePD</strong>, un estudio sobre Parkinson en el suroccidente colombiano`),
-      row(I.pin, `Las brigadas ya cubren 7 sitios (Tumaco, Jamundí, Santander de Quilichao, entre otros) y evalúan cerca de 150 pacientes en cada visita`),
-      row(I.wifi, `En esos sitios la conectividad suele ser limitada o nula · justo el escenario que las tres apps no contemplan, porque todas asumen que siempre hay internet`)
+      row(I.users, `The i2t group (Universidad Icesi) and the Neurology department at Fundación Valle del Lili are running <strong>LargePD</strong>, a Parkinson's disease study in southwestern Colombia`),
+      row(I.pin, `The brigades already cover 7 sites (Tumaco, Jamundí, Santander de Quilichao, among others) and assess close to 150 patients on each visit`),
+      row(I.wifi, `At those sites connectivity is usually limited or nonexistent · exactly the scenario the three apps don't account for, since all of them assume internet is always available`)
     ])}`
   ),
 
   // 3 — Tres aplicaciones, tres mundos distintos
   icesi.slideStandard(
-    'Tres aplicaciones, tres mundos distintos',
+    'Three applications, three different worlds',
     `<div style="margin-top:-38px; text-align:center;">
-      <img class="col-graphic-img" style="max-height:380px; max-width:1080px;" src="graphics/G_ecosistema_apps.png" alt="Incognitus, Sensores IMU y Emotion Cameras — tres apps de equipos distintos que hablan por HTTPS a Vimov Cloud cuando hay internet">
+      <img class="col-graphic-img" style="max-height:380px; max-width:1080px;" src="graphics/G_ecosistema_apps.png" alt="Incognitus, IMU Sensors, and Emotion Cameras — three apps from different teams that talk over HTTPS to Vimov Cloud when internet is available">
     </div>`
   ),
 
   // 4 — El problema real
   icesi.slideStandard(
-    'El problema real',
+    'The real problem',
     `<div style="margin-top:-38px; text-align:center;">
-      <img class="col-graphic-img" style="max-height:390px; max-width:1080px;" src="graphics/G_sin_conexion_problema.png" alt="Brigada de campo con cero cobertura de datos móviles: las tres apps quedan aisladas, cada una guarda un registro local del mismo paciente, sin cruzarse entre ellas">
-      <p style="margin-top:10px; font-size:18px; font-weight:700; color:var(--icesi-blue);">¿Cómo lograr operación offline sin tocar ninguna de las tres apps?</p>
+      <img class="col-graphic-img" style="max-height:390px; max-width:1080px;" src="graphics/G_sin_conexion_problema.png" alt="Field brigade with zero mobile data coverage: the three apps end up isolated, each keeping a local record of the same patient that never gets reconciled with the others">
+      <p style="margin-top:10px; font-size:18px; font-weight:700; color:var(--icesi-blue);">How can offline operation be achieved without touching any of the three apps?</p>
     </div>`
   ),
 
   // 5 — Estado del arte: la brecha
   icesi.slideGraphicRight(
-    'Estado del arte · la brecha',
+    'State of the art · the gap',
     `${rows([
-      row(I.box, `Lomotey et al. (2016, 2017 MUHIS, 2018) y Agarwal (fault tolerance) asumen que la app cliente se puede construir o reconstruir alrededor de un SDK de sincronización`),
-      row(I.alert, `Esa asunción no aplica acá: las tres apps ya están en producción y no se pueden intervenir`),
-      row(I.check, `Conclusión: ningún trabajo cubre integración multi-app local + "zero client modification" a la vez`)
+      row(I.box, `Lomotey et al. (2016, 2017 MUHIS, 2018) and Agarwal (fault tolerance) assume the client app can be built or rebuilt around a sync SDK`),
+      row(I.alert, `That assumption doesn't hold here: all three apps are already in production and cannot be modified`),
+      row(I.check, `Conclusion: no prior work covers local multi-app integration together with "zero client modification"`)
     ])}`,
-    `<img src="graphics/G1_tabla_comparativa.png" alt="Tabla comparativa de trabajos relacionados · la columna de zero client modification está vacía en todos los demás">`,
-    `Comparación cualitativa contra trabajos relacionados`
+    `<img src="graphics/G1_tabla_comparativa.png" alt="Comparison table of related work — the zero client modification column is empty for every other approach">`,
+    `Qualitative comparison against related work`
   ),
 
   // 6 — Alcance de la contribución
   icesi.slideStandard(
-    'Alcance de la contribución',
-    `<p style="font-size:19px; line-height:27px; color:var(--icesi-dark);">Los bloques individuales (edge computing, store-and-forward) son conocidos · la contribución es de <strong>integración de sistemas</strong>, deliberadamente acotada. La restricción dura, cero cambios en el cliente, es la que obliga a mover la integración de la capa de aplicación a la capa de red.</p>
+    'Scope of the contribution',
+    `<p style="font-size:19px; line-height:27px; color:var(--icesi-dark);">The individual building blocks (edge computing, store-and-forward) are well known · the contribution is one of <strong>systems integration</strong>, deliberately scoped. The hard constraint — zero client-side changes — is what forces the integration to move from the application layer down to the network layer.</p>
     <div class="icon-grid-2" style="margin-top:18px;">
-      <div class="icon-card"><div class="icon-symbol">${I.wifi}</div><div class="icon-body"><strong>Intercepción de 3 capas</strong><span>sin tocar clientes</span></div></div>
-      <div class="icon-card"><div class="icon-symbol purple">${I.queue}</div><div class="icon-body"><strong>Middleware store-first</strong><span>identidad de paciente unificada</span></div></div>
-      <div class="icon-card"><div class="icon-symbol orange">${I.chart}</div><div class="icon-body"><strong>Comparación cuantitativa</strong><span>contra baselines reales</span></div></div>
-      <div class="icon-card"><div class="icon-symbol green">${I.shield}</div><div class="icon-body"><strong>Validación laboratorio + brigada</strong><span>postura de seguridad explícita</span></div></div>
+      <div class="icon-card"><div class="icon-symbol">${I.wifi}</div><div class="icon-body"><strong>3-layer interception</strong><span>without touching clients</span></div></div>
+      <div class="icon-card"><div class="icon-symbol purple">${I.queue}</div><div class="icon-body"><strong>Store-first middleware</strong><span>unified patient identity</span></div></div>
+      <div class="icon-card"><div class="icon-symbol orange">${I.chart}</div><div class="icon-body"><strong>Quantitative comparison</strong><span>against real baselines</span></div></div>
+      <div class="icon-card"><div class="icon-symbol green">${I.shield}</div><div class="icon-body"><strong>Lab + field-brigade validation</strong><span>explicit security posture</span></div></div>
     </div>`
   ),
 
   // 7 — Arquitectura: vista general, dos modos
   icesi.slideGraphicRight(
-    'Arquitectura · vista general, dos modos',
+    'Architecture · overview, two modes',
     `${rows([
-      row(I.wifi, `<strong>Modo online:</strong> la app habla directo con Vimov Cloud · comportamiento normal`),
-      row(I.terminal, `<strong>Modo hub:</strong> el DNS local resuelve el dominio a la propia Pi, que intercepta, guarda y proxea`),
-      row(I.check, `El "contrato de transparencia": la app ve exactamente el mismo comportamiento HTTP, esté o no el hub en el camino`)
+      row(I.wifi, `<strong>Online mode:</strong> the app talks directly to Vimov Cloud · normal behavior`),
+      row(I.terminal, `<strong>Hub mode:</strong> local DNS resolves the domain to the Pi itself, which intercepts, stores, and proxies`),
+      row(I.check, `The "transparency contract": the app sees exactly the same HTTP behavior whether or not the hub is in the path`)
     ])}`,
-    `<img src="graphics/G2_modos_online_hub.png" alt="Diagrama de dos modos: online directo a la nube vs. hub interceptando y proxeando">`,
-    `Dos modos de operación: directo a la nube, o interceptado por el hub`
+    `<img src="graphics/G2_modos_online_hub.png" alt="Diagram of two modes: direct-to-cloud online vs. the hub intercepting and proxying">`,
+    `Two modes of operation: direct to the cloud, or intercepted by the hub`
   ),
 
   // 8 — Topología física en brigada
   icesi.slideStandard(
-    'Topología física en brigada',
+    'Physical topology in the field',
     `<div style="display:flex; gap:28px; align-items:flex-start; margin-top:-40px;">
       <div style="flex:1;">
         ${rows([
-          row(I.terminal, `Raspberry Pi 4 (8 GB) con dos interfaces: LAN al router de brigada, WiFi de subida a internet/campus`),
-          row(I.pin, `Tres dispositivos cliente distintos, conectados al WiFi del router · no directo a la Pi`),
-          row(I.gear, `Tres modos de arranque posibles (internet / ap-extension / standalone) · <strong>ap-extension</strong> es el modo real de brigada`)
+          row(I.terminal, `Raspberry Pi 4 (8 GB) with two interfaces: LAN to the brigade router, WiFi uplink to internet/campus`),
+          row(I.pin, `Three different client devices, connected to the router's WiFi · not directly to the Pi`),
+          row(I.gear, `Three possible boot modes (internet / ap-extension / standalone) · <strong>ap-extension</strong> is the actual field-brigade mode`)
         ])}
       </div>
       <div style="flex:1;">
-        <img class="col-graphic-img" style="max-height:410px;" src="graphics/G3_topologia_brigada.png" alt="Topología física: Raspberry Pi con eth0 al router Linksys (WiFi Hub para los 3 dispositivos) y wlan1 de subida a Vimov Cloud">
+        <img class="col-graphic-img" style="max-height:410px;" src="graphics/G3_topologia_brigada.png" alt="Physical topology: Raspberry Pi with eth0 to the Linksys router (WiFi Hub for the 3 devices) and wlan1 uplink to Vimov Cloud">
       </div>
     </div>`
   ),
 
   // 9 — Intercepción de red transparente: las 4 capas
   icesi.slideGraphicRight(
-    'Intercepción de red transparente · 4 capas',
+    'Transparent network interception · 4 layers',
     `${rows([
-      row(I.wifi, `<strong>DNS local</strong> · resuelve el dominio real a la propia Pi`),
-      row(I.arrow, `<strong>DNAT</strong> · redirige el tráfico entrante al puerto correcto`),
-      row(I.shield, `<strong>TLS</strong> · nginx termina con certificado del dominio real, embebido en la imagen de la Pi`),
-      row(I.check, `<strong>Respuesta transparente</strong> · estructuralmente idéntica a Vimov Cloud, con header anti-loop`)
+      row(I.wifi, `<strong>Local DNS</strong> · resolves the real domain to the Pi itself`),
+      row(I.arrow, `<strong>DNAT</strong> · redirects incoming traffic to the right port`),
+      row(I.shield, `<strong>TLS</strong> · nginx terminates with the real domain's certificate, embedded in the Pi image`),
+      row(I.check, `<strong>Transparent response</strong> · structurally identical to Vimov Cloud, with an anti-loop header`)
     ])}
-    <p style="margin-top:12px; font-size:16px; color:#88898C;"><strong>Mensaje central:</strong> la app nunca sabe que no llegó a la nube.</p>`,
-    `<img src="graphics/G4_cuatro_capas_intercepcion.png" alt="Pipeline de 4 capas: DNS local, DNAT, terminación TLS y respuesta transparente">`
+    <p style="margin-top:12px; font-size:16px; color:#88898C;"><strong>Key takeaway:</strong> the app never knows it didn't reach the cloud.</p>`,
+    `<img src="graphics/G4_cuatro_capas_intercepcion.png" alt="4-layer pipeline: local DNS, DNAT, TLS termination, and transparent response">`
   ),
 
   // 10 — Arquitectura ingenua: primer acercamiento
   icesi.slideStandard(
-    'Arquitectura ingenua · primer acercamiento',
+    'Naive architecture · first attempt',
     `<div style="margin-top:-30px; text-align:center;">
-      <img class="col-graphic-img" style="max-height:450px; max-width:1170px;" src="graphics/G12a_arquitectura_ingenua.png" alt="Arquitectura ingenua: las tres apps clientes hablan directo con una réplica completa del stack de Vimov (PostgreSQL, Redis, MinIO, Celery Worker, Whisper Nano) en la Pi, 80 segundos de latencia bajo 5 requests concurrentes de IMUs. Se culpó primero a la concurrencia; la causa real fue el doble procesamiento con recursos compartidos, agravado por Whisper Nano compitiendo por RAM">
+      <img class="col-graphic-img" style="max-height:450px; max-width:1170px;" src="graphics/G12a_arquitectura_ingenua.png" alt="Naive architecture, all dockerized on the Raspberry Pi 4: the three client apps send JSON to a Vimov Backend container, which writes directly to PostgreSQL and enqueues a task on Celery Worker (via Redis broker); Celery stores files in MinIO and updates PostgreSQL on completion. 5 containers competing for the same RAM and CPU — 80 seconds of latency under 5 concurrent IMU requests. Concurrency was blamed first; the real cause was duplicate processing over shared resources, made worse by Whisper Nano competing for RAM">
     </div>`
   ),
 
   // 11 — Arquitectura final: lo que funcionó
   icesi.slideStandard(
-    'Arquitectura final · lo que funcionó',
+    'Final architecture · what worked',
     `<div style="margin-top:-30px; text-align:center;">
-      <img class="col-graphic-img" style="max-height:450px; max-width:1170px;" src="graphics/G12b_arquitectura_final.png" alt="Arquitectura final: middleware dedicado con cola SQLite responde de inmediato al cliente y proxea a una réplica mínima de Vimov de solo validación, sincronizando con Vimov Cloud en segundo plano · menos de 3 segundos con la misma concurrencia">
+      <img class="col-graphic-img" style="max-height:450px; max-width:1170px;" src="graphics/G12b_arquitectura_final.png" alt="Final architecture: only 2 dockerized containers now run on the Raspberry Pi 4 — a dedicated middleware with a SQLite queue that responds to the client immediately, and a Vimov API container that only validates format and consistency, with no Celery, MinIO, PostgreSQL, or Whisper Nano on the Pi. The full stack now runs only in Vimov Cloud, reached through a background sync · under 3 seconds under the same concurrency">
     </div>`
   ),
 
@@ -2097,141 +2097,151 @@ const slides = [
   icesi.slideGraphicRight(
     'Pipeline store-first, forward-second',
     `${rows([
-      row(I.database, `Tres pasos atómicos antes de tocar Vimov: <strong>upsert de paciente</strong> (COALESCE, nunca sobreescribe con null), persistencia de archivos, entrada en cola "pending"`),
-      row(I.arrow, `Luego se proxea y se responde al cliente · la sincronización a la nube pasa después, en segundo plano`),
-      row(I.terminal, `SQLite para el middleware, no Postgres: concurrencia acotada a 3 apps, dato efímero, un solo archivo para respaldo/limpieza`)
+      row(I.database, `Three atomic steps before touching Vimov: <strong>patient upsert</strong> (COALESCE, never overwrites with null), file persistence, "pending" queue entry`),
+      row(I.arrow, `Then it's proxied and the client gets a response · syncing to the cloud happens afterward, in the background`),
+      row(I.terminal, `SQLite for the middleware, not Postgres: concurrency is bounded to 3 apps, data is ephemeral, a single file to back up or clear`)
     ])}`,
-    `<img src="graphics/G6_pipeline_store_forward.png" alt="Pipeline de dos paneles: captura (upsert, persistencia, cola) y sincronización posterior a Vimov">`,
-    `Captura local seguida de sincronización a la nube`
+    `<img src="graphics/G6_pipeline_store_forward.png" alt="Two-panel pipeline: capture (upsert, persistence, queue) and subsequent sync to Vimov">`,
+    `Local capture followed by sync to the cloud`
   ),
 
   // 13 — Seguridad, privacidad y marco regulatorio
   icesi.slideStandard(
-    'Seguridad, privacidad y marco regulatorio',
+    'Security, privacy, and regulatory framework',
     `${rows([
-      row(I.shield, `<strong>Modelo de confianza:</strong> red de brigada supervisada · el adversario es un tercero oportunista o un dispositivo perdido/robado, no un atacante de red sofisticado`),
-      row(I.check, `TLS real de extremo a extremo (la intercepción no lo degrada), SHA-256 en archivos, certificado embebido en la imagen de la Pi · nunca en un trust store público`),
-      row(I.database, `Marco legal: Ley 1581 de 2012 + Resolución 8430 de 1993 · minimización y retención acotada de datos`),
-      row(I.alert, `Riesgos residuales reconocidos: disco no cifrado, panel admin sin autenticación por usuario · esto transmite rigor, no debilidad`)
+      row(I.shield, `<strong>Trust model:</strong> supervised brigade network · the adversary is an opportunistic third party or a lost/stolen device, not a sophisticated network attacker`),
+      row(I.check, `Real end-to-end TLS (interception doesn't weaken it), SHA-256 on files, certificate embedded in the Pi image · never in a public trust store`),
+      row(I.database, `Legal framework: Colombian Law 1581 of 2012 + Resolution 8430 of 1993 · data minimization and bounded retention`),
+      row(I.alert, `Acknowledged residual risks: unencrypted disk, admin panel without per-user authentication · naming these signals rigor, not weakness`)
     ])}`
   ),
 
   // 14 — Resultados: laboratorio
   icesi.slideGraphicRight(
-    'Resultados · laboratorio',
+    'Results · lab',
     `${rows([
-      row(I.check, `<strong>132/132 requests</strong> sin error`),
-      row(I.lightning, `<strong>456 ms</strong> por registro, promedio de sincronización`),
-      row(I.database, `<strong>20/20 registros</strong> recuperados tras un corte de energía simulado`)
+      row(I.check, `<strong>132/132 requests</strong> with no errors`),
+      row(I.lightning, `<strong>456 ms</strong> per record, average sync time`),
+      row(I.database, `<strong>20/20 records</strong> recovered after a simulated power outage`)
     ])}`,
-    `<img src="graphics/G7_resultados_laboratorio.png" alt="Resultados de laboratorio: 132 de 132 requests sin error, 456 ms de sincronización promedio, 20 de 20 registros recuperados">`,
-    `Resultados de las pruebas de laboratorio`
+    `<img src="graphics/G7_resultados_laboratorio.png" alt="Lab results: 132 of 132 requests with no errors, 456 ms average sync time, 20 of 20 records recovered">`,
+    `Lab test results`
   ),
 
   // 15 — Resultados: comparación contra baselines
   icesi.slideGraphicRight(
-    'Resultados · comparación contra baselines',
+    'Results · comparison against baselines',
     `${rows([
-      row(I.lightning, `<strong>80 s → menos de 3 s</strong> bajo concurrencia comparable, en el mismo hardware`),
-      row(I.users, `Entradas de identidad por paciente: 3 (workflow manual) → 3 (réplica local) → <strong>1</strong> (hub propuesto)`),
-      row(I.chart, `Confirma que el middleware dedicado, no la réplica completa, es lo que hace viable el hub`)
+      row(I.lightning, `<strong>80 s → under 3 s</strong> under comparable concurrency, on the same hardware`),
+      row(I.users, `Patient identity entries: 3 (manual workflow) → 3 (local replica) → <strong>1</strong> (proposed hub)`),
+      row(I.chart, `Confirms that the dedicated middleware, not the full replica, is what makes the hub viable`)
     ])}`,
-    `<img src="graphics/G8_comparacion_baselines.png" alt="Comparación contra baselines: workflow manual en días, réplica local completa en 80s, hub propuesto en menos de 3s">`,
-    `Comparación de tiempos contra las alternativas`
+    `<img src="graphics/G8_comparacion_baselines.png" alt="Comparison against baselines: manual workflow in days, full local replica at 80s, proposed hub under 3s">`,
+    `Time comparison against the alternatives`
   ),
 
   // 16 — Resultados: cobertura WiFi
   icesi.slideGraphicRight(
-    'Resultados · cobertura WiFi',
+    'Results · WiFi coverage',
     `${rows([
-      row(I.wifi, `Antena integrada de la Pi: límite funcional <strong>11.9 m</strong> (bajo el criterio de 15 m)`),
-      row(I.check, `Con AP externo: <strong>20.6 m</strong> · motivó el modo <em>ap-extension</em> como configuración recomendada`)
+      row(I.wifi, `Pi's built-in antenna: functional limit of <strong>11.9 m</strong> (below the 15 m target)`),
+      row(I.check, `With an external AP: <strong>20.6 m</strong> · this is what motivated <em>ap-extension</em> mode as the recommended setup`)
     ])}`,
-    `<img src="graphics/G9_cobertura_wifi.png" alt="RSSI vs. distancia: antena Pi limita a 11.9m, AP externo llega a 20.6m, criterio de 15m marcado">`
+    `<img src="graphics/G9_cobertura_wifi.png" alt="RSSI vs. distance: Pi antenna limited to 11.9m, external AP reaches 20.6m, 15m target marked">`
   ),
 
   // 17 — Cobertura WiFi: mapa de planta
   icesi.slideStandard(
-    'Cobertura WiFi · mapa de planta',
+    'WiFi coverage · floor plan',
     `<div style="display:flex; gap:32px; align-items:flex-start; justify-content:center; margin-top:-46px;">
-      <img class="col-graphic-img" style="max-height:440px; margin:0;" src="graphics/G11a_cobertura_planta_pi.png" alt="Plano de una sede de brigada: con la antena Pi integrada, límite funcional 11.9 m, no llega con margen a la bodega ni al fondo del corredor">
-      <img class="col-graphic-img" style="max-height:440px; margin:0;" src="graphics/G11b_cobertura_planta_ap.png" alt="Mismo plano de la sede: con AP externo, límite funcional 20.6 m, cobertura completa de la sede">
+      <img class="col-graphic-img" style="max-height:440px; margin:0;" src="graphics/G11a_cobertura_planta_pi.png" alt="Floor plan of a brigade site: with the Pi's built-in antenna, functional limit of 11.9 m, falls short of the storage room and the far end of the corridor">
+      <img class="col-graphic-img" style="max-height:440px; margin:0;" src="graphics/G11b_cobertura_planta_ap.png" alt="Same site floor plan: with an external AP, functional limit of 20.6 m, full coverage of the site">
     </div>
-    <p style="text-align:center; font-size:14px; color:#88898C; margin-top:8px;">Muro (línea sólida) · límite funcional &lt; −80 dBm (línea punteada) · punto de medición real (RSSI)</p>`
+    <p style="text-align:center; font-size:14px; color:#88898C; margin-top:8px;">Wall (solid line) · functional limit &lt; −80 dBm (dashed line) · actual measurement point (RSSI)</p>`
   ),
 
   // 18 — Cobertura WiFi: heatmap real de campo
   icesi.slideStandard(
-    'Cobertura WiFi · heatmap real de campo',
+    'WiFi coverage · real field heatmap',
     `<div style="display:flex; gap:32px; align-items:flex-start; justify-content:center; margin-top:-36px;">
       <div style="text-align:center;">
-        <img class="col-graphic-img" style="max-height:385px;" src="graphics/G13_heatmap_real_pi.png" alt="Heatmap real de RSSI medido en planta con la antena integrada de la Pi (RPI-4), SSID Hub, puntos de medición etiquetados con distancia y dBm">
-        <p style="margin-top:6px; margin-bottom:0; font-size:15px; color:#88898C;">Antena Pi integrada (RPI-4)</p>
-        <p style="margin-top:2px; font-size:13px; color:#E9683B; font-weight:700;">Umbral ≥ −80 dBm · hasta 11.9 m</p>
+        <img class="col-graphic-img" style="max-height:385px;" src="graphics/G13_heatmap_real_pi.png" alt="Real RSSI heatmap measured on-site with the Pi's built-in antenna (RPI-4), SSID Hub, measurement points labeled with distance and dBm">
+        <p style="margin-top:6px; margin-bottom:0; font-size:15px; color:#88898C;">Pi built-in antenna (RPI-4)</p>
+        <p style="margin-top:2px; font-size:13px; color:#E9683B; font-weight:700;">Threshold ≥ −80 dBm · up to 11.9 m</p>
       </div>
       <div style="text-align:center;">
-        <img class="col-graphic-img" style="max-height:385px;" src="graphics/G14_heatmap_real_ap.png" alt="Heatmap real de RSSI medido en planta con el punto de acceso externo, SSID Hub, mismo plano de medición">
-        <p style="margin-top:6px; margin-bottom:0; font-size:15px; color:#88898C;">+ AP externo</p>
-        <p style="margin-top:2px; font-size:13px; color:#4CB979; font-weight:700;">Umbral ≥ −80 dBm · hasta 20.6 m</p>
+        <img class="col-graphic-img" style="max-height:385px;" src="graphics/G14_heatmap_real_ap.png" alt="Real RSSI heatmap measured on-site with the external access point, SSID Hub, same measurement floor plan">
+        <p style="margin-top:6px; margin-bottom:0; font-size:15px; color:#88898C;">+ external AP</p>
+        <p style="margin-top:2px; font-size:13px; color:#4CB979; font-weight:700;">Threshold ≥ −80 dBm · up to 20.6 m</p>
       </div>
     </div>`
   ),
 
   // 19 — Validación: dos sitios
   icesi.slideGraphicRight(
-    'Validación · dos sitios',
+    'Validation · two sites',
     `${rows([
-      row(I.terminal, `<strong>Laboratorio de investigación:</strong> pruebas de carga controladas · 132/132 requests sin error, recuperación completa tras un corte de energía simulado`),
-      row(I.pin, `<strong>Fundación Valle del Lili</strong>, brigada real: 12 pacientes, 58 registros que pasaron por el hub · las <strong>3 de 3 apps</strong> probadas en campo (Incognitus, sensores IMU, Emotion Cameras)`),
-      row(I.alert, `Único hallazgo de campo: NAT en wlan1 exigió un ajuste para Emotion Cameras`)
+      row(I.terminal, `<strong>Research lab:</strong> controlled load tests · 132/132 requests with no errors, full recovery after a simulated power outage`),
+      row(I.pin, `<strong>Fundación Valle del Lili</strong>, real field brigade: 12 patients, 58 records that went through the hub · all <strong>3 of 3 apps</strong> tested in the field (Incognitus, IMU sensors, Emotion Cameras)`),
+      row(I.alert, `Only field finding: NAT on wlan1 required a tweak for Emotion Cameras`)
     ])}`,
     `<div style="display:flex; flex-direction:column; align-items:center; gap:18px;">
-      <div style="font-size:16px; font-weight:700; color:var(--icesi-dark);">Validación combinada · dos sitios</div>
+      <div style="font-size:16px; font-weight:700; color:var(--icesi-dark);">Combined validation · two sites</div>
       <div style="display:flex; gap:14px;">
         <div style="background:#EEF1FF; border:1.5px solid #A9B4F2; border-radius:12px; padding:14px 18px; text-align:center; width:130px;">
           <div style="font-size:32px; font-weight:800; color:var(--icesi-blue);">2</div>
-          <div style="font-size:13px; color:#454C61;">sitios</div>
+          <div style="font-size:13px; color:#454C61;">sites</div>
         </div>
         <div style="background:#E8F6E3; border:1.5px solid #9FD68D; border-radius:12px; padding:14px 18px; text-align:center; width:130px;">
           <div style="font-size:32px; font-weight:800; color:var(--icesi-green);">12</div>
-          <div style="font-size:13px; color:#454C61;">pacientes</div>
+          <div style="font-size:13px; color:#454C61;">patients</div>
         </div>
         <div style="background:#F4EBFF; border:1.5px solid #C9A6EE; border-radius:12px; padding:14px 18px; text-align:center; width:130px;">
           <div style="font-size:32px; font-weight:800; color:var(--icesi-purple);">58</div>
-          <div style="font-size:13px; color:#454C61;">registros</div>
+          <div style="font-size:13px; color:#454C61;">records</div>
         </div>
         <div style="background:#FDEEE7; border:1.5px solid #F0B79C; border-radius:12px; padding:14px 18px; text-align:center; width:130px;">
           <div style="font-size:32px; font-weight:800; color:var(--icesi-orange);">3/3</div>
-          <div style="font-size:13px; color:#454C61;">apps en campo</div>
+          <div style="font-size:13px; color:#454C61;">apps in the field</div>
         </div>
       </div>
-      <div style="font-size:14px; color:#88898C; text-align:center; max-width:560px;">132 requests adicionales validados en carga controlada de laboratorio</div>
+      <div style="font-size:14px; color:#88898C; text-align:center; max-width:560px;">132 additional requests validated under controlled lab load</div>
     </div>`
+  ),
+
+  // 19b — El hub en campo: fotografías
+  icesi.slideStandard(
+    'The hub in the field',
+    `<div style="display:flex; gap:28px; align-items:center; justify-content:center; margin-top:-30px;">
+      <img style="max-height:460px; max-width:46%; border-radius:10px; box-shadow:0 4px 18px rgba(30,34,60,0.18);" src="graphics/hub1.jpeg" alt="Photograph of the application hub deployed at a field brigade: Raspberry Pi, router, and cabling set up on-site">
+      <img style="max-height:460px; max-width:46%; border-radius:10px; box-shadow:0 4px 18px rgba(30,34,60,0.18);" src="graphics/hub2.jpeg" alt="Photograph of the application hub hardware in the field, portrait orientation">
+    </div>
+    <p style="text-align:center; font-size:14px; color:#88898C; margin-top:14px;">Fundación Valle del Lili field brigade · the actual under-$100 hardware in operation</p>`
   ),
 
   // 20 — Límites honestos y trabajo futuro
   icesi.slideStandard(
-    'Límites honestos y trabajo futuro',
+    'Limitations and future work',
     `${rows([
-      row(I.target, `Validación de campo de <strong>factibilidad</strong>, no de escala (12 pacientes, 58 registros vs. ~150 pacientes/brigada típicos) · el laboratorio sí cubre el orden de magnitud esperado en throughput`),
-      row(I.alert, `Last-write-wins es razonable para datos demográficos, no para mediciones clínicas · el diseño actual no distingue las dos clases`),
-      row(I.gear, `Trabajo futuro: apps intervenidas (PR pendiente), cifrado en reposo, autenticación por usuario en el panel, inicialización zero-touch, multitenancy`)
+      row(I.target, `Field validation of <strong>feasibility</strong>, not scale (12 patients, 58 records vs. ~150 patients/brigade typical) · the lab does cover the expected order of magnitude in throughput`),
+      row(I.alert, `Last-write-wins is reasonable for demographic data, not for clinical measurements · the current design doesn't distinguish between the two`),
+      row(I.gear, `Future work: instrumented apps (pending PR), encryption at rest, per-user authentication on the panel, zero-touch provisioning, multitenancy`)
     ])}`
   ),
 
   // 21 — Conclusión
   icesi.slideStandard(
-    'Conclusión',
-    `<p style="font-size:24px; line-height:34px; color:var(--icesi-blue); font-weight:700; margin-bottom:20px;">No es un algoritmo nuevo: es la prueba de que una flota de apps clínicas independientes y ya desplegadas puede volverse offline-capable sin tocar una sola línea de cliente, unificando identidad de paciente, en hardware de menos de 100 USD.</p>
+    'Conclusion',
+    `<p style="font-size:24px; line-height:34px; color:var(--icesi-blue); font-weight:700; margin-bottom:20px;">This isn't a new algorithm: it's proof that a fleet of independent, already-deployed clinical apps can become offline-capable without touching a single line of client code, unifying patient identity, on under $100 of hardware.</p>
     ${rows([
-      row(I.check, `Patrón reutilizable de edge computing para integración clínica multi-app en entornos desconectados`)
+      row(I.check, `A reusable edge-computing pattern for multi-app clinical integration in disconnected environments`)
     ])}`
   ),
 
   // 22 — Cierre
   icesi.titleSlideA(
-    '¡Gracias!<br><small style="font-size:0.5em;">¿Preguntas?</small>',
-    'Agradecimientos: equipos de brigada i2t, Neurología FVL · Beatriz Muñoz, Jorge Luis Orozco<br><span class="slide-footer-tag">drincon@icesi.edu.co</span>'
+    'Thank you!<br><small style="font-size:0.5em;">Questions?</small>',
+    'Acknowledgments: i2t field-brigade teams, FVL Neurology · Beatriz Muñoz, Jorge Luis Orozco<br><span class="slide-footer-tag">drincon@icesi.edu.co</span>'
   ),
 
 ];

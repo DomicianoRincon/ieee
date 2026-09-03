@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" font-family="Helvetica, Arial, sans-serif">
+  <rect x="0" y="0" width="1920" height="1080" fill="#FFFFFF"/>
+  <text x="960" y="90" text-anchor="middle" font-size="46" font-weight="700" fill="#1F3864">Validación en brigada real</text>
+  <text x="960" y="134" text-anchor="middle" font-size="26" fill="#595959">Fundación Valle del Lili (Cali) — 16 de mayo de 2026</text>
+
+  <!-- 4 stat tiles, width 380 each with gaps, centered on 1920 -->
+  <!-- total width 4*380+3*40=1640, start x=(1920-1640)/2=140 -->
+  <g>
+    <rect x="140" y="260" width="380" height="420" rx="18" fill="#E3ECFB" stroke="#4472C4" stroke-width="3"/>
+    <circle cx="330" cy="380" r="60" fill="#FFFFFF" stroke="#4472C4" stroke-width="4"/>
+    <path d="M330 350 c-22 0 -34 16 -34 34 c0 24 34 56 34 56 s34 -32 34 -56 c0 -18 -12 -34 -34 -34 z" fill="none" stroke="#4472C4" stroke-width="4"/>
+    <circle cx="330" cy="384" r="10" fill="#4472C4"/>
+    <text x="330" y="500" text-anchor="middle" font-size="60" font-weight="700" fill="#1F3864">1</text>
+    <text x="330" y="540" text-anchor="middle" font-size="22" fill="#1F3864">sitio</text>
+    <text x="330" y="620" text-anchor="middle" font-size="20" fill="#274472" font-weight="700">Fundación Valle</text>
+    <text x="330" y="646" text-anchor="middle" font-size="20" fill="#274472" font-weight="700">del Lili</text>
+  </g>
+
+  <g>
+    <rect x="560" y="260" width="380" height="420" rx="18" fill="#E2F0E3" stroke="#548235" stroke-width="3"/>
+    <circle cx="750" cy="380" r="60" fill="#FFFFFF" stroke="#548235" stroke-width="4"/>
+    <circle cx="730" cy="360" r="18" fill="none" stroke="#548235" stroke-width="4"/>
+    <path d="M700 410 c0 -22 14 -34 30 -34 s30 12 30 34" fill="none" stroke="#548235" stroke-width="4"/>
+    <circle cx="775" cy="395" r="12" fill="none" stroke="#548235" stroke-width="3"/>
+    <text x="750" y="500" text-anchor="middle" font-size="60" font-weight="700" fill="#274E13">4</text>
+    <text x="750" y="540" text-anchor="middle" font-size="22" fill="#274E13">pacientes</text>
+    <text x="750" y="620" text-anchor="middle" font-size="20" fill="#2F5D2A" font-weight="700">pacientes control</text>
+    <text x="750" y="646" text-anchor="middle" font-size="20" fill="#2F5D2A" font-weight="700">(sin Parkinson)</text>
+  </g>
+
+  <g>
+    <rect x="980" y="260" width="380" height="420" rx="18" fill="#FFF6D9" stroke="#BF9000" stroke-width="3"/>
+    <circle cx="1170" cy="380" r="60" fill="#FFFFFF" stroke="#BF9000" stroke-width="4"/>
+    <rect x="1146" y="350" width="48" height="60" rx="4" fill="none" stroke="#BF9000" stroke-width="4"/>
+    <line x1="1154" y1="366" x2="1186" y2="366" stroke="#BF9000" stroke-width="3"/>
+    <line x1="1154" y1="380" x2="1186" y2="380" stroke="#BF9000" stroke-width="3"/>
+    <line x1="1154" y1="394" x2="1176" y2="394" stroke="#BF9000" stroke-width="3"/>
+    <text x="1170" y="500" text-anchor="middle" font-size="60" font-weight="700" fill="#7F6000">16</text>
+    <text x="1170" y="540" text-anchor="middle" font-size="22" fill="#7F6000">registros</text>
+    <text x="1170" y="620" text-anchor="middle" font-size="20" fill="#7F6000" font-weight="700">clínicos capturados</text>
+    <text x="1170" y="646" text-anchor="middle" font-size="20" fill="#7F6000" font-weight="700">(IMUs + Emotion)</text>
+  </g>
+
+  <g>
+    <rect x="1400" y="260" width="380" height="420" rx="18" fill="#FDE9D9" stroke="#ED7D31" stroke-width="3"/>
+    <circle cx="1590" cy="380" r="60" fill="#FFFFFF" stroke="#ED7D31" stroke-width="4"/>
+    <path d="M1562 400 l20 20 l38 -46" fill="none" stroke="#ED7D31" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="1590" y="500" text-anchor="middle" font-size="60" font-weight="700" fill="#833C00">2/3</text>
+    <text x="1590" y="540" text-anchor="middle" font-size="22" fill="#833C00">apps en campo</text>
+    <text x="1590" y="620" text-anchor="middle" font-size="20" fill="#833C00" font-weight="700">Incognitus validado</text>
+    <text x="1590" y="646" text-anchor="middle" font-size="20" fill="#833C00" font-weight="700">solo en laboratorio</text>
+  </g>
+
+  <rect x="140" y="740" width="1640" height="90" rx="14" fill="#EDEDED" stroke="#595959" stroke-width="2"/>
+  <text x="960" y="785" text-anchor="middle" font-size="24" fill="#262626">Todos los registros recibidos, persistidos en SQLite y visibles en el panel admin <tspan font-weight="700">en tiempo real</tspan></text>
+  <text x="960" y="815" text-anchor="middle" font-size="19" fill="#7F7F7F">Hallazgo de campo: NAT habilitado en wlan1 para permitir el chequeo de conectividad de Emotion Cameras</text>
+
+  <rect x="140" y="870" width="1640" height="70" rx="12" fill="#F2F2F2" stroke="#BFBFBF" stroke-width="1.5"/>
+  <text x="960" y="915" text-anchor="middle" font-size="20" font-style="italic" fill="#595959">Resultado de factibilidad — no de escala: 16 registros / 4 pacientes vs. ~150 pacientes en una brigada típica</text>
+</svg>
