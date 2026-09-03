@@ -385,6 +385,12 @@ ol.icon-list li {
   }
 }
 
+/* See the Reveal.on('ready', ...) hook below: set by PDF export tools only. */
+body.exporting-pdf #fullscreen-btn,
+body.exporting-pdf .icesi-slide-number {
+  display: none !important;
+}
+
 /* src/components/title-slides.css */
 .slide.title-a {
   background: var(--icesi-blue);
@@ -2293,6 +2299,19 @@ const slides = [
 
 document.getElementById('icesi-slides').innerHTML = slides.join('\n');
 icesi.init();
+
+// PDF export tools (e.g. decktape) drive Reveal.js by calling
+// Reveal.configure({controls:false, ...}) before exporting each slide —
+// a live viewer always has controls:true. When that happens, hide the
+// custom fullscreen button and slide-number chip (not part of Reveal's own
+// controls, so exporters don't know to hide them) so exported PDFs are clean.
+Reveal.on('ready', () => {
+  setTimeout(() => {
+    if (Reveal.getConfig().controls === false) {
+      document.body.classList.add('exporting-pdf');
+    }
+  }, 800);
+});
 
 window.addEventListener('load', () => setTimeout(() => Reveal.layout(), 300));
 let revealLayoutResizeTimeout;

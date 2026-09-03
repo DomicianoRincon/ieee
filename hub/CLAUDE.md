@@ -19,16 +19,37 @@ Neurological Field Brigades"*.
 - **`presentation.pdf`** — export a PDF de la versión en español (la que
   generó el prototype original).
 - **`presentation_en.pdf`** — export a PDF de `index.html` (inglés), generado
-  el 2026-09-03. El modo `?print-pdf` nativo de reveal.js 5.x **no funciona**
-  headless en este deck (su `PrintContext.activate()` es async vía
-  `requestAnimationFrame` y no reflowa a tiempo antes de que
-  `Page.printToPDF` capture, dando 1 sola página) — no perder tiempo
-  reintentándolo. Lo que sí funciona: un script Node con `puppeteer-core`
-  (apuntado al Chrome del sistema, sin descargar Chromium aparte) que navega
-  el deck en modo normal, recorre cada slide con `Reveal.slide(i, 0)`,
-  captura cada una como PDF de 1 página a tamaño nativo (`1280x720`, mismo
-  que `Reveal.initialize`), y las concatena con `pdf-lib`. Para regenerarlo
-  tras un cambio de contenido, repetir ese mismo proceso.
+  el 2026-09-03 con **decktape** (la herramienta documentada en
+  `Divulgacion/skills/slides-skill/.agents/skills/implement-slides/SKILL.md`,
+  paso "4.2: Export PDF File via Decktape" — es el mismo framework `icesi.*`
+  que arma este deck, así que su convención de export aplica igual acá).
+  Comando usado (agregar `--chrome-path` porque el entorno no tiene Chromium
+  descargado por Puppeteer, solo el Chrome del sistema):
+  ```
+  PUPPETEER_SKIP_DOWNLOAD=true npx -y decktape reveal \
+    --chrome-path "C:\Program Files\Google\Chrome\Application\chrome.exe" \
+    --size 1280x720 \
+    --pdf-title "An Application Hub for Offline Clinical Data Collection in Neurological Field Brigades" \
+    --pdf-author "Domiciano Rincon Nino, Esteban Gaviria Zambrano, Juan David Colonia, Juan Manuel Diaz, Miguel Angel Gonzalez, Patricia Madrinan, Andres Navarro" \
+    "file:///C:/Users/domic/Documents/ieee/Divulgacion/ieee/hub/index.html" \
+    "presentation_en.pdf"
+  ```
+  Decktape apaga los controles nativos de Reveal.js vía
+  `Reveal.configure({controls:false, transition:'none', ...})`, pero el
+  botón `#fullscreen-btn` y el `.icesi-slide-number` son propios de esta
+  plantilla (no de Reveal), así que decktape no los oculta solo. Por eso
+  `index.html` tiene un hook (`Reveal.on('ready', ...)` cerca del final del
+  `<script>` principal) que detecta `Reveal.getConfig().controls === false`
+  y agrega `body.exporting-pdf` para ocultarlos **solo durante el export**
+  — la vista en vivo (controls:true) no se toca. Si se agrega otro elemento
+  de UI custom al template, hay que sumarlo a esa misma regla
+  `body.exporting-pdf` en el `@media print` block, no a uno nuevo.
+  El modo `?print-pdf` nativo de reveal.js 5.x + `chrome --print-to-pdf`
+  headless **no funciona** en este deck (el `PrintContext.activate()` de
+  reveal.js es async vía `requestAnimationFrame` y no reflowa a tiempo antes
+  de que `Page.printToPDF` capture, dando 1 sola página) — decktape lo evita
+  navegando cada slide por `#/N` vía la API de Reveal.js y capturando cada
+  una por separado, que es lo que hay que seguir usando.
 
 ## Fuente de toda la información técnica: `IEEE ProyectoHub/`
 
