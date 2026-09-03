@@ -2109,38 +2109,51 @@ const slides = [
   ),
 
   // 2 — El problema clínico
-  icesi.slideSidebarLeftBlue(
+  icesi.slideStandard(
     'The clinical problem',
-    `<p style="font-size:20px; line-height:28px; color:var(--icesi-dark);">The Vimov ecosystem (i2t + Fundación Valle del Lili) already assesses motor and cognitive function in Parkinson's from several angles:</p>`,
-    { type: 'icons', items: [
-      { icon: I.medical, label: '~148,000 Colombians diagnosed with Parkinson\'s (Ministry of Health, 2021)' },
-      { icon: I.users, label: 'Social, emotional, and economic burden on patients, families, and caregivers' },
-      { icon: I.alert, label: 'Vimov (i2t + FVL) already assesses motor/cognitive function · but didn\'t include the Archimedes spiral' }
-    ]}
+    `<p style="font-size:20px; line-height:28px; color:var(--icesi-dark);">The Vimov ecosystem (i2t + Fundación Valle del Lili) already assesses motor and cognitive function in Parkinson's from several angles:</p>
+    ${rows([
+      row(I.medical, `~148,000 Colombians diagnosed with Parkinson's (Ministry of Health, 2021)`),
+      row(I.users, `Social, emotional, and economic burden on patients, families, and caregivers`),
+      row(I.alert, `Vimov (i2t + FVL) already assesses motor/cognitive function · but didn't include the Archimedes spiral`)
+    ])}`
   ),
 
-  // 3 — La prueba, con guía
+  // 3 — Práctica actual: papel, sin protocolo
+  icesi.slideGraphicRight(
+    'Current practice · pen and paper, no protocol',
+    `${rows([
+      row(I.alert, `Where this test is used at all today, it's typically done with pen and paper: no reference template, no timing, no digital record`),
+      row(I.eye, `Evaluation is purely visual and qualitative · high subjectivity, no standardized criteria, evaluator-dependent`),
+      row(I.arrow, `That lack of a standardized, digital protocol is exactly what motivates the two-condition methodology that follows`)
+    ])}`,
+    `<img src="graphics/spiral1.jpg" alt="A spiral drawn freehand in pen on a sheet of paper on a wooden desk — the way the test is typically administered today, with no template or timing" style="border-radius:16px; box-shadow:0 20px 50px rgba(0,0,0,0.22);">`,
+    `No template, no timing, no digital record`
+  ),
+
+  // 4 — Metodología · con guía
   icesi.slideTwoCols(
     'The spiral test · with guide',
     `${rows([
       row(I.spiral, `A simple, non-invasive, low-cost clinical instrument: tracing a spiral over a reference template. Polar model <math><mi>r</mi><mo>=</mo><mi>b</mi><mrow><mo>(</mo><mi>θ</mi><mo>&#8722;</mo><msub><mi>θ</mi><mn>0</mn></msub><mo>)</mo></mrow></math>`),
-      row(I.eye, `<strong>With guide:</strong> the patient sees the template while drawing · assesses how much they can correct their trace by leaning on an external visual reference ("cueing," a compensatory strategy well documented in Parkinson's)`)
+      row(I.eye, `<strong>With guide:</strong> the patient sees the template while drawing · assesses how much they can correct their trace by leaning on an external visual reference ("cueing," a compensatory strategy well documented in Parkinson's)`),
+      row(I.wave, `Forcing precision this way puts the patient under tension · that tension is what manifests as movement amplitude and tremor frequency`)
     ])}`,
     spiralGraphic('con')
   ),
 
-  // 4 — La prueba, sin guía
+  // 5 — Metodología · sin guía
   icesi.slideTwoCols(
     'The spiral test · without guide',
     `${rows([
       row(I.hand, `<strong>Without guide</strong> (freehand, from memory): the patient draws with no reference · assesses spontaneous motor control, with no external visual compensation`),
       row(I.arrow, `Comparing both conditions in the same patient separates "how much the guide helps" from "how much tremor there is at baseline" · each one is a distinct <em>assessment</em>`),
-      row(I.alert, `The problem motivating digitizing it: manual evaluation = high subjectivity, no standardized criteria, evaluator-dependent`)
+      row(I.medical, `Without that external constraint, we're looking for bradykinesia — the characteristic slowing — when it's present, it shows up directly as reduced speed`)
     ])}`,
     spiralGraphic('sin')
   ),
 
-  // 5 — Estado del arte
+  // 6 — Estado del arte
   icesi.slideStandard(
     'State of the art · four approaches, none complete',
     `<div class="icon-grid-2">
@@ -2152,7 +2165,7 @@ const slides = [
     <p style="margin-top:18px; font-size:19px; line-height:27px;">None covers all at once: accessible hardware, standardized protocol, reproducible validity, clinical interoperability, ambulatory operating cost.</p>`
   ),
 
-  // 6 — La novedad
+  // 7 — La novedad
   icesi.slideStandard(
     'What\'s new: end-to-end data handling',
     `${rows([
@@ -2163,7 +2176,7 @@ const slides = [
     ])}`
   ),
 
-  // 7 — Algoritmo 2D -> 1D
+  // 8 — Algoritmo 2D -> 1D
   icesi.slideGraphicRight(
     'The algorithm · from 2D trace to 1D signal',
     `${rows([
@@ -2188,7 +2201,7 @@ const slides = [
     `(θ,r) + least-squares fit + residuals with ±RMS band`
   ),
 
-  // 8 — Algoritmo, filtrado y espectro
+  // 9 — Algoritmo, filtrado y espectro
   icesi.slideGraphicRight(
     'The algorithm · filtering and spectrum',
     `${rows([
@@ -2219,7 +2232,7 @@ const slides = [
     `Trace trajectory → filtered signal → spectrum`
   ),
 
-  // 9 — Dos componentes
+  // 10 — Dos componentes
   icesi.slideGraphicRight(
     'Two components in a single signal: drawing vs. tremor',
     `${rows([
@@ -2227,11 +2240,11 @@ const slides = [
       row(I.gear, `That's exactly what the 2 Hz high-pass filter (previous slide) separates out before looking for the dominant frequency`),
       row(I.chart, `Real sample: patient <code>1105362267</code> (healthy, with guide) · their unfiltered spectrum shows both lobes clearly separated (drawing peak at 0.10 Hz, tremor peak at 5.79 Hz)`)
     ])}
-    <aside class="notes">Clarify live: this is a pedagogical example that the method separates the two components well when the spiral is well-defined · it's not a reproduction of the paper's population average (≈2.4–2.5 Hz, see Discussion, slide 17).</aside>`,
+    <aside class="notes">Clarify live: this is a pedagogical example that the method separates the two components well when the spiral is well-defined · it's not a reproduction of the paper's population average (≈2.4–2.5 Hz, see Discussion, slide 18).</aside>`,
     `<img src="graphics/G7_dibujo_vs_temblor.png" alt="Drawing vs. tremor">`
   ),
 
-  // 10 — Arquitectura
+  // 11 — Arquitectura
   icesi.slideStandard(
     'System architecture · API + task queue',
     `<div style="margin-top:-50px; text-align:center;">
@@ -2244,7 +2257,7 @@ const slides = [
     </div>`
   ),
 
-  // 11 — App Incognitus
+  // 12 — App Incognitus
   icesi.slideSidebarLeftBlue(
     'The Incognitus app · patient experience',
     `${rows([
@@ -2261,27 +2274,27 @@ const slides = [
     </div>`
   ),
 
-  // 12 — Métricas, 4 categorías
+  // 13 — Métricas, 4 categorías
   icesi.slideStandard(
     'Metrics generated · 4 categories',
     `<div style="margin-top:-36px; text-align:center;">
       <img class="col-graphic-img" style="max-width:1150px; max-height:400px;" src="graphics/G9_resumen_metricas.png" alt="Profile of the 4 metric categories, 8 healthy vs. 8 Parkinson's, without-guide condition: total time (possible bradykinesia), average speed (irregular motor control), radial RMS error (lower trace precision, the only statistically significant difference), and dominant frequency (doesn't discriminate in this condition)">
-      <p style="margin-top:6px; font-size:14px; color:#88898C; font-style:italic;">N = 16 (8 healthy + 8 Parkinson's) · without guide · with guide is compared separately (slide 14)</p>
+      <p style="margin-top:6px; font-size:14px; color:#88898C; font-style:italic;">N = 16 (8 healthy + 8 Parkinson's) · without guide · with guide is compared separately (slide 15)</p>
     </div>`
   ),
 
-  // 13 — Diseño experimental
+  // 14 — Diseño experimental
   icesi.slideStandard(
     'Validation experimental design',
     `${rows([
       row(I.users, `N = 33 (24 healthy, 9 with Parkinson's diagnosed by FVL Neurology), 4 tests per participant (2 with visual guide, 2 without)`),
-      row(I.target, `The statistical analysis in Tables IV/V uses the 16-subject subset (8 healthy, 8 Parkinson's) with complete data in both conditions · confirmed by reproducing the calculation from the raw data`),
+      row(I.target, `The statistical analysis uses the 16-subject subset (8 healthy, 8 Parkinson's) with complete data in both conditions · confirmed by reproducing the calculation from the raw data`),
       row(I.check, `Python/pytest unit tests (97% coverage) + Android/JUnit integration before moving to real subjects`),
-      row(I.chart, `<strong>Welch's t-test</strong> chosen for unbalanced groups (24 vs. 9) and possible heteroscedasticity · more rigorous than the classic Student's t-test in this scenario`)
+      row(I.chart, `<strong>Welch's t-test</strong> chosen for its robustness to unequal variances between groups · more rigorous than the classic Student's t-test in this scenario`)
     ])}`
   ),
 
-  // 14 — Resultados con guía
+  // 15 — Resultados con guía
   icesi.slideGraphicRight(
     'Results · with guide: tension widens the spread',
     `${rows([
@@ -2292,7 +2305,7 @@ const slides = [
     `<img src="graphics/G5a_comparacion_con_guia.png" alt="Comparison with guide">`
   ),
 
-  // 15 — Resultados sin guía
+  // 16 — Resultados sin guía
   icesi.slideGraphicRight(
     'Results · without guide: faster, but more deformed',
     `${rows([
@@ -2303,7 +2316,7 @@ const slides = [
     `<img src="graphics/G5b_comparacion_sin_guia.png" alt="Comparison without guide">`
   ),
 
-  // 16 — Resultados, dispersión
+  // 17 — Resultados, dispersión
   icesi.slideStandard(
     'Results · spread and variability',
     `<div class="cols-container" style="display:flex; gap:28px; align-items:flex-start;">
@@ -2312,33 +2325,25 @@ const slides = [
       </div>
       <div style="flex:1;">
         ${rows([
-          row(I.chart, `Total time vs. radial RMS error (Fig. 5 and 6): healthy subjects form compact clusters; Parkinson's shows greater spread, more pronounced without guide`),
-          row(I.target, `Box plot (Fig. 7, G6b): RMS with higher means and greater spread in Parkinson's, especially without guide`),
+          row(I.chart, `Total time vs. radial RMS error: healthy subjects form compact clusters; Parkinson's shows greater spread, more pronounced without guide`),
+          row(I.target, `RMS radial error also has higher means and greater spread in Parkinson's, especially without guide`),
           row(I.check, `Radial RMS error is the metric with the highest discriminative power in the whole study`)
         ])}
       </div>
     </div>`
   ),
 
-  // 17 — Discusión
+  // 18 — Discusión
   icesi.slideStandard(
-    'Discussion · the dominant frequency and its limits',
-    `<div class="cols-container" style="display:flex; gap:28px; align-items:flex-start;">
-      <div style="flex:1;">
-        ${rows([
-          row(I.alert, `The MDS consensus places parkinsonian resting tremor at 4–6 Hz (global neurophysiological range 4–7 Hz); the system measures ~2.4–2.5 Hz while drawing`),
-          row(I.medical, `Explanation: bradykinesia + rigidity + visuomotor control shift the measured frequency below the resting range`),
-          row(I.chart, `Reinforces looking at RMS + time + variability, not just frequency`)
-        ])}
-      </div>
-      <div style="flex:1;">
-        <img class="col-graphic-img" src="graphics/G1_tabla_comparativa.png" alt="Comparative frequency table">
-        <p style="text-align:center; font-size:14px; color:#88898C; margin-top:6px;">Comparison with related work (Table VI)</p>
-      </div>
-    </div>`
+    'Discussion · RMS under tension outperforms frequency',
+    `${rows([
+      row(I.alert, `We expected the dominant tremor frequency to be the variable that separates the groups · with only 9 Parkinson's patients, their traces don't show the tremor signature we were looking for, and frequency doesn't discriminate in either condition`),
+      row(I.chart, `The actual finding is elsewhere: radial RMS error, with guide · forcing precision puts the patient under tension, and that tension is what surfaces a variable that does separate the groups`),
+      row(I.target, `That makes RMS-with-guide a candidate marker for <strong>early</strong> Hoehn &amp; Yahr stages · the results suggest it's a better signal there than tremor, which is more characteristic of <strong>mid-stage</strong> disease`)
+    ])}`
   ),
 
-  // 18 — Limitaciones y trabajo futuro
+  // 19 — Limitaciones y trabajo futuro
   icesi.slideTwoCols(
     'Limitations and future work',
     `<h3 style="color:var(--icesi-orange); margin:0 0 10px;">Limitations</h3>
@@ -2354,16 +2359,17 @@ const slides = [
      ])}`
   ),
 
-  // 19 — Conclusión
+  // 20 — Conclusión
   icesi.slideStandard(
     'Conclusion',
     `${rows([
+      row(I.spiral, `The test gives more than a final drawing: it captures the full trajectory (x, y, t) · that trajectory is a conventional time signal, open to standard signal-processing analysis to compare patients against controls`),
       row(I.check, `A qualitative/subjective evaluation was turned into a quantitative process with objective, clinically interpretable indicators aligned with international standards, integrated into Vimov without breaking its existing data structure`),
       row(I.cpu, `Cross-cutting technical finding: it's feasible to run advanced analysis in Python directly on Android/Kotlin, with no external servers · relevant for environments with limited connectivity`)
     ])}`
   ),
 
-  // 20 — Cierre
+  // 21 — Cierre
   icesi.titleSlideA(
     'Thank you!<br><small style="font-size:0.5em;">Questions?</small>',
     'Acknowledgments: FVL Neurology (Dr. Jorge Luis Orozco) and the participating patients<br><span class="slide-footer-tag">drincon@icesi.edu.co · sergio.florez1@u.icesi.edu.co</span>'
